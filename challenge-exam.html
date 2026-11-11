@@ -1,1 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Chapter 5 Challenge Exam</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#16a34a;
+    --warning:#d97706;
+    --danger:#dc2626;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.question{
+    border:1px solid #ddd;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:8px;
+}
+
+h2{
+    color:#2563eb;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+#results{
+    margin-top:30px;
+    padding:20px;
+    border-radius:8px;
+    display:none;
+}
+
+.ready{
+    background:#dcfce7;
+}
+
+.improving{
+    background:#fef3c7;
+}
+
+.review{
+    background:#fee2e2;
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:white;
+    background:#2563eb;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Chapter 5 Challenge Exam</h1>
+
+<p>
+20 Questions • Mixed Review • Exam Readiness Assessment
+</p>
+
+</header>
+
+<div class="container">
+
+<form id="exam">
+
+<div class="question">
+<strong>1.</strong> log₂(128)= ?
+<input type="text" id="q1">
+</div>
+
+<div class="question">
+<strong>2.</strong> ln(e⁵)= ?
+<input type="text" id="q2">
+</div>
+
+<div class="question">
+<strong>3.</strong> Domain of y=log(x−4)?
+<input type="text" id="q3">
+</div>
+
+<div class="question">
+<strong>4.</strong> Range of y=ln(x)?
+<input type="text" id="q4">
+</div>
+
+<div class="question">
+<strong>5.</strong> Vertical asymptote of y=log(x)?
+<input type="text" id="q5">
+</div>
+
+<div class="question">
+<strong>6.</strong> Product Rule:
+log(MN)= ?
+<input type="text" id="q6">
+</div>
+
+<div class="question">
+<strong>7.</strong> Quotient Rule:
+log(M/N)= ?
+<input type="text" id="q7">
+</div>
+
+<div class="question">
+<strong>8.</strong> Power Rule:
+log(Mᵖ)= ?
+<input type="text" id="q8">
+</div>
+
+<div class="question">
+<strong>9.</strong>
+
+Convert:
+
+log₂(32)= ?
+
+<input type="text" id="q9">
+</div>
+
+<div class="question">
+<strong>10.</strong>
+
+Solve:
+
+2ˣ=32
+
+<input type="text" id="q10">
+</div>
+
+<div class="question">
+<strong>11.</strong>
+
+Half-Life Formula
+
+<input type="text" id="q11">
+</div>
+
+<div class="question">
+<strong>12.</strong>
+
+Doubling Time Formula
+
+<input type="text" id="q12">
+</div>
+
+<div class="question">
+<strong>13.</strong>
+
+Convert:
+
+100(1.05)ᵗ
+
+to ae^(kt)
+
+k=?
+
+<input type="text" id="q13">
+</div>
+
+<div class="question">
+<strong>14.</strong>
+
+Annual growth rate of
+
+100(1.08)ᵗ
+
+<input type="text" id="q14">
+</div>
+
+<div class="question">
+<strong>15.</strong>
+
+Continuous growth model:
+
+A=?
+
+<input type="text" id="q15">
+</div>
+
+<div class="question">
+<strong>16.</strong>
+
+pH=-log[H+]
+
+If [H+]=10⁻⁴
+
+Find pH
+
+<input type="text" id="q16">
+</div>
+
+<div class="question">
+<strong>17.</strong>
+
+Can logarithms solve
+
+2ˣ+x=10
+
+Answer Yes or No
+
+<input type="text" id="q17">
+</div>
+
+<div class="question">
+<strong>18.</strong>
+
+Domain Rule for Logs
+
+<input type="text" id="q18">
+</div>
+
+<div class="question">
+<strong>19.</strong>
+
+Range of Logarithmic Functions
+
+<input type="text" id="q19">
+</div>
+
+<div class="question">
+<strong>20.</strong>
+
+Change of Base
+
+logb(x)= ?
+
+<input type="text" id="q20">
+</div>
+
+<button type="button" onclick="gradeExam()">
+Grade Exam
+</button>
+
+</form>
+
+<div id="results"></div>
+
+<a class="btn" href="graph-explorer.html">
+← Graph Explorer
+</a>
+
+<a class="btn" href="../index.html">
+Home
+</a>
+
+</div>
+
+<script>
+
+function gradeExam(){
+
+let answers=[
+"7",
+"5",
+"x>4",
+"all real numbers",
+"x=0",
+"log(m)+log(n)",
+"log(m)-log(n)",
+"p log(m)",
+"5",
+"5",
+"ln(2)/|k|",
+"ln(2)/k",
+"0.04879",
+"8%",
+"ae^(kt)",
+"4",
+"no",
+"inside>0",
+"all real numbers",
+"log(x)/log(b)"
+];
+
+let score=0;
+
+for(let i=1;i<=20;i++){
+
+let student=
+document.getElementById("q"+i)
+.value
+.toLowerCase()
+.replace(/\s+/g,"");
+
+let answer=
+answers[i-1]
+.toLowerCase()
+.replace(/\s+/g,"");
+
+if(student===answer){
+score++;
+}
+
+}
+
+let percent=
+(score/20)*100;
+
+let div=
+document.getElementById("results");
+
+div.style.display="block";
+
+if(percent>=85){
+
+div.className="ready";
+
+div.innerHTML=`
+<h2>🎉 Exam Ready</h2>
+
+<p>
+Score:
+${score}/20
+(${percent}%)
+</p>
+
+<p>
+You demonstrate strong understanding of Chapter 5 concepts.
+</p>
+`;
+
+}
+
+else if(percent>=65){
+
+div.className="improving";
+
+div.innerHTML=`
+<h2>📈 Almost Ready</h2>
+
+<p>
+Score:
+${score}/20
+(${percent}%)
+</p>
+
+<p>
+Review weaker areas before the exam.
+</p>
+`;
+
+}
+
+else{
+
+div.className="review";
+
+div.innerHTML=`
+<h2>📚 More Review Needed</h2>
+
+<p>
+Score:
+${score}/20
+(${percent}%)
+</p>
+
+<p>
+Return to Worked Examples,
+Exam Practice,
+and the Cheat Sheet.
+</p>
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
