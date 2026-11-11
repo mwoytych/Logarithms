@@ -4,87 +4,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Logarithms & Exponential Models Exam Guide</title>
+<title>Chapter 5 Mastery Center | Logarithms & Exponential Models</title>
 
 <meta name="description"
-content="Complete logarithm and exponential model study guide with algebraic mechanics, graphing, applications, and exam cheat sheets.">
+content="Build confidence with logarithms, exponential models, graphing, domain and range, half-life, and exam preparation.">
 
 <style>
 
 :root{
-    --blue:#2563eb;
-    --green:#059669;
-    --red:#dc2626;
-    --gray:#6b7280;
+    --primary:#2563eb;
+    --success:#059669;
+    --danger:#dc2626;
+    --warning:#d97706;
     --light:#f8fafc;
     --border:#d1d5db;
 }
 
+*{
+    box-sizing:border-box;
+}
+
 body{
-    font-family:Segoe UI,sans-serif;
     margin:0;
-    background:#ffffff;
-    color:#111827;
+    font-family:Segoe UI,Arial,sans-serif;
     line-height:1.6;
+    color:#111827;
 }
 
 header{
-    background:var(--blue);
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:white;
-    padding:2rem;
+    padding:50px 20px;
     text-align:center;
+}
+
+header h1{
+    margin:0;
+}
+
+header p{
+    font-size:1.15rem;
 }
 
 nav{
     background:#eff6ff;
-    padding:1rem;
-    text-align:center;
+    padding:15px;
+    position:sticky;
+    top:0;
 }
 
 nav a{
-    margin:0 .5rem;
+    color:var(--primary);
+    margin-right:15px;
     text-decoration:none;
-    color:var(--blue);
     font-weight:600;
 }
 
 .container{
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
-    padding:20px;
+    padding:25px;
 }
 
 section{
-    margin-bottom:50px;
+    margin-bottom:60px;
 }
 
 h2{
-    border-bottom:3px solid var(--blue);
+    border-bottom:3px solid var(--primary);
     padding-bottom:10px;
 }
 
 .card{
     background:var(--light);
-    border-left:5px solid var(--blue);
+    padding:20px;
+    margin:20px 0;
+    border-left:5px solid var(--primary);
+}
+
+.checklist{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.check{
+    background:white;
+    border:1px solid var(--border);
     padding:15px;
-    margin:15px 0;
+    border-radius:8px;
 }
 
 pre{
-    overflow:auto;
     background:#111827;
     color:white;
     padding:15px;
     border-radius:8px;
+    overflow:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
 }
 
-th,td{
+th, td{
     border:1px solid var(--border);
     padding:10px;
 }
@@ -93,37 +117,43 @@ th{
     background:#eff6ff;
 }
 
+.resources a{
+    display:block;
+    margin:10px 0;
+    color:var(--primary);
+}
+
 .calculator{
     background:var(--light);
     padding:20px;
-    border-radius:10px;
+    border-radius:8px;
 }
 
 input{
-    padding:10px;
     width:100%;
+    padding:10px;
     margin:10px 0;
 }
 
 button{
-    background:var(--blue);
+    background:var(--primary);
     color:white;
+    padding:10px 20px;
     border:none;
-    padding:12px 20px;
     cursor:pointer;
+    border-radius:4px;
 }
 
 #result{
     margin-top:15px;
-    font-size:1.2rem;
     font-weight:bold;
-    color:var(--green);
+    color:var(--success);
 }
 
 footer{
-    padding:30px;
+    padding:40px;
     text-align:center;
-    color:var(--gray);
+    background:#f3f4f6;
 }
 
 </style>
@@ -132,266 +162,335 @@ footer{
 <body>
 
 <header>
-<h1>Logarithms & Exponential Models</h1>
-<p>Complete Exam Framework & Algebraic Mechanics</p>
+<h1>Chapter 5 Mastery Center</h1>
+<p>Strengthen Understanding • Build Confidence • Practice Like the Exam</p>
 </header>
 
 <nav>
+<a href="#mastery">Mastery</a>
 <a href="#mechanics">Mechanics</a>
-<a href="#properties">Properties</a>
-<a href="#functions">Functions</a>
-<a href="#models">Models</a>
-<a href="#applications">Applications</a>
+<a href="#examples">Examples</a>
+<a href="#mistakes">Mistakes</a>
+<a href="#resources">Resources</a>
+<a href="#calculator">Calculator</a>
 <a href="#cheatsheet">Cheat Sheet</a>
 </nav>
 
 <div class="container">
 
+<section id="mastery">
+
+<h2>Chapter 5 Mastery Checklist</h2>
+
+<div class="checklist">
+
+<div class="check">
+<input type="checkbox">
+Evaluate logarithms
+</div>
+
+<div class="check">
+<input type="checkbox">
+Convert log ⇄ exponential form
+</div>
+
+<div class="check">
+<input type="checkbox">
+Expand logarithms
+</div>
+
+<div class="check">
+<input type="checkbox">
+Condense logarithms
+</div>
+
+<div class="check">
+<input type="checkbox">
+Determine domains
+</div>
+
+<div class="check">
+<input type="checkbox">
+Determine ranges
+</div>
+
+<div class="check">
+<input type="checkbox">
+Sketch logarithmic graphs
+</div>
+
+<div class="check">
+<input type="checkbox">
+Find asymptotes
+</div>
+
+<div class="check">
+<input type="checkbox">
+Solve exponential equations
+</div>
+
+<div class="check">
+<input type="checkbox">
+Find half-life
+</div>
+
+<div class="check">
+<input type="checkbox">
+Find doubling time
+</div>
+
+<div class="check">
+<input type="checkbox">
+Interpret growth and decay
+</div>
+
+</div>
+
+</section>
+
 <section id="mechanics">
 
-<h2>Algebraic Mechanics</h2>
+<h2>Algebraic Mechanics Framework</h2>
 
 <div class="card">
-<h3>Universal Workflow</h3>
+
+<h3>Universal Process</h3>
 
 <pre>
-1. Identify
-2. Transform
-3. Isolate
-4. Solve
-5. Verify
+Identify
+↓
+Transform
+↓
+Isolate
+↓
+Solve
+↓
+Verify
 </pre>
+
 </div>
 
 <div class="card">
+
 <h3>Translation Rule</h3>
 
 <pre>
 log_b(x)=y
+
 ⇔
+
 b^y=x
 </pre>
 
-<p>Logs are exponents in reverse.</p>
+<p>Logs answer an exponent question.</p>
 
 </div>
 
 </section>
 
-<section id="properties">
+<section id="examples">
 
-<h2>Logarithm Properties</h2>
+<h2>Worked Examples</h2>
 
-<table>
-<tr>
-<th>Property</th>
-<th>Rule</th>
-</tr>
-
-<tr>
-<td>Product</td>
-<td>log(MN)=log(M)+log(N)</td>
-</tr>
-
-<tr>
-<td>Quotient</td>
-<td>log(M/N)=log(M)-log(N)</td>
-</tr>
-
-<tr>
-<td>Power</td>
-<td>log(M^p)=p log(M)</td>
-</tr>
-
-<tr>
-<td>Change of Base</td>
-<td>log_b(x)=log(x)/log(b)</td>
-</tr>
-
-</table>
-
-<div class="card">
-
-<strong>Expand Mechanics</strong>
+<h3>Example 1: Evaluate</h3>
 
 <pre>
-Multiply → Add
+log₂(32)
 
-Divide → Subtract
+2^? = 32
 
-Power → Bring Exponent Forward
+2^5 = 32
+
+Answer: 5
 </pre>
 
-</div>
+<h3>Example 2: Expand</h3>
+
+<pre>
+log((x²y)/z³)
+
+↓
+
+2log(x)+log(y)-3log(z)
+</pre>
+
+<h3>Example 3: Domain</h3>
+
+<pre>
+y = log(x-4)
+
+Inside > 0
+
+x-4 > 0
+
+x > 4
+
+Domain:
+(4,∞)
+</pre>
+
+<h3>Example 4: Growth</h3>
+
+<pre>
+P=500(1.08)^t
+
+Initial = 500
+
+Growth Rate = 8%
+
+Time = t
+</pre>
 
 </section>
 
-<section id="functions">
+<section id="mistakes">
 
-<h2>Logarithmic Functions</h2>
-
-<table>
-
-<tr>
-<th>Feature</th>
-<th>Value</th>
-</tr>
-
-<tr>
-<td>Domain</td>
-<td>x > 0</td>
-</tr>
-
-<tr>
-<td>Range</td>
-<td>All Real Numbers</td>
-</tr>
-
-<tr>
-<td>Asymptote</td>
-<td>x = 0</td>
-</tr>
-
-<tr>
-<td>Key Point</td>
-<td>(1,0)</td>
-</tr>
-
-</table>
+<h2>Most Common Mistakes</h2>
 
 <div class="card">
 
-<h3>Graphing Steps</h3>
+<h3>Mistake #1</h3>
 
 <pre>
-1. Find Domain
+log(a+b)
 
-2. Locate Vertical Asymptote
+≠
 
-3. Plot (1,0)
-
-4. Plot Additional Points
-
-5. Sketch Curve
+log(a)+log(b)
 </pre>
 
 </div>
 
 <div class="card">
 
-<h3>Limits</h3>
+<h3>Mistake #2</h3>
 
 <pre>
-lim ln(x)
-x→0+
-
-=
-−∞
-
-lim ln(x)
-x→∞
-
-=
-∞
+Inside ≥ 0
 </pre>
 
-</div>
-
-</section>
-
-<section id="models">
-
-<h2>Exponential Models</h2>
-
-<table>
-
-<tr>
-<th>Model</th>
-<th>Formula</th>
-</tr>
-
-<tr>
-<td>Growth</td>
-<td>P=P₀(1+r)^t</td>
-</tr>
-
-<tr>
-<td>Decay</td>
-<td>P=P₀(1-r)^t</td>
-</tr>
-
-<tr>
-<td>Continuous</td>
-<td>A=A₀e^(kt)</td>
-</tr>
-
-</table>
-
-<div class="card">
-
-<h3>Half-Life</h3>
+Wrong.
 
 <pre>
-t = ln(2)/|k|
+Inside > 0
 </pre>
+
+Correct.
 
 </div>
 
 <div class="card">
 
-<h3>Doubling Time</h3>
+<h3>Mistake #3</h3>
 
-<pre>
-t = ln(2)/k
-</pre>
+Forgetting to check domain restrictions after solving.
 
 </div>
-
-<div class="card">
-
-<h3>Convert Forms</h3>
-
-<pre>
-ab^t
-
-⇔
-
-ae^(kt)
-
-k = ln(b)
-
-b = e^k
-</pre>
-
-</div>
-
-</section>
-
-<section id="applications">
-
-<h2>Real World Applications</h2>
-
-<ul>
-<li><strong>pH:</strong> pH=-log[H+]</li>
-<li><strong>Sound:</strong> dB=10log(I/I₀)</li>
-<li><strong>Earthquakes:</strong> Richter Scale</li>
-<li><strong>Population Growth</strong></li>
-<li><strong>Compound Interest</strong></li>
-</ul>
 
 </section>
 
 <section>
 
-<h2>Calculator</h2>
+<h2>Confidence Builder</h2>
+
+<p>How many can you confidently do without notes?</p>
+
+<ul>
+<li>✅ Evaluate a logarithm</li>
+<li>✅ Convert forms</li>
+<li>✅ Expand logs</li>
+<li>✅ Condense logs</li>
+<li>✅ Find domain</li>
+<li>✅ Find range</li>
+<li>✅ Sketch graphs</li>
+<li>✅ Solve exponential equations</li>
+<li>✅ Find half-life</li>
+<li>✅ Find doubling time</li>
+</ul>
+
+<p><strong>Score Guide:</strong></p>
+
+<ul>
+<li>0-3 = Review</li>
+<li>4-7 = Improving</li>
+<li>8-10 = Exam Ready</li>
+</ul>
+
+</section>
+
+<section id="resources">
+
+<h2>Outside Resources</h2>
+
+<div class="resources">
+
+<a href="https://www.khanacademy.org" target="_blank">
+Khan Academy
+</a>
+
+<p>Best for step-by-step explanations.</p>
+
+<a href="https://tutorial.math.lamar.edu" target="_blank">
+Paul's Online Math Notes
+</a>
+
+<p>Excellent college algebra examples.</p>
+
+<a href="https://www.youtube.com/@ProfessorLeonard" target="_blank">
+Professor Leonard
+</a>
+
+<p>Detailed lectures.</p>
+
+<a href="https://www.desmos.com/calculator" target="_blank">
+Desmos Graphing Calculator
+</a>
+
+<p>Visualize logarithms and exponentials.</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Math Lab Companion</h2>
+
+<h3>Bring With You</h3>
+
+<ul>
+<li>Notes</li>
+<li>Textbook examples</li>
+<li>Homework attempts</li>
+<li>Specific questions</li>
+</ul>
+
+<h3>Questions To Ask</h3>
+
+<ul>
+<li>Can you check my setup?</li>
+<li>Why does this property apply?</li>
+<li>How do I know when to use a logarithm?</li>
+<li>Can you show another example?</li>
+</ul>
+
+</section>
+
+<section id="calculator">
+
+<h2>Logarithm Calculator</h2>
 
 <div class="calculator">
 
 <label>Base</label>
-<input type="number" id="base" value="10">
+<input type="number"
+id="base"
+value="10">
 
 <label>Value</label>
-<input type="number" id="value" value="100">
+<input type="number"
+id="value"
+value="100">
 
 <button onclick="calculateLog()">
 Calculate
@@ -405,27 +504,36 @@ Calculate
 
 <section id="cheatsheet">
 
-<h2>30 Second Exam Cheat Sheet</h2>
+<h2>30-Second Exam Cheat Sheet</h2>
 
 <pre>
 log_b(x)=y
 ⇔
 b^y=x
 
-Product → Add
+Product:
+log(MN)
+=
+log(M)+log(N)
 
-Quotient → Subtract
+Quotient:
+log(M/N)
+=
+log(M)-log(N)
 
-Power → Front
+Power:
+log(M^p)
+=
+p·log(M)
 
 Domain:
 Inside > 0
 
 Range:
-All Reals
+All Real Numbers
 
 Vertical Asymptote:
-x = 0
+x=0
 
 Growth:
 P=P₀(1+r)^t
@@ -439,7 +547,7 @@ A=A₀e^(kt)
 Half-Life:
 ln(2)/|k|
 
-Doubling:
+Doubling Time:
 ln(2)/k
 
 Unknown Exponent?
@@ -451,9 +559,8 @@ Take Logs.
 </div>
 
 <footer>
-
-<p>Created as an Exam Review System</p>
-
+<p>Chapter 5 Mastery Center</p>
+<p>Build confidence one problem at a time.</p>
 </footer>
 
 <script>
@@ -470,29 +577,29 @@ parseFloat(
 document.getElementById("value").value
 );
 
-if(base<=0||base===1){
+if(base <= 0 || base === 1){
 
-document.getElementById("result")
-.innerHTML=
-"Base must be > 0 and ≠ 1";
+document.getElementById("result").innerHTML =
+"Base must be > 0 and ≠ 1.";
 
 return;
+
 }
 
-if(value<=0){
+if(value <= 0){
 
-document.getElementById("result")
-.innerHTML=
-"Value must be > 0";
+document.getElementById("result").innerHTML =
+"Value must be > 0.";
 
 return;
+
 }
 
 let answer =
-Math.log(value)/Math.log(base);
+Math.log(value) /
+Math.log(base);
 
-document.getElementById("result")
-.innerHTML=
+document.getElementById("result").innerHTML =
 `log<sub>${base}</sub>(${value}) = ${answer.toFixed(6)}`;
 
 }
