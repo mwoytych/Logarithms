@@ -1,1 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Final Exam Cheat Sheet | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#059669;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.5;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    border-radius:8px;
+}
+
+h2{
+    color:#2563eb;
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+@media print{
+
+    .btn{
+        display:none;
+    }
+
+    body{
+        font-size:12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Chapter 5 Final Exam Cheat Sheet</h1>
+
+<p>
+Last-Minute Review Guide
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+
+<h2>Logarithm Basics</h2>
+
+<pre>
+logb(x)=y
+
+⇔
+
+b^y=x
+
+Logs answer:
+
+"What exponent?"
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Common & Natural Logs</h2>
+
+<pre>
+log(x)=log₁₀(x)
+
+ln(x)=logₑ(x)
+
+e≈2.718
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Exact Values</h2>
+
+<pre>
+log(1)=0
+
+log(10)=1
+
+log(100)=2
+
+ln(1)=0
+
+ln(e)=1
+
+ln(e³)=3
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Log Properties</h2>
+
+<pre>
+Product:
+
+log(MN)
+
+=
+
+log(M)+log(N)
+
+----------------
+
+Quotient:
+
+log(M/N)
+
+=
+
+log(M)-log(N)
+
+----------------
+
+Power:
+
+log(M^p)
+
+=
+
+p log(M)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Expand Mechanics</h2>
+
+<pre>
+Multiply → Add
+
+Divide → Subtract
+
+Power → Front
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Condense Mechanics</h2>
+
+<pre>
+Add → Multiply
+
+Subtract → Divide
+
+Coefficient → Exponent
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Change of Base</h2>
+
+<pre>
+logb(x)
+
+=
+
+log(x)
+/ log(b)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Domain & Range</h2>
+
+<pre>
+Domain:
+
+Inside > 0
+
+----------------
+
+Range:
+
+All Real Numbers
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Graph Facts</h2>
+
+<pre>
+Vertical Asymptote:
+
+x=0
+
+Key Point:
+
+(1,0)
+
+Concavity:
+
+Concave Down
+
+for log(x)
+and ln(x)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Asymptotes</h2>
+
+<pre>
+Vertical:
+
+x=a
+
+Graph approaches
+x=a
+
+----------------
+
+Horizontal:
+
+y=b
+
+Graph approaches
+y=b
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Limits</h2>
+
+<pre>
+lim ln(x)
+
+x→0+
+
+=
+
+−∞
+
+----------------
+
+lim ln(x)
+
+x→∞
+
+=
+
+∞
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Growth Models</h2>
+
+<pre>
+P=P₀(1+r)^t
+
+Growth:
+
+r positive
+
+Decay:
+
+r negative
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Continuous Growth</h2>
+
+<pre>
+A=A₀e^(kt)
+
+k>0
+
+Growth
+
+k<0
+
+Decay
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Convert Forms</h2>
+
+<pre>
+ab^t
+
+→
+
+ae^(kt)
+
+k=ln(b)
+
+----------------
+
+ae^(kt)
+
+→
+
+ab^t
+
+b=e^k
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Finding Time</h2>
+
+<pre>
+ab^t=c
+
+t=
+
+log(c/a)
+/ log(b)
+
+----------------
+
+ae^(kt)=c
+
+t=
+
+ln(c/a)
+/ k
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Half-Life</h2>
+
+<pre>
+t=ln(2)/|k|
+
+Meaning:
+
+Time to cut
+in half.
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Doubling Time</h2>
+
+<pre>
+t=ln(2)/k
+
+Meaning:
+
+Time to double.
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Applications</h2>
+
+<pre>
+pH
+
+=
+
+-log[H+]
+
+----------------
+
+Decibels
+
+=
+
+10log(I/I₀)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Solve Exponential Equations</h2>
+
+<pre>
+Variable in exponent?
+
+Take logs.
+
+Example:
+
+2^x=50
+
+↓
+
+x=log(50)
+/log(2)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>When Logs Fail</h2>
+
+<pre>
+2^x+x=10
+
+Variable
+
+inside exponent
+
+AND
+
+outside exponent
+
+Cannot solve
+algebraically
+with logs.
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Most Tested Concepts</h2>
+
+<pre>
+1. Log Properties
+
+2. Domain
+
+3. Graph Features
+
+4. Exponential Equations
+
+5. Growth & Decay
+
+6. Half-Life
+
+7. Doubling Time
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Algebraic Mechanics</h2>
+
+<pre>
+IDENTIFY
+
+↓
+
+TRANSFORM
+
+↓
+
+ISOLATE
+
+↓
+
+SOLVE
+
+↓
+
+VERIFY
+</pre>
+
+</div>
+
+</div>
+
+<a
+class="btn"
+href="common-mistakes.html">
+← Common Mistakes
+</a>
+
+<a
+class="btn"
+href="../index.html">
+Return Home
+</a>
+
+</div>
+
+</body>
+</html>
