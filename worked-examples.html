@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Worked Examples | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#059669;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    margin:0;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+h2{
+    color:#2563eb;
+    border-bottom:2px solid #2563eb;
+    padding-bottom:10px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+details{
+    background:white;
+    border:1px solid var(--border);
+    margin-top:10px;
+    padding:15px;
+    border-radius:6px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    text-decoration:none;
+    color:white;
+    background:#2563eb;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+.level{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:.8rem;
+    font-weight:bold;
+    color:white;
+}
+
+.easy{background:#059669;}
+.medium{background:#d97706;}
+.hard{background:#dc2626;}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Worked Examples</h1>
+
+<p>
+Learn by following complete solutions.
+</p>
+
+</header>
+
+<div class="container">
+
+<h2>Evaluate Logarithms</h2>
+
+<div class="card">
+
+<span class="level easy">Easy</span>
+
+<h3>Example 1</h3>
+
+<pre>
+log₂(32)
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Question:
+
+2^? = 32
+
+2^5 = 32
+
+Answer:
+
+5
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level easy">Easy</span>
+
+<h3>Example 2</h3>
+
+<pre>
+ln(e⁴)
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+ln(e⁴)
+
+=
+
+4
+
+because
+
+ln(e^x)=x
+</pre>
+
+</details>
+
+</div>
+
+<h2>Expand Logarithms</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<h3>Example 3</h3>
+
+<pre>
+log((x²y)/z³)
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Product Rule
+
+↓
+
+log(x²)+log(y)-log(z³)
+
+Power Rule
+
+↓
+
+2log(x)+log(y)-3log(z)
+</pre>
+
+</details>
+
+</div>
+
+<h2>Condense Logarithms</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<h3>Example 4</h3>
+
+<pre>
+2log(x)+log(y)-3log(z)
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Move coefficients
+
+↓
+
+log(x²)+log(y)-log(z³)
+
+Combine
+
+↓
+
+log((x²y)/z³)
+</pre>
+
+</details>
+
+</div>
+
+<h2>Determine Domain</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<h3>Example 5</h3>
+
+<pre>
+y = log(x-7)
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Inside > 0
+
+x-7 > 0
+
+x > 7
+
+Domain:
+
+(7,∞)
+</pre>
+
+</details>
+
+</div>
+
+<h2>Solve Exponential Equations</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<h3>Example 6</h3>
+
+<pre>
+2^x = 20
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Take logarithms
+
+log(2^x)=log(20)
+
+Power Rule
+
+xlog(2)=log(20)
+
+Divide
+
+x=log(20)/log(2)
+
+≈4.322
+</pre>
+
+</details>
+
+</div>
+
+<h2>Growth Models</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<h3>Example 7</h3>
+
+<pre>
+P=500(1.08)^3
+</pre>
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Substitute:
+
+P=500(1.08)^3
+
+P≈629.86
+
+Answer:
+
+630
+</pre>
+
+</details>
+
+</div>
+
+<h2>Half-Life</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<h3>Example 8</h3>
+
+<pre>
+A=100e^(-0.25t)
+</pre>
+
+Find the half-life.
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Formula:
+
+t=ln(2)/|k|
+
+k=.25
+
+t=.693/.25
+
+t≈2.77
+</pre>
+
+</details>
+
+</div>
+
+<h2>Doubling Time</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<h3>Example 9</h3>
+
+<pre>
+A=100e^(0.06t)
+</pre>
+
+Find the doubling time.
+
+<details>
+
+<summary>Show Solution</summary>
+
+<pre>
+Formula
+
+t=ln(2)/k
+
+=.693/.06
+
+≈11.55
+</pre>
+
+</details>
+
+</div>
+
+<h2>Challenge Problem</h2>
+
+<div class="card">
+
+<span class="level hard">Challenge</span>
+
+<h3>Example 10</h3>
+
+<pre>
+2^x + x = 10
+</pre>
+
+<details>
+
+<summary>Show Explanation</summary>
+
+<pre>
+Variable appears:
+
+Inside exponent
+
+AND
+
+Outside exponent
+
+Therefore:
+
+No algebraic logarithm method
+can isolate x exactly.
+
+Requires graphing or
+numerical approximation.
+</pre>
+
+</details>
+
+</div>
+
+<h2>Mastery Reflection</h2>
+
+<div class="card">
+
+<p>
+
+After completing these examples ask:
+
+</p>
+
+<ul>
+
+<li>Can I explain WHY each step was used?</li>
+
+<li>Can I solve similar problems without looking?</li>
+
+<li>Can I identify which property applies?</li>
+
+<li>Can I set up growth and decay models?</li>
+
+<li>Do I know when logarithms will and won't work?</li>
+
+</ul>
+
+</div>
+
+<a
+class="btn"
+href="algebraic-mechanics.html">
+← Previous
+</a>
+
+<a
+class="btn"
+href="exam-practice.html">
+Next: Exam Practice →
+</a>
+
+</div>
+
+</body>
+</html>
