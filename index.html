@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +7,16 @@
 <title>Chapter 5 Mastery Center</title>
 
 <meta name="description"
-content="Build confidence with logarithms, exponential models, graphing, domain and range, half-life, applications, and exam preparation.">
+content="Master logarithms, exponential models, growth and decay, half-life, doubling time, graphing, and exam preparation.">
 
 <style>
 
 :root{
     --primary:#2563eb;
-    --secondary:#1e40af;
+    --secondary:#1d4ed8;
     --success:#059669;
-    --warning:#d97706;
-    --danger:#dc2626;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
 }
 
 *{
@@ -29,113 +26,101 @@ content="Build confidence with logarithms, exponential models, graphing, domain 
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
-    line-height:1.6;
+    background:#f9fafb;
     color:#111827;
 }
 
-header{
-    background:linear-gradient(135deg,#2563eb,#1e40af);
+.hero{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
     color:white;
-    padding:60px 20px;
     text-align:center;
+    padding:80px 20px;
 }
 
-header h1{
+.hero h1{
     margin:0;
     font-size:3rem;
 }
 
-header p{
+.hero p{
     font-size:1.2rem;
-}
-
-nav{
-    background:white;
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    z-index:1000;
-    padding:15px;
-}
-
-nav ul{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    list-style:none;
-    margin:0;
-    padding:0;
-    gap:15px;
-}
-
-nav a{
-    text-decoration:none;
-    font-weight:bold;
-    color:var(--primary);
+    margin-top:15px;
 }
 
 .container{
     max-width:1200px;
     margin:auto;
+    padding:40px 20px;
+}
+
+.progress-box{
+    background:white;
     padding:25px;
+    border-radius:12px;
+    margin-bottom:40px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-section{
-    margin-bottom:70px;
-}
-
-h2{
-    color:var(--primary);
-    border-bottom:3px solid var(--primary);
-    padding-bottom:10px;
-}
-
-.card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:20px 0;
-    border-radius:8px;
+.progress-box h2{
+    margin-top:0;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
 }
 
-.check-item{
+.card{
     background:white;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:15px;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:.25s;
 }
 
-pre{
-    background:#111827;
-    color:white;
-    padding:15px;
-    border-radius:8px;
-    overflow:auto;
+.card:hover{
+    transform:translateY(-4px);
 }
 
-.resource{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:15px;
-}
-
-.resource a{
-    text-decoration:none;
+.card h3{
     color:var(--primary);
-    font-weight:bold;
+    margin-top:0;
+}
+
+.card p{
+    color:#4b5563;
+}
+
+.card a{
+    display:inline-block;
+    margin-top:10px;
+    text-decoration:none;
+    color:white;
+    background:var(--primary);
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+.card a:hover{
+    background:var(--secondary);
 }
 
 footer{
-    background:#f3f4f6;
     text-align:center;
     padding:40px;
+    color:#6b7280;
+}
+
+ul{
+    padding-left:20px;
 }
 
 </style>
@@ -143,424 +128,241 @@ footer{
 
 <body>
 
-<header>
+<header class="hero">
 
 <h1>Chapter 5 Mastery Center</h1>
 
 <p>
-Strengthen Understanding • Build Confidence • Practice Like The Exam
+Logarithms • Exponential Models • Growth & Decay • Exam Success
 </p>
 
 </header>
 
-<nav>
+<main class="container">
 
-<ul>
+<section class="progress-box">
 
-<li><a href="#know">What Should I Know?</a></li>
-<li><a href="#mechanics">Algebraic Mechanics</a></li>
-<li><a href="#examples">Worked Examples</a></li>
-<li><a href="#practice">Exam Practice</a></li>
-<li><a href="#confidence">Confidence Check</a></li>
-<li><a href="#resources">Study Resources</a></li>
-<li><a href="#mathlab">Math Lab Companion</a></li>
-<li><a href="#calculators">Calculators</a></li>
-<li><a href="#mistakes">Common Mistakes</a></li>
-<li><a href="#cheatsheet">Cheat Sheet</a></li>
-
-</ul>
-
-</nav>
-
-<div class="container">
-
-<section id="know">
-
-<h2>What Should I Know?</h2>
-
-<div class="card">
-
-<h3>Student Translation of Learning Outcomes</h3>
-
-<ul>
-<li>I can convert between logarithmic and exponential form.</li>
-<li>I can expand and condense logarithms.</li>
-<li>I can determine domain and range.</li>
-<li>I can sketch logarithmic graphs.</li>
-<li>I can interpret asymptotes.</li>
-<li>I can solve exponential equations using logarithms.</li>
-<li>I can model growth and decay.</li>
-<li>I can find half-life and doubling time.</li>
-<li>I can apply logarithms to pH and sound intensity.</li>
-</ul>
-
-</div>
-
-</section>
-
-<section id="mechanics">
-
-<h2>Algebraic Mechanics</h2>
-
-<pre>
-Identify
-↓
-Transform
-↓
-Isolate
-↓
-Solve
-↓
-Verify
-</pre>
-
-<div class="card">
-
-<h3>Master Translation Rule</h3>
-
-<pre>
-log₍b₎(x)=y
-
-⇔
-
-bʸ=x
-</pre>
+<h2>Learning Goal</h2>
 
 <p>
-Logs are simply exponents in reverse.
+
+Even if you've moved on to a new chapter, this site is designed to help you build confidence and strengthen your understanding of Chapter 5 concepts through examples, practice, calculators, and exam preparation tools.
+
 </p>
 
-</div>
-
-</section>
-
-<section id="examples">
-
-<h2>Worked Examples</h2>
-
-<div class="card">
-
-<h3>Evaluate</h3>
-
-<pre>
-log₂(32)
-
-2^? = 32
-
-Answer:
-
-5
-</pre>
-
-</div>
-
-<div class="card">
-
-<h3>Expand</h3>
-
-<pre>
-log((x²y)/z³)
-
-↓
-
-2log(x)+log(y)-3log(z)
-</pre>
-
-</div>
-
-<div class="card">
-
-<h3>Domain</h3>
-
-<pre>
-y=log(x−4)
-
-x−4 > 0
-
-x > 4
-</pre>
-
-</div>
-
-</section>
-
-<section id="practice">
-
-<h2>Exam Practice</h2>
-
-<div class="grid">
-
-<div class="check-item">
-Evaluate:
-<br><br>
-log₃(81)
-</div>
-
-<div class="check-item">
-Expand:
-<br><br>
-log((x³y²)/z)
-</div>
-
-<div class="check-item">
-Domain:
-<br><br>
-log(x+5)
-</div>
-
-<div class="check-item">
-Solve:
-<br><br>
-2ˣ=20
-</div>
-
-</div>
-
-</section>
-
-<section id="confidence">
-
-<h2>Confidence Check</h2>
-
-<p>Check everything you can do without notes:</p>
-
-<div class="grid">
-
-<div class="check-item">
-<input type="checkbox"> Evaluate logarithms
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Convert forms
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Expand logarithms
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Condense logarithms
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Find domains
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Sketch graphs
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Solve exponential equations
-</div>
-
-<div class="check-item">
-<input type="checkbox"> Find half-life
-</div>
-
-</div>
-
-<div class="card">
-
-<strong>Scoring Guide</strong>
+<h3>Mastery Checklist</h3>
 
 <ul>
-<li>0–3 = Needs Review</li>
-<li>4–7 = Building Confidence</li>
-<li>8+ = Exam Ready</li>
+<li>□ Logarithms and their properties</li>
+<li>□ Domain and range of log functions</li>
+<li>□ Graphing logarithms</li>
+<li>□ Asymptotes and limits</li>
+<li>□ Growth and decay models</li>
+<li>□ Half-life and doubling time</li>
+<li>□ Continuous growth</li>
+<li>□ Solving exponential equations</li>
+<li>□ Real-world applications</li>
 </ul>
-
-</div>
 
 </section>
 
-<section id="resources">
-
-<h2>Study Resources</h2>
-
-<div class="grid">
-
-<div class="resource">
-<h3>Khan Academy</h3>
-<p>Best for step-by-step practice.</p>
-<a href="https://www.khanacademy.org">Visit</a>
-</div>
-
-<div class="resource">
-<h3>Paul's Online Notes</h3>
-<p>Excellent examples and explanations.</p>
-<a href="https://tutorial.math.lamar.edu/">Visit</a>
-</div>
-
-<div class="resource">
-<h3>Professor Leonard</h3>
-<p>Full lecture-style instruction.</p>
-<a href="https://www.youtube.com/@ProfessorLeonard">Visit</a>
-</div>
-
-<div class="resource">
-<h3>Desmos</h3>
-<p>Graph logarithms interactively.</p>
-<a href="https://www.desmos.com/calculator">Visit</a>
-</div>
-
-</div>
-
-</section>
-
-<section id="mathlab">
-
-<h2>Math Lab Companion</h2>
+<section class="grid">
 
 <div class="card">
 
-<h3>Before You Go</h3>
-
-<ul>
-<li>Bring notes.</li>
-<li>Bring homework attempts.</li>
-<li>Mark where you're stuck.</li>
-<li>Bring calculator.</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>Questions To Ask</h3>
-
-<ul>
-<li>Can you check my setup?</li>
-<li>Why does this property apply?</li>
-<li>Can you show me another example?</li>
-<li>How do I know when to use logs?</li>
-</ul>
-
-</div>
-
-</section>
-
-<section id="calculators">
-
-<h2>Interactive Calculators</h2>
-
-<div class="card">
-
-<ul>
-<li>Logarithm Calculator</li>
-<li>Half-Life Calculator</li>
-<li>Doubling-Time Calculator</li>
-<li>Continuous Growth Calculator</li>
-<li>Domain Checker</li>
-</ul>
+<h3>What Should I Know?</h3>
 
 <p>
-These can be built as separate JavaScript modules later.
+Course objectives translated into student-friendly language.
+Know exactly what skills are expected on quizzes and exams.
 </p>
 
-</div>
-
-</section>
-
-<section id="mistakes">
-
-<h2>Common Mistakes</h2>
-
-<div class="card">
-
-<h3>Mistake #1</h3>
-
-<pre>
-log(a+b)
-
-≠
-
-log(a)+log(b)
-</pre>
+<a href="pages/what-should-i-know.html">
+Open
+</a>
 
 </div>
 
 <div class="card">
 
-<h3>Mistake #2</h3>
+<h3>Algebraic Mechanics</h3>
 
-<pre>
-Inside ≥ 0
-</pre>
+<p>
+Learn the Identify → Transform → Isolate → Solve → Verify framework for every logarithm and exponential problem.
+</p>
 
-Wrong.
-
-<pre>
-Inside > 0
-</pre>
-
-Correct.
+<a href="pages/algebraic-mechanics.html">
+Open
+</a>
 
 </div>
 
 <div class="card">
 
-<h3>Mistake #3</h3>
+<h3>Worked Examples</h3>
 
-Forgetting to check domain restrictions after solving.
+<p>
+Follow complete step-by-step solutions from easy to challenging problems.
+</p>
+
+<a href="pages/worked-examples.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Exam Practice</h3>
+
+<p>
+Practice evaluating logs, finding domains, solving exponential equations, and modeling growth/decay.
+</p>
+
+<a href="pages/exam-practice.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Confidence Check</h3>
+
+<p>
+Measure your readiness with self-assessments and a mastery tracker.
+</p>
+
+<a href="pages/confidence-check.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Study Resources</h3>
+
+<p>
+Curated learning resources including Khan Academy, Paul's Online Notes, Desmos, and more.
+</p>
+
+<a href="pages/study-resources.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Math Lab Companion</h3>
+
+<p>
+Get the most out of tutoring sessions with preparation checklists and questions to ask.
+</p>
+
+<a href="pages/math-lab-companion.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Interactive Calculators</h3>
+
+<p>
+Logarithm calculator, growth calculator, half-life calculator, doubling-time calculator, and more.
+</p>
+
+<a href="pages/calculators.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Common Mistakes</h3>
+
+<p>
+Avoid the most common errors students make when working with logarithms and exponential functions.
+</p>
+
+<a href="pages/common-mistakes.html">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Final Exam Cheat Sheet</h3>
+
+<p>
+A condensed review containing formulas, graph facts, properties, and problem-solving shortcuts.
+</p>
+
+<a href="pages/final-exam-cheat-sheet.html">
+Open
+</a>
 
 </div>
 
 </section>
 
-<section id="cheatsheet">
+<section class="progress-box">
 
-<h2>Final Exam Cheat Sheet</h2>
+<h2>Core Chapter 5 Topics</h2>
 
-<pre>
-log_b(x)=y
-⇔
-b^y=x
+<ul>
 
-Product → Add
+<li>Common logarithms and natural logarithms</li>
 
-Quotient → Subtract
+<li>Logarithms as inverse functions of exponentials</li>
 
-Power → Front
+<li>Product, Quotient, and Power Properties</li>
 
-Domain:
-Inside > 0
+<li>Change of Base Formula</li>
 
-Range:
-All Real Numbers
+<li>Domain and Range of Logarithmic Functions</li>
 
-Vertical Asymptote:
-x = 0
+<li>Graphing Logarithmic Functions</li>
 
-Growth:
-P=P₀(1+r)^t
+<li>Vertical and Horizontal Asymptotes</li>
 
-Decay:
-P=P₀(1-r)^t
+<li>Limits</li>
 
-Continuous:
-A=A₀e^(kt)
+<li>pH and Decibel Applications</li>
 
-Half-Life:
-ln(2)/|k|
+<li>Exponential Growth and Decay Models</li>
 
-Doubling:
-ln(2)/k
+<li>Annual versus Continuous Growth Rates</li>
 
-Unknown Exponent?
-Take Logs.
-</pre>
+<li>Converting between abᵗ and aeᵏᵗ</li>
+
+<li>Half-Life and Doubling Time</li>
+
+<li>Solving Exponential Equations</li>
+
+<li>Recognizing When Logarithms Cannot Solve an Equation</li>
+
+</ul>
 
 </section>
 
-</div>
+</main>
 
 <footer>
 
 <h3>Chapter 5 Mastery Center</h3>
 
 <p>
-Build confidence one problem at a time.
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
 </p>
 
 </footer>
