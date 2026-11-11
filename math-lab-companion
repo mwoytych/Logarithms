@@ -1,1 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Math Lab Companion | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#059669;
+    --warning:#d97706;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin:20px 0;
+    border-radius:8px;
+}
+
+h2{
+    color:#2563eb;
+    border-bottom:2px solid #2563eb;
+    padding-bottom:10px;
+}
+
+h3{
+    color:#2563eb;
+}
+
+ul{
+    padding-left:25px;
+}
+
+.checklist{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:20px;
+}
+
+.question{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:15px;
+    margin:10px 0;
+}
+
+.reflection{
+    background:#eff6ff;
+    border-radius:8px;
+    padding:20px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Math Lab Companion</h1>
+
+<p>
+Get the most value from tutoring, office hours, and the math lab.
+</p>
+
+</header>
+
+<div class="container">
+
+<h2>Before You Go</h2>
+
+<div class="checklist">
+
+<h3>Bring These 5 Things</h3>
+
+<ul>
+
+<li>✅ Notes</li>
+
+<li>✅ Homework attempts</li>
+
+<li>✅ Calculator</li>
+
+<li>✅ Specific questions</li>
+
+<li>✅ Examples you do not understand</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Most Important Rule</h3>
+
+<p>
+
+Attempt the problem before asking for help.
+
+</p>
+
+<p>
+
+Tutors can help far more effectively when they can see where your understanding stopped.
+
+</p>
+
+</div>
+
+<h2>Good Questions To Ask</h2>
+
+<div class="question">
+
+<strong>Question #1:</strong>
+
+"Can you check my setup?"
+
+</div>
+
+<div class="question">
+
+<strong>Question #2:</strong>
+
+"Why does this logarithm property apply here?"
+
+</div>
+
+<div class="question">
+
+<strong>Question #3:</strong>
+
+"How do I know when to use logarithms?"
+
+</div>
+
+<div class="question">
+
+<strong>Question #4:</strong>
+
+"Can you show me another example?"
+
+</div>
+
+<div class="question">
+
+<strong>Question #5:</strong>
+
+"How would this appear on an exam?"
+
+</div>
+
+<div class="question">
+
+<strong>Question #6:</strong>
+
+"What mistake am I making repeatedly?"
+
+</div>
+
+<h2>Questions Specific To Chapter 5</h2>
+
+<div class="card">
+
+<ul>
+
+<li>Why is the domain of a logarithm always restricted?</li>
+
+<li>How do I recognize when to use the Product Rule?</li>
+
+<li>How do I know whether to expand or condense?</li>
+
+<li>When should I use logarithms to solve an equation?</li>
+
+<li>Why can't some exponential equations be solved with logs?</li>
+
+<li>How do I find half-life and doubling time?</li>
+
+<li>How do I convert between ab<sup>t</sup> and ae<sup>kt</sup>?</li>
+
+<li>How do I interpret pH and decibel problems?</li>
+
+</ul>
+
+</div>
+
+<h2>If You're Completely Stuck</h2>
+
+<div class="card">
+
+<h3>Tell the Tutor These Three Things</h3>
+
+<ol>
+
+<li>What chapter you're working on.</li>
+
+<li>What you understand so far.</li>
+
+<li>The exact step where you became confused.</li>
+
+</ol>
+
+</div>
+
+<h2>After the Session</h2>
+
+<div class="card">
+
+<h3>Do Not Leave Yet</h3>
+
+<p>
+
+Immediately solve one similar problem without looking at notes.
+
+</p>
+
+<p>
+
+Being able to follow an explanation is not the same thing as being able to solve a problem yourself.
+
+</p>
+
+</div>
+
+<h2>Chapter 5 Reflection Sheet</h2>
+
+<div class="reflection">
+
+<p><strong>What concept feels strongest?</strong></p>
+
+<hr>
+
+<p><strong>What concept still feels confusing?</strong></p>
+
+<hr>
+
+<p><strong>What question do I still have?</strong></p>
+
+<hr>
+
+<p><strong>What problem did I solve successfully today?</strong></p>
+
+<hr>
+
+</div>
+
+<h2>Confidence Strategy</h2>
+
+<div class="card">
+
+<p>
+
+Most students gain confidence in Chapter 5 through:
+
+</p>
+
+<ul>
+
+<li>Repeated practice</li>
+
+<li>Reviewing mistakes</li>
+
+<li>Explaining solutions out loud</li>
+
+<li>Working similar problems</li>
+
+<li>Getting feedback in the Math Lab</li>
+
+</ul>
+
+<p>
+
+Confidence comes from solving problems, not from rereading notes.
+
+</p>
+
+</div>
+
+<h2>Next Goal</h2>
+
+<div class="card">
+
+<p>
+
+After visiting the Math Lab, return to:
+
+</p>
+
+<ul>
+
+<li>Worked Examples</li>
+
+<li>Exam Practice</li>
+
+<li>Confidence Check</li>
+
+</ul>
+
+<p>
+
+See if you can solve the problems independently.
+
+</p>
+
+</div>
+
+<a
+class="btn"
+href="study-resources.html">
+← Study Resources
+</a>
+
+<a
+class="btn"
+href="calculators.html">
+Next: Interactive Calculators →
+</a>
+
+</div>
+
+</body>
+
+</html>
