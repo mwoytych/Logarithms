@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Exam Practice | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --easy:#059669;
+    --medium:#d97706;
+    --hard:#dc2626;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+details{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:15px;
+    margin-top:10px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.level{
+    padding:5px 10px;
+    border-radius:20px;
+    color:white;
+    font-size:.8rem;
+    font-weight:bold;
+}
+
+.easy{
+    background:var(--easy);
+}
+
+.medium{
+    background:var(--medium);
+}
+
+.hard{
+    background:var(--hard);
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+.btn{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:6px;
+    margin-right:10px;
+    margin-top:20px;
+}
+
+h2{
+    color:#2563eb;
+    border-bottom:2px solid #2563eb;
+    padding-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Exam Practice</h1>
+
+<p>
+Practice First. Check Solutions Second.
+</p>
+
+</header>
+
+<div class="container">
+
+<h2>Part A: Evaluate Logarithms</h2>
+
+<div class="card">
+
+<span class="level easy">Easy</span>
+
+<pre>
+1) log₂(64)
+</pre>
+
+<details>
+<summary>Answer</summary>
+
+<pre>
+2^6 = 64
+
+Answer:
+
+6
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level easy">Easy</span>
+
+<pre>
+2) ln(e⁵)
+</pre>
+
+<details>
+<summary>Answer</summary>
+
+<pre>
+ln(e^x)=x
+
+Answer:
+
+5
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part B: Logarithm Properties</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<pre>
+3)
+
+Expand:
+
+log((x³y)/z²)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+3log(x)
+
++
+
+log(y)
+
+-
+
+2log(z)
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<pre>
+4)
+
+Condense:
+
+2log(x)+log(y)-log(z)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+log(x²y/z)
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part C: Domain & Range</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<pre>
+5)
+
+Find the domain:
+
+y = log(x−8)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+Inside > 0
+
+x−8 > 0
+
+x > 8
+
+Domain:
+
+(8,∞)
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<pre>
+6)
+
+What is the range of:
+
+y = log(x)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+Range:
+
+All Real Numbers
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part D: Graph Analysis</h2>
+
+<div class="card">
+
+<span class="level medium">Medium</span>
+
+<pre>
+7)
+
+Identify:
+
+Domain
+
+Range
+
+Vertical Asymptote
+
+for y = ln(x)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+Domain:
+(0,∞)
+
+Range:
+All Real Numbers
+
+Vertical Asymptote:
+x=0
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part E: Solving Exponential Equations</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+8)
+
+Solve:
+
+2^x = 40
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+Take logs
+
+x=log(40)/log(2)
+
+x≈5.322
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+9)
+
+Solve:
+
+ae^(kt)=c
+
+for t
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+e^(kt)=c/a
+
+ln both sides
+
+kt=ln(c/a)
+
+t=ln(c/a)/k
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part F: Growth & Decay</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+10)
+
+P=1000(1.05)^t
+
+What is the annual growth rate?
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+1+r=1.05
+
+r=.05
+
+5%
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+11)
+
+Convert
+
+100e^(0.06t)
+
+to ab^t form
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+b=e^(0.06)
+
+≈1.0618
+
+Answer:
+
+100(1.0618)^t
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part G: Half-Life & Doubling Time</h2>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+12)
+
+Find the half-life:
+
+A=500e^(-0.12t)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+t=ln(2)/0.12
+
+≈5.78
+</pre>
+
+</details>
+
+</div>
+
+<div class="card">
+
+<span class="level hard">Hard</span>
+
+<pre>
+13)
+
+Find the doubling time:
+
+A=500e^(0.08t)
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+t=ln(2)/0.08
+
+≈8.66
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part H: Applications</h2>
+
+<div class="card">
+
+<span class="level hard">Application</span>
+
+<pre>
+14)
+
+pH = -log[H+]
+
+If [H+] = 10^-4
+
+Find pH
+</pre>
+
+<details>
+<summary>Solution</summary>
+
+<pre>
+pH=-log(10^-4)
+
+=4
+</pre>
+
+</details>
+
+</div>
+
+<h2>Part I: Challenge Problems</h2>
+
+<div class="card">
+
+<span class="level hard">Challenge</span>
+
+<pre>
+15)
+
+Can logarithms solve?
+
+2^x + x = 10
+</pre>
+
+<details>
+<summary>Explanation</summary>
+
+<pre>
+No.
+
+Variable appears:
+
+Inside exponent
+
+and
+
+Outside exponent
+
+Requires numerical methods
+or graphing technology.
+</pre>
+
+</details>
+
+</div>
+
+<h2>Score Yourself</h2>
+
+<div class="card">
+
+<ul>
+
+<li>13-15 Correct = Exam Ready ✅</li>
+
+<li>10-12 Correct = Nearly Ready 👍</li>
+
+<li>7-9 Correct = Review Areas of Weakness 📘</li>
+
+<li>0-6 Correct = Return to Worked Examples 🔄</li>
+
+</ul>
+
+</div>
+
+<a class="btn"
+href="worked-examples.html">
+← Worked Examples
+</a>
+
+<a class="btn"
+href="confidence-check.html">
+Next: Confidence Check →
+</a>
+
+</div>
+
+</body>
+</html>
