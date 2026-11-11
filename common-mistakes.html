@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Common Mistakes | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --danger:#dc2626;
+    --success:#16a34a;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#dc2626;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--danger);
+    padding:20px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+.correct{
+    color:var(--success);
+    font-weight:bold;
+}
+
+.wrong{
+    color:var(--danger);
+    font-weight:bold;
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+h2{
+    color:#dc2626;
+    border-bottom:2px solid #dc2626;
+    padding-bottom:10px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Common Mistakes</h1>
+
+<p>
+Avoid these errors and immediately improve exam performance.
+</p>
+
+</header>
+
+<div class="container">
+
+<h2>Mistake #1: Splitting Addition</h2>
+
+<div class="card">
+
+<p class="wrong">
+
+❌ Wrong
+
+</p>
+
+<pre>
+log(a+b)
+
+=
+
+log(a)+log(b)
+</pre>
+
+<p class="correct">
+
+✅ Correct
+
+</p>
+
+<pre>
+There is NO rule
+for log(a+b)
+</pre>
+
+</div>
+
+<h2>Mistake #2: Incorrect Domain Rule</h2>
+
+<div class="card">
+
+<p class="wrong">
+
+❌ Wrong
+
+</p>
+
+<pre>
+Inside ≥ 0
+</pre>
+
+<p class="correct">
+
+✅ Correct
+
+</p>
+
+<pre>
+Inside > 0
+</pre>
+
+<p>
+
+Logarithms cannot accept zero.
+
+</p>
+
+</div>
+
+<h2>Mistake #3: Forgetting Domain Checks</h2>
+
+<div class="card">
+
+<p>
+
+After solving a logarithmic equation:
+
+</p>
+
+<pre>
+Always verify
+
+Argument > 0
+</pre>
+
+<p>
+
+Otherwise an extraneous solution may appear.
+
+</p>
+
+</div>
+
+<h2>Mistake #4: Mixing Product and Quotient Rules</h2>
+
+<div class="card">
+
+<pre>
+Product
+
+↓
+
+Add
+
+Quotient
+
+↓
+
+Subtract
+</pre>
+
+</div>
+
+<h2>Mistake #5: Forgetting the Power Rule</h2>
+
+<div class="card">
+
+<p class="wrong">
+
+❌ Wrong
+
+</p>
+
+<pre>
+log(x²)
+
+=
+
+(log(x))²
+</pre>
+
+<p class="correct">
+
+✅ Correct
+
+</p>
+
+<pre>
+log(x²)
+
+=
+
+2log(x)
+</pre>
+
+</div>
+
+<h2>Mistake #6: Confusing Domain and Range</h2>
+
+<div class="card">
+
+<pre>
+Domain:
+
+x > 0
+
+Range:
+
+All Real Numbers
+</pre>
+
+</div>
+
+<h2>Mistake #7: Missing the Vertical Asymptote</h2>
+
+<div class="card">
+
+<pre>
+y = log(x)
+
+Vertical Asymptote:
+
+x = 0
+</pre>
+
+<p>
+
+The graph approaches but never reaches the asymptote.
+
+</p>
+
+</div>
+
+<h2>Mistake #8: Wrong Growth Formula</h2>
+
+<div class="card">
+
+<p class="correct">
+
+✅ Growth
+
+</p>
+
+<pre>
+P=P₀(1+r)^t
+</pre>
+
+<p class="correct">
+
+✅ Decay
+
+</p>
+
+<pre>
+P=P₀(1-r)^t
+</pre>
+
+</div>
+
+<h2>Mistake #9: Confusing Annual and Continuous Growth</h2>
+
+<div class="card">
+
+<pre>
+Annual
+
+ab^t
+
+Continuous
+
+ae^(kt)
+</pre>
+
+</div>
+
+<h2>Mistake #10: Incorrect Conversion</h2>
+
+<div class="card">
+
+<p>
+
+To convert:
+
+</p>
+
+<pre>
+ab^t
+
+↓
+
+ae^(kt)
+
+k = ln(b)
+</pre>
+
+<p>
+
+To convert back:
+
+</p>
+
+<pre>
+b = e^k
+</pre>
+
+</div>
+
+<h2>Mistake #11: Wrong Half-Life Formula</h2>
+
+<div class="card">
+
+<pre>
+Half-Life
+
+ln(2)/|k|
+</pre>
+
+<p>
+
+Use absolute value because decay constants are negative.
+
+</p>
+
+</div>
+
+<h2>Mistake #12: Wrong Doubling Time Formula</h2>
+
+<div class="card">
+
+<pre>
+Doubling Time
+
+ln(2)/k
+</pre>
+
+</div>
+
+<h2>Mistake #13: Solving the Wrong Equation</h2>
+
+<div class="card">
+
+<pre>
+2^x = 50
+</pre>
+
+<p>
+
+Variable is trapped in an exponent.
+
+</p>
+
+<p>
+
+Take logarithms.
+
+</p>
+
+</div>
+
+<h2>Mistake #14: Not Recognizing When Logs Can't Help</h2>
+
+<div class="card">
+
+<pre>
+2^x + x = 10
+</pre>
+
+<p>
+
+Variable appears:
+
+</p>
+
+<ul>
+
+<li>Inside exponent</li>
+
+<li>Outside exponent</li>
+
+</ul>
+
+<p>
+
+Logs cannot isolate x exactly.
+
+</p>
+
+</div>
+
+<h2>Mistake #15: Memorizing Without Understanding</h2>
+
+<div class="card">
+
+<p>
+
+Students often memorize:
+
+</p>
+
+<pre>
+Product Rule
+
+Quotient Rule
+
+Power Rule
+</pre>
+
+<p>
+
+but forget:
+
+</p>
+
+<pre>
+Why they work.
+</pre>
+
+<p>
+
+Understanding the mechanics improves retention.
+
+</p>
+
+</div>
+
+<h2>Final Reminder</h2>
+
+<div class="card">
+
+<h3>The 5 Things Most Tested</h3>
+
+<pre>
+1. Log Properties
+
+2. Domain
+
+3. Graph Features
+
+4. Exponential Equations
+
+5. Growth & Decay Models
+</pre>
+
+<p>
+
+If you're strong in those areas,
+you are usually in good shape for a Chapter 5 exam.
+
+</p>
+
+</div>
+
+<a class="btn"
+href="calculators.html">
+← Calculators
+</a>
+
+<a class="btn"
+href="final-exam-cheat-sheet.html">
+Next: Final Exam Cheat Sheet →
+</a>
+
+</div>
+
+</body>
+</html>
