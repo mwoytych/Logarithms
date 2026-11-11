@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph Explorer | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --secondary:#1d4ed8;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+    color:#111827;
+    background:#ffffff;
+}
+
+header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+h2{
+    color:var(--primary);
+    border-bottom:2px solid var(--primary);
+    padding-bottom:10px;
+}
+
+iframe{
+    width:100%;
+    height:500px;
+    border:none;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+pre{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+details{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:15px;
+    margin-top:10px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+ul{
+    padding-left:25px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.exam-box{
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    padding:20px;
+    border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Graph Explorer</h1>
+
+<p>
+Understand Domain, Range, Asymptotes, Limits, Concavity, and Graph Behavior
+</p>
+
+</header>
+
+<div class="container">
+
+<h2>Logarithm Parent Function</h2>
+
+<div class="card">
+
+<p>
+
+The most important logarithm graph is:
+
+</p>
+
+<pre>
+y = log(x)
+
+or
+
+y = ln(x)
+</pre>
+
+<ul>
+<li>Domain: x > 0</li>
+<li>Range: All Real Numbers</li>
+<li>Vertical Asymptote: x = 0</li>
+<li>Key Point: (1,0)</li>
+<li>Concavity: Down</li>
+</ul>
+
+</div>
+
+<h2>Interactive Graph</h2>
+
+<div class="card">
+
+<p>
+Open and explore a logarithm graph.
+</p>
+
+<iframe
+src="https://www.desmos.com/calculator?embed">
+</iframe>
+
+</div>
+
+<h2>Domain & Range Explorer</h2>
+
+<div class="card">
+
+<h3>Domain Rule</h3>
+
+<pre>
+Inside > 0
+</pre>
+
+Example:
+
+<pre>
+y = log(x-4)
+
+x-4 > 0
+
+x > 4
+</pre>
+
+<h3>Range Rule</h3>
+
+<pre>
+(-∞ , ∞)
+</pre>
+
+The range of a logarithm function is all real numbers.
+
+</div>
+
+<h2>Vertical Asymptotes</h2>
+
+<div class="card">
+
+<pre>
+x = 0
+</pre>
+
+<p>
+
+Meaning:
+
+</p>
+
+<ul>
+
+<li>The graph approaches the line.</li>
+
+<li>The graph never touches the line.</li>
+
+<li>The function is undefined there.</li>
+
+</ul>
+
+<details>
+
+<summary>Exam Question Example</summary>
+
+<pre>
+y = log(x-5)
+
+Set Inside = 0
+
+x-5 = 0
+
+Asymptote:
+
+x = 5
+</pre>
+
+</details>
+
+</div>
+
+<h2>Horizontal Asymptotes</h2>
+
+<div class="card">
+
+<p>
+
+Usually appear on exponential functions.
+
+</p>
+
+<pre>
+y = (1/2)^x
+</pre>
+
+Horizontal asymptote:
+
+<pre>
+y = 0
+</pre>
+
+Meaning:
+
+<ul>
+<li>Graph approaches y=0</li>
+<li>Graph never reaches y=0</li>
+</ul>
+
+</div>
+
+<h2>Concavity</h2>
+
+<div class="card">
+
+<pre>
+y = log(x)
+
+y = ln(x)
+</pre>
+
+Concavity:
+
+<pre>
+Concave Down
+</pre>
+
+<p>
+
+The function is increasing but rises slower and slower.
+
+</p>
+
+</div>
+
+<h2>Limits Explorer</h2>
+
+<div class="card">
+
+<h3>Approaching Zero</h3>
+
+<pre>
+lim ln(x)
+
+x→0+
+
+=
+
+−∞
+</pre>
+
+<h3>Approaching Infinity</h3>
+
+<pre>
+lim ln(x)
+
+x→∞
+
+=
+
+∞
+</pre>
+
+<details>
+
+<summary>Interpretation</summary>
+
+<p>
+
+As x gets extremely close to zero from the positive side, the logarithm decreases without bound.
+
+As x becomes very large, the logarithm grows forever, but slowly.
+
+</p>
+
+</details>
+
+</div>
+
+<h2>Growth vs Decay</h2>
+
+<div class="card">
+
+<h3>Growth</h3>
+
+<pre>
+y = 2^x
+</pre>
+
+<ul>
+<li>Increasing</li>
+<li>Rises quickly</li>
+<li>Horizontal asymptote y=0</li>
+</ul>
+
+<h3>Decay</h3>
+
+<pre>
+y = (1/2)^x
+</pre>
+
+<ul>
+<li>Decreasing</li>
+<li>Approaches zero</li>
+<li>Horizontal asymptote y=0</li>
+</ul>
+
+</div>
+
+<h2>Inverse Relationship</h2>
+
+<div class="card">
+
+<pre>
+y = 2^x
+
+and
+
+y = log₂(x)
+</pre>
+
+<ul>
+<li>Inverse functions</li>
+<li>Reflections across y=x</li>
+<li>Undo each other</li>
+</ul>
+
+<pre>
+log₂(2^x)=x
+
+2^(log₂(x))=x
+</pre>
+
+</div>
+
+<h2>Quick Practice</h2>
+
+<div class="card">
+
+<h3>Problem 1</h3>
+
+<pre>
+y = log(x-3)
+</pre>
+
+Find:
+
+<ul>
+<li>Domain</li>
+<li>Range</li>
+<li>Asymptote</li>
+</ul>
+
+<details>
+
+<summary>Solution</summary>
+
+<pre>
+Domain:
+
+x > 3
+
+Range:
+
+All Real Numbers
+
+Asymptote:
+
+x = 3
+</pre>
+
+</details>
+
+</div>
+
+<h2>Exam Triggers</h2>
+
+<div class="exam-box">
+
+<pre>
+Need Domain?
+
+Inside > 0
+
+----------------
+
+Need Range?
+
+All Real Numbers
+
+----------------
+
+Need Asymptote?
+
+Set Argument = 0
+
+----------------
+
+Need Concavity?
+
+Down
+
+----------------
+
+Need Limits?
+
+x→0+ = -∞
+
+x→∞ = ∞
+</pre>
+
+</div>
+
+<a
+class="btn"
+href="challenge-exam.html">
+← Challenge Exam
+</a>
+
+<a
+class="btn"
+href="../index.html">
+Home
+</a>
+
+</div>
+
+</body>
+</html>
