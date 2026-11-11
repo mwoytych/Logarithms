@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Interactive Calculators | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#059669;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:15px;
+    font-weight:bold;
+    color:var(--success);
+}
+
+h2{
+    color:#2563eb;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Interactive Calculators</h1>
+
+<p>
+Use these tools to check your Chapter 5 work.
+</p>
+
+</header>
+
+<div class="container">
+
+<!-- LOG CALCULATOR -->
+
+<div class="card">
+
+<h2>Logarithm Calculator</h2>
+
+<input id="logBase"
+type="number"
+placeholder="Base">
+
+<input id="logValue"
+type="number"
+placeholder="Value">
+
+<button onclick="calculateLog()">
+
+Calculate
+
+</button>
+
+<div id="logResult"
+class="result"></div>
+
+</div>
+
+<!-- HALF LIFE -->
+
+<div class="card">
+
+<h2>Half-Life Calculator</h2>
+
+<p>Formula: t = ln(2)/|k|</p>
+
+<input id="halfK"
+type="number"
+step="any"
+placeholder="Decay Constant k">
+
+<button onclick="halfLife()">
+Calculate
+</button>
+
+<div id="halfResult"
+class="result"></div>
+
+</div>
+
+<!-- DOUBLING TIME -->
+
+<div class="card">
+
+<h2>Doubling Time Calculator</h2>
+
+<p>Formula: t = ln(2)/k</p>
+
+<input id="doubleK"
+type="number"
+step="any"
+placeholder="Growth Constant k">
+
+<button onclick="doublingTime()">
+Calculate
+</button>
+
+<div id="doubleResult"
+class="result"></div>
+
+</div>
+
+<!-- CONVERT FORMS -->
+
+<div class="card">
+
+<h2>Convert abᵗ → aeᵏᵗ</h2>
+
+<p>Enter base b</p>
+
+<input id="annualBase"
+type="number"
+step="any"
+placeholder="b">
+
+<button onclick="convertToContinuous()">
+Convert
+</button>
+
+<div id="annualResult"
+class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>Convert aeᵏᵗ → abᵗ</h2>
+
+<p>Enter k</p>
+
+<input id="continuousRate"
+type="number"
+step="any"
+placeholder="k">
+
+<button onclick="convertToAnnual()">
+Convert
+</button>
+
+<div id="continuousResult"
+class="result"></div>
+
+</div>
+
+<!-- SOLVE AB^T=C -->
+
+<div class="card">
+
+<h2>Solve abᵗ = c for t</h2>
+
+<input id="a1"
+type="number"
+placeholder="a">
+
+<input id="b1"
+type="number"
+placeholder="b">
+
+<input id="c1"
+type="number"
+placeholder="c">
+
+<button onclick="solveAnnualTime()">
+Solve
+</button>
+
+<div id="annualTimeResult"
+class="result"></div>
+
+</div>
+
+<!-- SOLVE AEKT=C -->
+
+<div class="card">
+
+<h2>Solve aeᵏᵗ = c for t</h2>
+
+<input id="a2"
+type="number"
+placeholder="a">
+
+<input id="k2"
+type="number"
+step="any"
+placeholder="k">
+
+<input id="c2"
+type="number"
+placeholder="c">
+
+<button onclick="solveContinuousTime()">
+Solve
+</button>
+
+<div id="continuousTimeResult"
+class="result"></div>
+
+</div>
+
+<a
+class="btn"
+href="math-lab-companion.html">
+← Math Lab Companion
+</a>
+
+<a
+class="btn"
+href="common-mistakes.html">
+Next: Common Mistakes →
+</a>
+
+</div>
+
+<script>
+
+/* Log Calculator */
+
+function calculateLog(){
+
+let b=
+parseFloat(
+document.getElementById("logBase").value
+);
+
+let x=
+parseFloat(
+document.getElementById("logValue").value
+);
+
+let answer=
+Math.log(x)/Math.log(b);
+
+document.getElementById("logResult")
+.innerHTML=
+`Answer: ${answer.toFixed(4)}`;
+
+}
+
+/* Half Life */
+
+function halfLife(){
+
+let k=Math.abs(
+parseFloat(
+document.getElementById("halfK").value
+));
+
+let t=Math.log(2)/k;
+
+document.getElementById("halfResult")
+.innerHTML=
+`Half-Life = ${t.toFixed(4)}`;
+
+}
+
+/* Doubling Time */
+
+function doublingTime(){
+
+let k=parseFloat(
+document.getElementById("doubleK").value
+);
+
+let t=Math.log(2)/k;
+
+document.getElementById("doubleResult")
+.innerHTML=
+`Doubling Time = ${t.toFixed(4)}`;
+
+}
+
+/* ab^t --> ae^kt */
+
+function convertToContinuous(){
+
+let b=parseFloat(
+document.getElementById("annualBase").value
+);
+
+let k=Math.log(b);
+
+document.getElementById("annualResult")
+.innerHTML=
+`k = ${k.toFixed(6)}`;
+
+}
+
+/* ae^kt --> ab^t */
+
+function convertToAnnual(){
+
+let k=parseFloat(
+document.getElementById("continuousRate").value
+);
+
+let b=Math.exp(k);
+
+document.getElementById("continuousResult")
+.innerHTML=
+`b = ${b.toFixed(6)}`;
+
+}
+
+/* Solve ab^t = c */
+
+function solveAnnualTime(){
+
+let a=parseFloat(
+document.getElementById("a1").value
+);
+
+let b=parseFloat(
+document.getElementById("b1").value
+);
+
+let c=parseFloat(
+document.getElementById("c1").value
+);
+
+let t=
+Math.log(c/a)/
+Math.log(b);
+
+document.getElementById("annualTimeResult")
+.innerHTML=
+`t = ${t.toFixed(4)}`;
+
+}
+
+/* Solve ae^(kt)=c */
+
+function solveContinuousTime(){
+
+let a=parseFloat(
+document.getElementById("a2").value
+);
+
+let k=parseFloat(
+document.getElementById("k2").value
+);
+
+let c=parseFloat(
+document.getElementById("c2").value
+);
+
+let t=
+Math.log(c/a)/k;
+
+document.getElementById("continuousTimeResult")
+.innerHTML=
+`t = ${t.toFixed(4)}`;
+
+}
+
+</script>
+
+</body>
+</html>
