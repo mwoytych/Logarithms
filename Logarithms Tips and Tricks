@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logarithms & Exponentials: Complete Exam-Ready Guide</title>
+    <style>
+        /* --- CSS Variables for Theming --- */
+        :root {
+            --bg-body: #ffffff;
+            --bg-card: #f6f8fa;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-green: #059669;
+            --accent-red: #dc2626;
+            --accent-yellow: #d97706;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #0d1117;
+                --bg-card: #161b22;
+                --text-main: #f0f6fc;
+                --text-muted: #8b949e;
+                --primary: #58a6ff;
+                --primary-hover: #79b8ff;
+                --border: #30363d;
+                --code-bg: #0d1117;
+            }
+        }
+
+        /* --- Reset & Base Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Accessibility: Skip Link --- */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        nav h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a:focus {
+            text-decoration: underline;
+            color: var(--primary-hover);
+        }
+
+        /* --- Content Sections --- */
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem; /* For anchor links */
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* --- Tables --- */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--bg-card);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Code Blocks & Math --- */
+        pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        /* --- Callouts / Alerts --- */
+        .callout {
+            padding: 1rem;
+            border-left: 4px solid;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .callout-tip {
+            border-color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .callout-warning {
+            border-color: var(--accent-red);
+            background-color: rgba(220, 38, 38, 0.1);
+        }
+
+        .callout-important {
+            border-color: var(--accent-yellow);
+            background-color: rgba(217, 119, 6, 0.1);
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- Interactive Calculator --- */
+        .calculator {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 1.5rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, select {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover, button:focus {
+            background-color: var(--primary-hover);
+            outline: 2px solid var(--primary-hover);
+            outline-offset: 2px;
+        }
+
+        #calc-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            nav { display: none; }
+            .skip-link { display: none; }
+            section { page-break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Accessibility: Skip to Main Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header>
+            <h1>Logarithms & Exponentials</h1>
+            <p class="subtitle">Complete Exam-Ready Guide with Interactive Calculator</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav aria-label="Table of Contents">
+            <h2>Quick Navigation</h2>
+            <ul>
+                <li><a href="#definition">Definition</a></li>
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#change-of-base">Change of Base</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#equations">Equations</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#applications">Applications</a></li>
+                <li><a href="#tips">Tips & Tricks</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+            </ul>
+        </nav>
+
+        <main id="main-content">
+
+            <!-- CORE DEFINITION -->
+            <section id="definition" aria-labelledby="definition-heading">
+                <h2 id="definition-heading">Core Definition</h2>
+                <p>A logarithm answers: <strong>"To what power must I raise the base to get this number?"</strong></p>
+                
+                <pre><code>log_b(x) = y  ⟺  b^y = x</code></pre>
+
+                <div class="callout callout-warning">
+                    <strong>⚠️ Non-Negotiable Constraints</strong>
+                    <ul>
+                        <li><strong>Base (b):</strong> Must be > 0 and ≠ 1</li>
+                        <li><strong>Argument (x):</strong> Must be > 0</li>
+                        <li><strong>Result (y):</strong> Can be any real number</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FUNDAMENTAL PROPERTIES -->
+            <section id="properties" aria-labelledby="properties-heading">
+                <h2 id="properties-heading">Fundamental Properties</h2>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Logarithm Properties</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Formula</th>
+                                <th scope="col">Condition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product</td>
+                                <td><code>log_b(MN) = log_b M + log_b N</code></td>
+                                <td>M, N > 0</td>
+                            </tr>
+                            <tr>
+                                <td>Quotient</td>
+                                <td><code>log_b(M/N) = log_b M - log_b N</code></td>
+                                <td>M, N > 0</td>
+                            </tr>
+                            <tr>
+                                <td>Power</td>
+                                <td><code>log_b(M^p) = p · log_b M</code></td>
+                                <td>M > 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Essential Derived Forms</h3>
+                <pre><code>Reciprocal argument:  log_b(1/M)    = -log_b M
+Root rule:             log_b(n√M)    = (1/n)·log_b M
+Base as power:         log_(b^n)(M)  = (1/n)·log_b M
+Chain identity:        log_a(b)·log_b(c) = log_a(c)
+Reciprocal base:       log_(1/b)(x)  = -log_b(x)</code></pre>
+
+                <h3>Trap Alert: Common False Properties</h3>
+                <div class="callout callout-warning">
+                    <strong>❌ These are FALSE:</strong>
+                    <ul>
+                        <li><code>log(M + N) ≠ log M + log N</code></li>
+                        <li><code>log(M · N) ≠ log M · log N</code></li>
+                        <li><code>log(M / N) ≠ log M / log N</code></li>
+                        <li><code>(log M)² ≠ log(M²)</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHANGE OF BASE -->
+            <section id="change-of-base" aria-labelledby="cob-heading">
+                <h2 id="cob-heading">Change of Base</h2>
+                <p>Essential for calculators and comparing different bases.</p>
+                <pre><code>log_b(x) = log_k(x) / log_k(b)    for any valid k > 0, k ≠ 1</code></pre>
+                <p><strong>Standard Notation:</strong></p>
+                <ul>
+                    <li><code>log x</code> = <code>log₁₀ x</code> (Common Logarithm)</li>
+                    <li><code>ln x</code> = <code>log_e x</code> (Natural Logarithm, <em>e</em> ≈ 2.718)</li>
+                </ul>
+            </section>
+
+            <!-- THE LOG FUNCTION -->
+            <section id="functions" aria-labelledby="functions-heading">
+                <h2 id="functions-heading">The Logarithm Function</h2>
+                <p><strong>Domain:</strong> (0, ∞) &nbsp;|&nbsp; <strong>Range:</strong> (-∞, ∞)</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Log Function Behavior by Base</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Feature</th>
+                                <th scope="col">Base b > 1</th>
+                                <th scope="col">Base 0 < b < 1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Behavior</td>
+                                <td>Increasing</td>
+                                <td>Decreasing</td>
+                            </tr>
+                            <tr>
+                                <td>As x → 0⁺</td>
+                                <td><em>y</em> → -∞</td>
+                                <td><em>y</em> → +∞</td>
+                            </tr>
+                            <tr>
+                                <td>As x → ∞</td>
+                                <td><em>y</em> → +∞</td>
+                                <td><em>y</em> → -∞</td>
+                            </tr>
+                            <tr>
+                                <td>Concavity</td>
+                                <td>Concave Down</td>
+                                <td>Concave Up</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SOLVING EQUATIONS -->
+            <section id="equations" aria-labelledby="equations-heading">
+                <h2 id="equations-heading">Solving Equations</h2>
+
+                <h3>Logarithmic Equations</h3>
+                <ol>
+                    <li><strong>Same Base:</strong> Drop the logs. If <code>log_b M = log_b N</code>, then <code>M = N</code>.</li>
+                    <li><strong>Mixed Bases:</strong> Use Change of Base to unify them.</li>
+                    <li><strong>Substitution:</strong> If you see <code>4^x</code> and <code>2^x</code>, let <code>u = 2^x</code>.</li>
+                </ol>
+
+                <div class="callout callout-important">
+                    <strong>⚠️ The Golden Rule of Log Equations</strong>
+                    <p>Always check your domain <em>before</em> solving. Any solution that makes an argument ≤ 0 is extraneous and must be rejected.</p>
+                </div>
+
+                <h3>Exponential Equations</h3>
+                <ol>
+                    <li><strong>Same Base:</strong> Equate the exponents.</li>
+                    <li><strong>Different Bases:</strong> Take the natural log (<code>ln</code>) of both sides.</li>
+                    <li><strong>Quadratic Form:</strong> Substitute <code>u = b^x</code> and solve the quadratic.</li>
+                </ol>
+            </section>
+
+            <!-- INEQUALITIES -->
+            <section id="inequalities" aria-labelledby="inequalities-heading">
+                <h2 id="inequalities-heading">Inequalities</h2>
+                <div class="callout callout-warning">
+                    <strong>⚠️ Direction Rule</strong>
+                    <ul>
+                        <li>Base > 1: Inequality direction <strong>preserved</strong>.</li>
+                        <li>0 < Base < 1: Inequality direction <strong>flips</strong>.</li>
+                    </ul>
+                </div>
+                <p><strong>Two Conditions Required:</strong></p>
+                <ol>
+                    <li>Argument > 0 (Domain)</li>
+                    <li>Solve the inequality</li>
+                    <li>Intersect the results</li>
+                </ol>
+            </section>
+
+            <!-- EXPONENTIAL MODELS -->
+            <section id="models" aria-labelledby="models-heading">
+                <h2 id="models-heading">Exponential Models</h2>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <caption class="sr-only">Exponential Models</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Model</th>
+                                <th scope="col">Formula</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Continuous Growth</td>
+                                <td><code>A = P·e^(rt)</code></td>
+                            </tr>
+                            <tr>
+                                <td>Compound Interest</td>
+                                <td><code>A = P(1 + r/n)^(nt)</code></td>
+                            </tr>
+                            <tr>
+                                <td>Half-Life</td>
+                                <td><code>t_half = ln(2) / |k|</code></td>
+                            </tr>
+                            <tr>
+                                <td>Doubling Time</td>
+                                <td><code>t_double = ln(2) / k</code></td>
+                            </tr>
+                            <tr>
+                                <td>Newton's Cooling</td>
+                                <td><code>T(t) = T_s + (T_0 - T_s)e^(-kt)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- APPLICATIONS -->
+            <section id="applications" aria-labelledby="applications-heading">
+                <h2 id="applications-heading">Applications</h2>
+                <ul>
+                    <li><strong>pH:</strong> <code>pH = -log₁₀[H⁺]</code></li>
+                    <li><strong>Decibels:</strong> <code>β = 10·log₁₀(I/I₀)</code></li>
+                    <li><strong>Richter:</strong> <code>M = log₁₀(A/A₀)</code></li>
+                    <li><strong>Rule of 72:</strong> Doubling time ≈ 72 / percent rate</li>
+                </ul>
+            </section>
+
+            <!-- TIPS & TRICKS -->
+            <section id="tips" aria-labelledby="tips-heading">
+                <h2 id="tips-heading">Exam Tips & Tricks</h2>
+                <ol>
+                    <li><strong>Telescoping:</strong> <code>log₂3 · log₃4 · log₄5 = log₂5</code></li>
+                    <li><strong>ln Approximations:</strong> <code>ln 2 ≈ 0.693</code>, <code>ln 3 ≈ 1.099</code>, <code>ln 10 ≈ 2.303</code></li>
+                    <li><strong>Exponential of Log:</strong> <code>b^(log_b x) = x</code> (simplifies instantly)</li>
+                    <li><strong>Substitution:</strong> Look for <code>a^(2x)</code> patterns to use <code>u = a^x</code></li>
+                    <li><strong>Check Domain First:</strong> Saves time on extraneous solutions</li>
+                </ol>
+            </section>
+
+            <!-- INTERACTIVE CALCULATOR -->
+            <section id="calculator" aria-labelledby="calc-heading">
+                <h2 id="calc-heading">Interactive Logarithm Calculator</h2>
+                <p>Use this tool to verify your calculations. Enter a base and a value to compute the logarithm.</p>
+                
+                <div class="calculator">
+                    <form id="log-form" onsubmit="return false;">
+                        <div class="calc-grid">
+                            <div class="form-group">
+                                <label for="base-input">Base (b)</label>
+                                <input type="number" id="base-input" min="0.001" step="0.001" placeholder="e.g., 2" required aria-describedby="base-help">
+                                <small id="base-help">Must be > 0 and ≠ 1</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="value-input">Value (x)</label>
+                                <input type="number" id="value-input" min="0.001" step="0.001" placeholder="e.g., 8" required aria-describedby="value-help">
+                                <small id="value-help">Must be > 0</small>
+                            </div>
+                        </div>
+                        <button type="button" id="calc-btn" aria-label="Calculate Logarithm">Calculate log<sub>b</sub>(x)</button>
+                    </form>
+                    
+                    <div id="calc-result" aria-live="polite" role="status">
+                        Result will appear here
+                    </div>
+                    <div id="calc-steps" style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Created for students. Share freely. No rights reserved.</p>
+            <p>Good luck on your exam! You've got this. 💪</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const baseInput = document.getElementById('base-input');
+            const valueInput = document.getElementById('value-input');
+            const calcBtn = document.getElementById('calc-btn');
+            const resultDiv = document.getElementById('calc-result');
+            const stepsDiv = document.getElementById('calc-steps');
+
+            calcBtn.addEventListener('click', () => {
+                const base = parseFloat(baseInput.value);
+                const value = parseFloat(valueInput.value);
+
+                // Reset display
+                resultDiv.textContent = 'Result will appear here';
+                resultDiv.style.color = 'var(--text-main)';
+                stepsDiv.textContent = '';
+
+                // Validation
+                if (isNaN(base) || isNaN(value)) {
+                    resultDiv.textContent = 'Please enter valid numbers.';
+                    resultDiv.style.color = 'var(--accent-red)';
+                    return;
+                }
+
+                if (base <= 0 || base === 1) {
+                    resultDiv.textContent = 'Error: Base must be > 0 and ≠ 1.';
+                    resultDiv.style.color = 'var(--accent-red)';
+                    return;
+                }
+
+                if (value <= 0) {
+                    resultDiv.textContent = 'Error: Value must be > 0.';
+                    resultDiv.style.color = 'var(--accent-red)';
+                    return;
+                }
+
+                // Calculation
+                try {
+                    const result = Math.log(value) / Math.log(base);
+                    
+                    // Formatting result
+                    const formattedResult = Number.isInteger(result) ? result : result.toFixed(4);
+                    
+                    resultDiv.textContent = `log_${base}(${value}) = ${formattedResult}`;
+                    resultDiv.style.color = 'var(--accent-green)';
+
+                    // Show steps
+                    stepsDiv.innerHTML = `
+                        <strong>Steps:</strong><br>
+                        1. Apply Change of Base: log_${base}(${value}) = ln(${value}) / ln(${base})<br>
+                        2. Calculate: ${Math.log(value).toFixed(4)} / ${Math.log(base).toFixed(4)}<br>
+                        3. Result: ${formattedResult}
+                    `;
+                } catch (e) {
+                    resultDiv.textContent = 'Calculation error.';
+                    resultDiv.style.color = 'var(--accent-red)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
