@@ -2,82 +2,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Interactive Calculators | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="Interactive calculators for logarithms, half-life, doubling time, exponential form conversion, and solving exponential equations.">
 
 <style>
 
 :root{
     --primary:#2563eb;
+    --secondary:#1d4ed8;
     --success:#059669;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
-    line-height:1.6;
-    color:#111827;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
 }
 
-.card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:25px 0;
-    border-radius:8px;
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin:10px 0;
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
 }
 
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:10px 20px;
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
     border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
     cursor:pointer;
+    transition:background .2s, border-color .2s;
 }
 
-.result{
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
+    text-align:center;
+}
+
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
     margin-top:15px;
-    font-weight:bold;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.panel{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:30px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+}
+
+.panel h2{
+    margin-top:0;
+    font-size:calc(1.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.panel h3{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-main);
+    margin-top:0;
+}
+
+.panel p,
+.panel label,
+.panel span{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.panel .formula{
+    font-family:'Courier New', monospace;
+    font-size:calc(.9rem * var(--font-scale));
+    color:var(--text-muted);
+    margin:8px 0;
+}
+
+/* ===== Calculator Inputs ===== */
+.calc-field{
+    margin:12px 0;
+}
+
+.calc-field label{
+    display:block;
+    font-weight:600;
+    margin-bottom:4px;
+    font-size:calc(.9rem * var(--font-scale));
+    color:var(--text-muted);
+}
+
+.calc-field input{
+    width:100%;
+    padding:10px 12px;
+    border:2px solid var(--border);
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:border-color .2s;
+}
+
+.calc-field input:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+.calc-field input::placeholder{
+    color:var(--text-muted);
+    opacity:.6;
+}
+
+.calc-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:12px 0;
+}
+
+.calc-group .calc-field{
+    flex:1 1 calc(33.33% - 10px);
+    min-width:120px;
+}
+
+.calc-btn{
+    display:inline-block;
+    padding:10px 20px;
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+    transition:background .2s;
+}
+
+.calc-btn:hover,
+.calc-btn:focus-visible{
+    background:var(--secondary);
+}
+
+.calc-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+/* ===== Result ===== */
+.calc-result{
+    margin-top:15px;
+    padding:12px 16px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--bg-body);
+    font-weight:700;
+    font-size:calc(1rem * var(--font-scale));
     color:var(--success);
+    display:none;
 }
 
-h2{
-    color:#2563eb;
+.calc-result.visible{
+    display:block;
 }
 
+/* ===== Buttons ===== */
 .btn{
     display:inline-block;
     margin-top:20px;
     margin-right:10px;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:10px 16px;
+    padding:12px 18px;
+    border:none;
     border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+ul{
+    padding-left:20px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+}
+
+@media print{
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .panel{ box-shadow:none; border:1px solid #ccc; }
 }
 
 </style>
@@ -85,340 +400,463 @@ h2{
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html" aria-current="page">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Interactive Calculators</h1>
 
-<p>
-Use these tools to check your Chapter 5 work.
-</p>
+<p>Use these tools to check your Chapter 5 work.</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<!-- LOG CALCULATOR -->
+<!-- ===== Log Calculator ===== -->
+<section class="panel" aria-labelledby="log-calc-heading">
 
-<div class="card">
+<h2 id="log-calc-heading">Logarithm Calculator</h2>
+<p class="formula">log<sub>b</sub>(x) = ln(x) / ln(b)</p>
 
-<h2>Logarithm Calculator</h2>
-
-<input id="logBase"
-type="number"
-placeholder="Base">
-
-<input id="logValue"
-type="number"
-placeholder="Value">
-
-<button onclick="calculateLog()">
-
-Calculate
-
-</button>
-
-<div id="logResult"
-class="result"></div>
-
+<div class="calc-group">
+    <div class="calc-field">
+        <label for="logBase">Base (b)</label>
+        <input id="logBase" type="number" placeholder="e.g. 10" step="any">
+    </div>
+    <div class="calc-field">
+        <label for="logValue">Value (x)</label>
+        <input id="logValue" type="number" placeholder="e.g. 1000" step="any">
+    </div>
 </div>
 
-<!-- HALF LIFE -->
+<button type="button" class="calc-btn" onclick="calculateLog()">Calculate</button>
 
-<div class="card">
+<div id="logResult" class="calc-result" role="status"></div>
 
-<h2>Half-Life Calculator</h2>
+</section>
 
-<p>Formula: t = ln(2)/|k|</p>
+<!-- ===== Half-Life Calculator ===== -->
+<section class="panel" aria-labelledby="halflife-heading">
 
-<input id="halfK"
-type="number"
-step="any"
-placeholder="Decay Constant k">
+<h2 id="halflife-heading">Half-Life Calculator</h2>
+<p class="formula">t<sub>½</sub> = ln(2) / |k|</p>
 
-<button onclick="halfLife()">
-Calculate
-</button>
-
-<div id="halfResult"
-class="result"></div>
-
+<div class="calc-field">
+    <label for="halfK">Decay Constant (k)</label>
+    <input id="halfK" type="number" placeholder="e.g. -0.05" step="any">
 </div>
 
-<!-- DOUBLING TIME -->
+<button type="button" class="calc-btn" onclick="halfLife()">Calculate</button>
 
-<div class="card">
+<div id="halfResult" class="calc-result" role="status"></div>
 
-<h2>Doubling Time Calculator</h2>
+</section>
 
-<p>Formula: t = ln(2)/k</p>
+<!-- ===== Doubling Time Calculator ===== -->
+<section class="panel" aria-labelledby="doubling-heading">
 
-<input id="doubleK"
-type="number"
-step="any"
-placeholder="Growth Constant k">
+<h2 id="doubling-heading">Doubling Time Calculator</h2>
+<p class="formula">t<sub>d</sub> = ln(2) / k</p>
 
-<button onclick="doublingTime()">
-Calculate
-</button>
-
-<div id="doubleResult"
-class="result"></div>
-
+<div class="calc-field">
+    <label for="doubleK">Growth Constant (k)</label>
+    <input id="doubleK" type="number" placeholder="e.g. 0.03" step="any">
 </div>
 
-<!-- CONVERT FORMS -->
+<button type="button" class="calc-btn" onclick="doublingTime()">Calculate</button>
 
-<div class="card">
+<div id="doubleResult" class="calc-result" role="status"></div>
 
-<h2>Convert abᵗ → aeᵏᵗ</h2>
+</section>
 
-<p>Enter base b</p>
+<!-- ===== Convert abᵗ → aeᵏᵗ ===== -->
+<section class="panel" aria-labelledby="convert1-heading">
 
-<input id="annualBase"
-type="number"
-step="any"
-placeholder="b">
+<h2 id="convert1-heading">Convert abᵗ → aeᵏᵗ</h2>
+<p class="formula">k = ln(b)</p>
 
-<button onclick="convertToContinuous()">
-Convert
-</button>
-
-<div id="annualResult"
-class="result"></div>
-
+<div class="calc-field">
+    <label for="annualBase">Base (b)</label>
+    <input id="annualBase" type="number" placeholder="e.g. 1.05" step="any">
 </div>
 
-<div class="card">
+<button type="button" class="calc-btn" onclick="convertToContinuous()">Convert</button>
 
-<h2>Convert aeᵏᵗ → abᵗ</h2>
+<div id="annualResult" class="calc-result" role="status"></div>
 
-<p>Enter k</p>
+</section>
 
-<input id="continuousRate"
-type="number"
-step="any"
-placeholder="k">
+<!-- ===== Convert aeᵏᵗ → abᵗ ===== -->
+<section class="panel" aria-labelledby="convert2-heading">
 
-<button onclick="convertToAnnual()">
-Convert
-</button>
+<h2 id="convert2-heading">Convert aeᵏᵗ → abᵗ</h2>
+<p class="formula">b = eᵏ</p>
 
-<div id="continuousResult"
-class="result"></div>
-
+<div class="calc-field">
+    <label for="continuousRate">Rate (k)</label>
+    <input id="continuousRate" type="number" placeholder="e.g. 0.04879" step="any">
 </div>
 
-<!-- SOLVE AB^T=C -->
+<button type="button" class="calc-btn" onclick="convertToAnnual()">Convert</button>
 
-<div class="card">
+<div id="continuousResult" class="calc-result" role="status"></div>
 
-<h2>Solve abᵗ = c for t</h2>
+</section>
 
-<input id="a1"
-type="number"
-placeholder="a">
+<!-- ===== Solve abᵗ = c ===== -->
+<section class="panel" aria-labelledby="solve1-heading">
 
-<input id="b1"
-type="number"
-placeholder="b">
+<h2 id="solve1-heading">Solve abᵗ = c for t</h2>
+<p class="formula">t = ln(c/a) / ln(b)</p>
 
-<input id="c1"
-type="number"
-placeholder="c">
-
-<button onclick="solveAnnualTime()">
-Solve
-</button>
-
-<div id="annualTimeResult"
-class="result"></div>
-
+<div class="calc-group">
+    <div class="calc-field">
+        <label for="a1">a</label>
+        <input id="a1" type="number" placeholder="Initial amount" step="any">
+    </div>
+    <div class="calc-field">
+        <label for="b1">b</label>
+        <input id="b1" type="number" placeholder="Base" step="any">
+    </div>
+    <div class="calc-field">
+        <label for="c1">c</label>
+        <input id="c1" type="number" placeholder="Target value" step="any">
+    </div>
 </div>
 
-<!-- SOLVE AEKT=C -->
+<button type="button" class="calc-btn" onclick="solveAnnualTime()">Solve</button>
 
-<div class="card">
+<div id="annualTimeResult" class="calc-result" role="status"></div>
 
-<h2>Solve aeᵏᵗ = c for t</h2>
+</section>
 
-<input id="a2"
-type="number"
-placeholder="a">
+<!-- ===== Solve aeᵏᵗ = c ===== -->
+<section class="panel" aria-labelledby="solve2-heading">
 
-<input id="k2"
-type="number"
-step="any"
-placeholder="k">
+<h2 id="solve2-heading">Solve aeᵏᵗ = c for t</h2>
+<p class="formula">t = ln(c/a) / k</p>
 
-<input id="c2"
-type="number"
-placeholder="c">
-
-<button onclick="solveContinuousTime()">
-Solve
-</button>
-
-<div id="continuousTimeResult"
-class="result"></div>
-
+<div class="calc-group">
+    <div class="calc-field">
+        <label for="a2">a</label>
+        <input id="a2" type="number" placeholder="Initial amount" step="any">
+    </div>
+    <div class="calc-field">
+        <label for="k2">k</label>
+        <input id="k2" type="number" placeholder="Rate constant" step="any">
+    </div>
+    <div class="calc-field">
+        <label for="c2">c</label>
+        <input id="c2" type="number" placeholder="Target value" step="any">
+    </div>
 </div>
 
-<a
-class="btn"
-href="math-lab-companion.html">
-← Math Lab Companion
-</a>
+<button type="button" class="calc-btn" onclick="solveContinuousTime()">Solve</button>
 
-<a
-class="btn"
-href="common-mistakes.html">
-Next: Common Mistakes →
-</a>
+<div id="continuousTimeResult" class="calc-result" role="status"></div>
 
-</div>
+</section>
+
+<a class="btn" href="math-lab-companion.html">← Math Lab Companion</a>
+<a class="btn" href="common-mistakes.html">Next: Common Mistakes →</a>
+
+</main>
 
 <script>
+(function () {
+    'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
 
-/* Log Calculator */
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
 
-function calculateLog(){
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
 
-let b=
-parseFloat(
-document.getElementById("logBase").value
-);
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
 
-let x=
-parseFloat(
-document.getElementById("logValue").value
-);
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
 
-let answer=
-Math.log(x)/Math.log(b);
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
 
-document.getElementById("logResult")
-.innerHTML=
-`Answer: ${answer.toFixed(4)}`;
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
 
-}
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
 
-/* Half Life */
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
 
-function halfLife(){
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
 
-let k=Math.abs(
-parseFloat(
-document.getElementById("halfK").value
-));
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
 
-let t=Math.log(2)/k;
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
 
-document.getElementById("halfResult")
-.innerHTML=
-`Half-Life = ${t.toFixed(4)}`;
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
 
-}
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
 
-/* Doubling Time */
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
 
-function doublingTime(){
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
 
-let k=parseFloat(
-document.getElementById("doubleK").value
-);
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
 
-let t=Math.log(2)/k;
+    // ---------- Calculator Functions ----------
+    function showResult(id, text) {
+        var el = document.getElementById(id);
+        el.textContent = text;
+        el.classList.add('visible');
+    }
 
-document.getElementById("doubleResult")
-.innerHTML=
-`Doubling Time = ${t.toFixed(4)}`;
+    /* Log Calculator */
+    function calculateLog() {
+        var b = parseFloat(document.getElementById("logBase").value);
+        var x = parseFloat(document.getElementById("logValue").value);
+        if (isNaN(b) || isNaN(x) || b <= 0 || b === 1 || x <= 0) {
+            showResult("logResult", "⚠️ Enter valid values: b > 0, b ≠ 1, x > 0");
+            return;
+        }
+        var answer = Math.log(x) / Math.log(b);
+        showResult("logResult", "log<sub>" + b + "</sub>(" + x + ") = " + answer.toFixed(4));
+    }
 
-}
+    /* Half-Life */
+    function halfLife() {
+        var k = parseFloat(document.getElementById("halfK").value);
+        if (isNaN(k) || k === 0) {
+            showResult("halfResult", "⚠️ Enter a non-zero decay constant k");
+            return;
+        }
+        var t = Math.log(2) / Math.abs(k);
+        showResult("halfResult", "Half-Life = " + t.toFixed(4));
+    }
 
-/* ab^t --> ae^kt */
+    /* Doubling Time */
+    function doublingTime() {
+        var k = parseFloat(document.getElementById("doubleK").value);
+        if (isNaN(k) || k === 0) {
+            showResult("doubleResult", "⚠️ Enter a non-zero growth constant k");
+            return;
+        }
+        var t = Math.log(2) / k;
+        showResult("doubleResult", "Doubling Time = " + t.toFixed(4));
+    }
 
-function convertToContinuous(){
+    /* ab^t → ae^kt */
+    function convertToContinuous() {
+        var b = parseFloat(document.getElementById("annualBase").value);
+        if (isNaN(b) || b <= 0) {
+            showResult("annualResult", "⚠️ Enter a positive base b");
+            return;
+        }
+        var k = Math.log(b);
+        showResult("annualResult", "k = " + k.toFixed(6));
+    }
 
-let b=parseFloat(
-document.getElementById("annualBase").value
-);
+    /* ae^kt → ab^t */
+    function convertToAnnual() {
+        var k = parseFloat(document.getElementById("continuousRate").value);
+        if (isNaN(k)) {
+            showResult("continuousResult", "⚠️ Enter a valid rate k");
+            return;
+        }
+        var b = Math.exp(k);
+        showResult("continuousResult", "b = " + b.toFixed(6));
+    }
 
-let k=Math.log(b);
+    /* Solve ab^t = c */
+    function solveAnnualTime() {
+        var a = parseFloat(document.getElementById("a1").value);
+        var b = parseFloat(document.getElementById("b1").value);
+        var c = parseFloat(document.getElementById("c1").value);
+        if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0 || b <= 0 || b === 1 || c === 0) {
+            showResult("annualTimeResult", "⚠️ Enter valid values: a ≠ 0, b > 0, b ≠ 1, c ≠ 0");
+            return;
+        }
+        var t = Math.log(c / a) / Math.log(b);
+        showResult("annualTimeResult", "t = " + t.toFixed(4));
+    }
 
-document.getElementById("annualResult")
-.innerHTML=
-`k = ${k.toFixed(6)}`;
+    /* Solve ae^(kt) = c */
+    function solveContinuousTime() {
+        var a = parseFloat(document.getElementById("a2").value);
+        var k = parseFloat(document.getElementById("k2").value);
+        var c = parseFloat(document.getElementById("c2").value);
+        if (isNaN(a) || isNaN(k) || isNaN(c) || a === 0 || k === 0) {
+            showResult("continuousTimeResult", "⚠️ Enter valid values: a ≠ 0, k ≠ 0");
+            return;
+        }
+        var t = Math.log(c / a) / k;
+        showResult("continuousTimeResult", "t = " + t.toFixed(4));
+    }
 
-}
-
-/* ae^kt --> ab^t */
-
-function convertToAnnual(){
-
-let k=parseFloat(
-document.getElementById("continuousRate").value
-);
-
-let b=Math.exp(k);
-
-document.getElementById("continuousResult")
-.innerHTML=
-`b = ${b.toFixed(6)}`;
-
-}
-
-/* Solve ab^t = c */
-
-function solveAnnualTime(){
-
-let a=parseFloat(
-document.getElementById("a1").value
-);
-
-let b=parseFloat(
-document.getElementById("b1").value
-);
-
-let c=parseFloat(
-document.getElementById("c1").value
-);
-
-let t=
-Math.log(c/a)/
-Math.log(b);
-
-document.getElementById("annualTimeResult")
-.innerHTML=
-`t = ${t.toFixed(4)}`;
-
-}
-
-/* Solve ae^(kt)=c */
-
-function solveContinuousTime(){
-
-let a=parseFloat(
-document.getElementById("a2").value
-);
-
-let k=parseFloat(
-document.getElementById("k2").value
-);
-
-let c=parseFloat(
-document.getElementById("c2").value
-);
-
-let t=
-Math.log(c/a)/k;
-
-document.getElementById("continuousTimeResult")
-.innerHTML=
-`t = ${t.toFixed(4)}`;
-
-}
-
+})();
 </script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
