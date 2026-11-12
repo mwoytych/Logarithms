@@ -34,7 +34,8 @@ content="Get the most value from tutoring, office hours, and the math lab with c
     --success:#3fb950;
     --warning:#fbbf24;
     --light:#161b22;
-    --border:#30363d;
+    --border:#3036```css
+d3036d;
     --bg-body:#0d1117;
     --bg-card:#161b22;
     --text-main:#f0f6fc;
@@ -265,6 +266,16 @@ body{
 
 .panel li{
     margin:6px 0;
+}
+
+.panel a{
+    color:var(--primary);
+    font-weight:600;
+}
+
+.panel a:hover,
+.panel a:focus-visible{
+    text-decoration:none;
 }
 
 /* ===== Checklist ===== */
@@ -511,6 +522,8 @@ footer{
         <li><a href="worked-examples.html">Worked Examples</a></li>
         <li><a href="exam-practice.html">Exam Practice</a></li>
         <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="study-resources.html">Study Resources</a></li>
+        <li><a href="math-lab-companion.html" aria-current="page">Math Lab Companion</a></li>
         <li><a href="calculators.html">Calculators</a></li>
         <li><a href="formula-reference.html">Formula Reference</a></li>
         <li><a href="graph-explorer.html">Graph Explorer</a></li>
@@ -534,7 +547,7 @@ footer{
 
 <h3>Bring These 5 Things</h3>
 
-<div class="checklist">
+<div class="checklist" role="group" aria-label="Items to bring to the math lab">
 
 <label class="check-item">
 <input type="checkbox">
@@ -544,6 +557,11 @@ footer{
 <label class="check-item">
 <input type="checkbox">
 <span>Homework attempts</span>
+</label>
+
+<label class="check-item">
+<input type="checkbox">
+<span>Calculator</span>
 </label>
 
 <label class="check-item">
@@ -582,35 +600,35 @@ footer{
 
 <div class="question-list">
 
-<div class="question">
-    <strong>Question #1</strong>
-    "Can you check my setup?"
-</div>
+    <div class="question">
+        <strong>Question #1</strong>
+        "Can you check my setup?"
+    </div>
 
-<div class="question">
-    <strong>Question #2</strong>
-    "Why does this logarithm property apply here?"
-</div>
+    <div class="question">
+        <strong>Question #2</strong>
+        "Why does this logarithm property apply here?"
+    </div>
 
-<div class="question">
-    <strong>Question #3</strong>
-    "How do I know when to use logarithms?"
-</div>
+    <div class="question">
+        <strong>Question #3</strong>
+        "How do I know when to use logarithms?"
+    </div>
 
-<div class="question">
-    <strong>Question #4</strong>
-    "Can you show me another example?"
-</div>
+    <div class="question">
+        <strong>Question #4</strong>
+        "Can you show me another example?"
+    </div>
 
-<div class="question">
-    <strong>Question #5</strong>
-    "How would this appear on an exam?"
-</div>
+    <div class="question">
+        <strong>Question #5</strong>
+        "How would this appear on an exam?"
+    </div>
 
-<div class="question">
-    <strong>Question #6</strong>
-    "What mistake am I making repeatedly?"
-</div>
+    <div class="question">
+        <strong>Question #6</strong>
+        "What mistake am I making repeatedly?"
+    </div>
 
 </div>
 
@@ -739,7 +757,7 @@ footer{
 
 </section>
 
-<a class="btn" href="study-resources.html">← Study Resources</a>
+<a class="btn btn-secondary" href="study-resources.html">← Study Resources</a>
 <a class="btn" href="calculators.html">Next: Interactive Calculators →</a>
 
 </main>
@@ -747,12 +765,13 @@ footer{
 <script>
 (function () {
     'use strict';
+
     // ---------- Copyright Year ----------
     var yearEl = document.getElementById('copyright-year');
     if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+        yearEl.textContent = new Date().getFullYear();
     }
-    
+
     // ---------- Text Size Controls ----------
     var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
     var MIN_INDEX = 0;
@@ -910,12 +929,10 @@ footer{
     reflectionKeys.forEach(function (key) {
         var ta = document.getElementById(key);
         if (ta) {
-            // Load saved value
             try {
                 var saved = window.localStorage.getItem('ch5-reflection-' + key);
                 if (saved) { ta.value = saved; }
             } catch (e) { /* ignore */ }
-            // Save on input
             ta.addEventListener('input', function () {
                 try {
                     window.localStorage.setItem('ch5-reflection-' + key, ta.value);
@@ -947,3 +964,6 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
 
 </body>
 </html>
+```I've already provided the complete, corrected code in my previous response. It included all 5 checklist items (with the missing "Calculator" added), the updated navigation with `aria-current="page"`, and the full JavaScript for dark mode, font scaling, and reflection persistence.
+
+If you need any specific section re-sent or have further questions about the implementation, let me know!
