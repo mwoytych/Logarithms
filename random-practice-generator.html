@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Random Practice Generator | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --success:#16a34a;
+    --light:#f8fafc;
+    --border:#d1d5db;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+    color:#111827;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:var(--light);
+    border-left:5px solid var(--primary);
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:8px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    margin:5px;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#problem{
+    font-size:1.3rem;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+#solution{
+    margin-top:20px;
+    padding:15px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    display:none;
+}
+
+select{
+    padding:10px;
+    margin-bottom:15px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Random Practice Generator</h1>
+
+<p>
+Generate Unlimited Chapter 5 Problems
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Select Topic</h2>
+
+<select id="topic">
+
+<option value="evaluate">Evaluate Logs</option>
+
+<option value="domain">Domain</option>
+
+<option value="expand">Expand Logs</option>
+
+<option value="growth">Growth Models</option>
+
+<option value="half">Half-Life</option>
+
+<option value="double">Doubling Time</option>
+
+<option value="solve">Solve Exponential Equations</option>
+
+</select>
+
+<br>
+
+<button onclick="generateProblem()">
+Generate Problem
+</button>
+
+<button onclick="showSolution()">
+Show Solution
+</button>
+
+<div id="problem">
+Select a topic and generate a problem.
+</div>
+
+<div id="solution"></div>
+
+</div>
+
+<a class="btn"
+href="../index.html">
+Return Home
+</a>
+
+</div>
+
+<script>
+
+let currentAnswer = "";
+let currentSolution = "";
+
+function randomInt(min,max){
+    return Math.floor(
+        Math.random()*(max-min+1)
+    )+min;
+}
+
+function generateProblem(){
+
+    const topic =
+    document.getElementById("topic").value;
+
+    const problem =
+    document.getElementById("problem");
+
+    const solution =
+    document.getElementById("solution");
+
+    solution.style.display="none";
+
+    if(topic==="evaluate"){
+
+        let exponent =
+        randomInt(2,8);
+
+        let value =
+        Math.pow(2,exponent);
+
+        problem.innerHTML=
+        `Evaluate: log₂(${value})`;
+
+        currentAnswer=
+        exponent;
+
+        currentSolution=
+        `2^${exponent}=${value}
+        therefore
+        log₂(${value})=${exponent}`;
+
+    }
+
+    else if(topic==="domain"){
+
+        let shift=
+        randomInt(2,15);
+
+        problem.innerHTML=
+        `Find the domain:
+        y=log(x-${shift})`;
+
+        currentSolution=
+        `
+        x-${shift}>0
+
+        x>${shift}
+
+        Domain:
+        (${shift},∞)
+        `;
+    }
+
+    else if(topic==="expand"){
+
+        let a=randomInt(2,5);
+        let b=randomInt(2,5);
+
+        problem.innerHTML=
+        `
+        Expand:
+
+        log(
+        x^${a}y /
+        z^${b})
+        `;
+
+        currentSolution=
+        `
+        ${a}log(x)
+        +
+        log(y)
+        -
+        ${b}log(z)
+        `;
+    }
+
+    else if(topic==="growth"){
+
+        let p=
+        randomInt(100,500);
+
+        let r=
+        randomInt(2,9);
+
+        problem.innerHTML=
+        `
+        Growth Model:
+
+        P=${p}(1.${r})^t
+
+        What is the growth rate?
+        `;
+
+        currentSolution=
+        `
+        Growth Rate
+
+        =
+        ${r}%
+        `;
+    }
+
+    else if(topic==="half"){
+
+        let k=
+        (Math.random()*0.4+0.05)
+        .toFixed(2);
+
+        let value=
+        (
+        Math.log(2)/k
+        ).toFixed(2);
+
+        problem.innerHTML=
+        `
+        Find Half-Life
+
+        A=100e^(-${k}t)
+        `;
+
+        currentSolution=
+        `
+        Half-Life
+
+        = ln(2)/${k}
+
+        ≈ ${value}
+        `;
+    }
+
+    else if(topic==="double"){
+
+        let k=
+        (Math.random()*0.3+0.05)
+        .toFixed(2);
+
+        let value=
+        (
+        Math.log(2)/k
+        ).toFixed(2);
+
+        problem.innerHTML=
+        `
+        Find Doubling Time
+
+        A=100e^(${k}t)
+        `;
+
+        currentSolution=
+        `
+        Doubling Time
+
+        = ln(2)/${k}
+
+        ≈ ${value}
+        `;
+    }
+
+    else if(topic==="solve"){
+
+        let answer=
+        randomInt(3,8);
+
+        let value=
+        Math.pow(3,answer);
+
+        problem.innerHTML=
+        `
+        Solve:
+
+        3^x=${value}
+        `;
+
+        currentSolution=
+        `
+        x=${answer}
+
+        because
+
+        3^${answer}
+        =
+        ${value}
+        `;
+    }
+
+}
+
+function showSolution(){
+
+    const solution=
+    document.getElementById("solution");
+
+    solution.style.display="block";
+
+    solution.innerHTML=
+    currentSolution;
+
+}
+
+</script>
+
+</body>
+</html>
