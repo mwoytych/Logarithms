@@ -3,14 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Random Practice Generator | Chapter 5 Mastery Center</title>
-
-<meta name="description"
-content="Generate unlimited randomized Chapter 5 practice problems for logarithms, domain, expansion, growth models, half-life, doubling time, and exponential equations.">
+<meta name="description" content="Generate unlimited randomized Chapter 5 practice problems for logarithms, domain, expansion, growth models, half-life, doubling time, and exponential equations.">
 
 <style>
-
 :root{
     --primary:#2563eb;
     --secondary:#1d4ed8;
@@ -149,30 +145,6 @@ body{
     color:var(--text-muted);
     min-width:44px;
     text-align:center;
-}
-
-/* ===== Hero ===== */
-.hero{
-    max-width:1200px;
-    margin:24px auto 0;
-    padding:40px 25px;
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
-    text-align:center;
-}
-
-.hero h1{
-    margin:0;
-    font-size:calc(2.4rem * var(--font-scale));
-    color:var(--primary);
-}
-
-.hero p{
-    font-size:calc(1.1rem * var(--font-scale));
-    color:var(--text-muted);
-    margin-top:15px;
 }
 
 /* ===== Navigation ===== */
@@ -365,30 +337,6 @@ body{
     color:var(--text-main);
 }
 
-/* ===== Buttons ===== */
-.btn{
-    display:inline-block;
-    padding:12px 18px;
-    border:none;
-    border-radius:6px;
-    background:var(--primary);
-    color:#fff;
-    text-decoration:none;
-    font-size:calc(1rem * var(--font-scale));
-    font-weight:600;
-    cursor:pointer;
-}
-
-.btn:hover,
-.btn:focus-visible{
-    background:var(--secondary);
-}
-
-.btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:3px;
-}
-
 footer{
     text-align:center;
     padding:40px;
@@ -409,7 +357,6 @@ footer{
     .panel{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
     .calc-btn, .btn{ display:none; }
 }
-
 </style>
 </head>
 
@@ -419,23 +366,16 @@ footer{
 
 <!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
-
     <div class="a11y-group" role="group" aria-label="Text size controls">
         <span class="a11y-label" id="font-label">Text Size</span>
-
         <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
-
         <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
-
         <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
-
         <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
     </div>
-
     <div class="a11y-group">
         <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
     </div>
-
 </div>
 
 <!-- ===== Navigation ===== -->
@@ -454,51 +394,47 @@ footer{
 </nav>
 
 <header class="hero">
-
-<h1>Random Practice Generator</h1>
-
-<p>Generate Unlimited Chapter 5 Practice Problems</p>
-
+    <h1>Random Practice Generator</h1>
+    <p>Generate Unlimited Chapter 5 Practice Problems</p>
 </header>
 
 <main class="container" id="main-content">
 
 <section class="panel" aria-labelledby="generator-heading">
+    <h2 id="generator-heading">Select a Topic</h2>
 
-<h2 id="generator-heading">Select a Topic</h2>
+    <label for="topic-select" class="sr-only">Choose a topic</label>
+    <select id="topic-select" class="topic-select">
+        <option value="evaluate">Evaluate Logs</option>
+        <option value="domain">Domain</option>
+        <option value="expand">Expand Logs</option>
+        <option value="condense">Condense Logs</option>
+        <option value="growth">Growth Models</option>
+        <option value="decay">Decay Models</option>
+        <option value="half">Half-Life</option>
+        <option value="double">Doubling Time</option>
+        <option value="solve-annual">Solve ab<sup>t</sup> = c</option>
+        <option value="solve-continuous">Solve ae<sup>kt</sup> = c</option>
+        <option value="convert">Convert ab<sup>t</sup> → ae<sup>kt</sup></option>
+        <option value="pH">pH Problems</option>
+        <option value="decibel">Decibel Problems</option>
+        <option value="professor">Professor Lookup</option>
+    </select>
 
-<label for="topic-select" class="sr-only">Choose a topic</label>
-<select id="topic-select" class="topic-select">
-    <option value="evaluate">Evaluate Logs</option>
-    <option value="domain">Domain</option>
-    <option value="expand">Expand Logs</option>
-    <option value="condense">Condense Logs</option>
-    <option value="growth">Growth Models</option>
-    <option value="decay">Decay Models</option>
-    <option value="half">Half-Life</option>
-    <option value="double">Doubling Time</option>
-    <option value="solve-annual">Solve ab<sup>t</sup> = c</option>
-    <option value="solve-continuous">Solve ae<sup>kt</sup> = c</option>
-    <option value="convert">Convert ab<sup>t</sup> → ae<sup>kt</sup></option>
-    <option value="pH">pH Problems</option>
-    <option value="decibel">Decibel Problems</option>
-</select>
+    <div class="btn-group">
+        <button type="button" class="calc-btn" id="generate-btn">Generate Problem</button>
+        <button type="button" class="calc-btn calc-btn-secondary" id="solution-btn">Show Solution</button>
+        <button type="button" class="calc-btn calc-btn-secondary" id="new-btn">New Problem</button>
+    </div>
 
-<div class="btn-group">
-    <button type="button" class="calc-btn" id="generate-btn">Generate Problem</button>
-    <button type="button" class="calc-btn calc-btn-secondary" id="solution-btn">Show Solution</button>
-    <button type="button" class="calc-btn calc-btn-secondary" id="new-btn">New Problem</button>
-</div>
+    <div class="problem-display">
+        <span class="problem-text" id="problem-text">Select a topic and click Generate Problem.</span>
+    </div>
 
-<div class="problem-display">
-    <span class="problem-text" id="problem-text">Select a topic and click Generate Problem.</span>
-</div>
-
-<div class="solution-box" id="solution-box">
-    <h3>📝 Solution</h3>
-    <div class="solution-text" id="solution-text"></div>
-</div>
-
+    <div class="solution-box" id="solution-box">
+        <h3>📝 Solution</h3>
+        <div class="solution-text" id="solution-text"></div>
+    </div>
 </section>
 
 </main>
@@ -509,7 +445,7 @@ footer{
     // ---------- Copyright Year ----------
     var yearEl = document.getElementById('copyright-year');
     if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+        yearEl.textContent = new Date().getFullYear();
     }
     
     // ---------- Text Size Controls ----------
@@ -745,7 +681,7 @@ footer{
             break;
         }
 
-                case 'growth': {
+        case 'growth': {
             var p = randomInt(100, 500);
             var r = randomInt(2, 9);
             currentProblem = 'A population grows according to:\n\nP = ' + p + '(1.' + r + ')^t\n\nWhat is the annual growth rate?';
@@ -758,7 +694,7 @@ footer{
         case 'decay': {
             var p = randomInt(100, 500);
             var r = randomInt(2, 9);
-            currentProblem = 'A substance decays according to:\n\nP = ' + p + '(0.9' + (r === 9 ? '' : '') + ')^t\n\nWait — let me use a clean form.\n\nP = ' + p + '(0.' + (10 - r) + ')^t\n\nWhat is the annual decay rate?';
+            currentProblem = 'A substance decays according to:\n\nP = ' + p + '(0.' + (10 - r) + ')^t\n\nWhat is the annual decay rate?';
             currentSolution = 'Step 1: Identify the base\nb = 0.' + (10 - r) + '\n\n' +
                 'Step 2: Use b = 1 - r\nr = 1 - b\nr = 1 - 0.' + (10 - r) + '\nr = 0.' + r + '\n\n' +
                 'Answer: Decay rate = ' + r + '% per year';
@@ -846,6 +782,12 @@ footer{
             break;
         }
 
+        case 'professor': {
+            currentProblem = 'Find the professor with "Zabihi" in their name at College of Marin - Kentfield.';
+            currentSolution = 'Result:\n\nProfessor Zabihi\nCollege of Marin - Kentfield';
+            break;
+        }
+
         default:
             currentProblem = 'Select a topic and click Generate Problem.';
             currentSolution = '';
@@ -876,21 +818,7 @@ footer{
 </script>
 
 <footer>
-
-<h3>Chapter 5 Mastery Center</h3>
-
-<p>
-Build confidence one concept at a time.
-</p>
-
-<p>
-Next Milestone: Complete the Confidence Check with at least 80% mastery.
-</p>
-
-<p class="copyright">
-&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
-</p>
-
+    <p class="copyright">&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.</p>
 </footer>
 
 </body>
