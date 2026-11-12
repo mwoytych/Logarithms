@@ -2,82 +2,386 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Common Mistakes | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="The most common errors students make with logarithms and exponential functions, with correct forms and explanations for each.">
 
 <style>
 
 :root{
     --primary:#2563eb;
+    --secondary:#1d4ed8;
+    --success:#059669;
     --danger:#dc2626;
-    --success:#16a34a;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --danger:#f87171;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
-    line-height:1.6;
-    color:#111827;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#dc2626;
-    color:white;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
+}
+
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
     text-align:center;
-    padding:50px 20px;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
 }
 
-.card{
-    background:var(--light);
-    border-left:5px solid var(--danger);
-    padding:20px;
-    margin:25px 0;
-    border-radius:8px;
-}
-
-.correct{
-    color:var(--success);
-    font-weight:bold;
-}
-
-.wrong{
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
     color:var(--danger);
-    font-weight:bold;
 }
 
-pre{
-    background:#111827;
-    color:white;
-    padding:15px;
-    border-radius:8px;
-    overflow:auto;
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
 }
 
-h2{
-    color:#dc2626;
-    border-bottom:2px solid #dc2626;
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.panel{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+    border-left:5px solid var(--danger);
+}
+
+.panel h2{
+    margin-top:0;
+    font-size:calc(1.35rem * var(--font-scale));
+    color:var(--danger);
+    border-bottom:2px solid var(--border);
     padding-bottom:10px;
+    margin-bottom:15px;
 }
 
+.panel h3{
+    font-size:calc(1.15rem * var(--font-scale));
+    color:var(--text-main);
+    margin-top:20px;
+    margin-bottom:8px;
+}
+
+.panel p,
+.panel li{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.panel ul{
+    padding-left:25px;
+}
+
+/* ===== Wrong / Correct Labels ===== */
+.label-wrong,
+.label-correct{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:700;
+    font-size:calc(.9rem * var(--font-scale));
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:4px 10px;
+    border-radius:6px;
+    margin:12px 0 6px;
+}
+
+.label-wrong{
+    color:var(--danger);
+    background:color-mix(in srgb, var(--danger) 12%, var(--bg-card));
+}
+
+.label-correct{
+    color:var(--success);
+    background:color-mix(in srgb, var(--success) 12%, var(--bg-card));
+}
+
+/* ===== Formula Blocks ===== */
+.formula{
+    background:#1e293b;
+    color:#e2e8f0;
+    padding:14px;
+    border-radius:8px;
+    font-family:'Courier New', monospace;
+    font-size:calc(.92rem * var(--font-scale));
+    line-height:1.6;
+    overflow-x:auto;
+    white-space:pre;
+    margin:8px 0;
+}
+
+[data-theme="dark"] .formula{
+    background:#0f172a;
+    color:#e2e8f0;
+}
+
+.formula-wrong{
+    border-left:4px solid var(--danger);
+}
+
+.formula-correct{
+    border-left:4px solid var(--success);
+}
+
+/* ===== Side-by-side comparison ===== */
+.compare{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(max(260px,26vw),1fr));
+    gap:14px;
+    margin:12px 0;
+}
+
+/* ===== Reminder Box ===== */
+.reminder{
+    background:color-mix(in srgb, var(--primary) 8%, var(--bg-card));
+    border:2px solid var(--primary);
+    border-radius:12px;
+    padding:20px;
+    margin:20px 0;
+}
+
+.reminder h3{
+    margin-top:0;
+    color:var(--primary);
+}
+
+/* ===== Buttons ===== */
 .btn{
     display:inline-block;
     margin-top:20px;
     margin-right:10px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    padding:10px 16px;
+    padding:12px 18px;
+    border:none;
     border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+}
+
+@media print{
+        .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .panel{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    .formula{ background:#f0f0f0; color:#000; }
+    .btn{ display:none; }
 }
 
 </style>
@@ -85,425 +389,444 @@ h2{
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Common Mistakes</h1>
 
-<p>
-Avoid these errors and immediately improve exam performance.
-</p>
+<p>Avoid these errors and immediately improve exam performance.</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<h2>Mistake #1: Splitting Addition</h2>
+<!-- ===== Mistake 1 ===== -->
+<section class="panel" aria-labelledby="mistake1-heading">
 
-<div class="card">
+<h2 id="mistake1-heading">Mistake #1: Splitting Addition</h2>
 
-<p class="wrong">
-
-❌ Wrong
-
-</p>
-
-<pre>
-log(a+b)
-
-=
-
-log(a)+log(b)
-</pre>
-
-<p class="correct">
-
-✅ Correct
-
-</p>
-
-<pre>
-There is NO rule
-for log(a+b)
-</pre>
-
+<div class="compare">
+    <div>
+        <span class="label-wrong">❌ Wrong</span>
+        <div class="formula formula-wrong">log(a + b) = log(a) + log(b)</div>
+    </div>
+    <div>
+        <span class="label-correct">✅ Correct</span>
+        <div class="formula formula-correct">There is NO rule for log(a + b)</div>
+    </div>
 </div>
 
-<h2>Mistake #2: Incorrect Domain Rule</h2>
+</section>
 
-<div class="card">
+<!-- ===== Mistake 2 ===== -->
+<section class="panel" aria-labelledby="mistake2-heading">
 
-<p class="wrong">
+<h2 id="mistake2-heading">Mistake #2: Incorrect Domain Rule</h2>
 
-❌ Wrong
-
-</p>
-
-<pre>
-Inside ≥ 0
-</pre>
-
-<p class="correct">
-
-✅ Correct
-
-</p>
-
-<pre>
-Inside > 0
-</pre>
-
-<p>
-
-Logarithms cannot accept zero.
-
-</p>
-
+<div class="compare">
+    <div>
+        <span class="label-wrong">❌ Wrong</span>
+        <div class="formula formula-wrong">Inside ≥ 0</div>
+    </div>
+    <div>
+        <span class="label-correct">✅ Correct</span>
+        <div class="formula formula-correct">Inside > 0</div>
+    </div>
 </div>
 
-<h2>Mistake #3: Forgetting Domain Checks</h2>
+<p>Logarithms cannot accept zero — the argument must be strictly greater than zero.</p>
 
-<div class="card">
+</section>
 
-<p>
+<!-- ===== Mistake 3 ===== -->
+<section class="panel" aria-labelledby="mistake3-heading">
 
-After solving a logarithmic equation:
+<h2 id="mistake3-heading">Mistake #3: Forgetting Domain Checks</h2>
 
-</p>
+<p>After solving a logarithmic equation:</p>
+<div class="formula">Always verify: Argument > 0</div>
+<p>Otherwise an extraneous solution may appear.</p>
 
-<pre>
-Always verify
+</section>
 
-Argument > 0
-</pre>
+<!-- ===== Mistake 4 ===== -->
+<section class="panel" aria-labelledby="mistake4-heading">
 
-<p>
+<h2 id="mistake4-heading">Mistake #4: Mixing Product and Quotient Rules</h2>
 
-Otherwise an extraneous solution may appear.
+<div class="formula">Product → Add
+Quotient → Subtract</div>
 
-</p>
+</section>
 
+<!-- ===== Mistake 5 ===== -->
+<section class="panel" aria-labelledby="mistake5-heading">
+
+<h2 id="mistake5-heading">Mistake #5: Forgetting the Power Rule</h2>
+
+<div class="compare">
+    <div>
+        <span class="label-wrong">❌ Wrong</span>
+        <div class="formula formula-wrong">log(x²) = (log(x))²</div>
+    </div>
+    <div>
+        <span class="label-correct">✅ Correct</span>
+        <div class="formula formula-correct">log(x²) = 2 log(x)</div>
+    </div>
 </div>
 
-<h2>Mistake #4: Mixing Product and Quotient Rules</h2>
+</section>
 
-<div class="card">
+<!-- ===== Mistake 6 ===== -->
+<section class="panel" aria-labelledby="mistake6-heading">
 
-<pre>
-Product
+<h2 id="mistake6-heading">Mistake #6: Confusing Domain and Range</h2>
 
-↓
+<div class="formula">Domain: x > 0
+Range: All Real Numbers</div>
 
-Add
+</section>
 
-Quotient
+<!-- ===== Mistake 7 ===== -->
+<section class="panel" aria-labelledby="mistake7-heading">
 
-↓
+<h2 id="mistake7-heading">Mistake #7: Missing the Vertical Asymptote</h2>
 
-Subtract
-</pre>
+<div class="formula">y = log(x)
+Vertical Asymptote: x = 0</div>
+<p>The graph approaches but never reaches the asymptote.</p>
 
+</section>
+
+<!-- ===== Mistake 8 ===== -->
+<section class="panel" aria-labelledby="mistake8-heading">
+
+<h2 id="mistake8-heading">Mistake #8: Wrong Growth Formula</h2>
+
+<div class="compare">
+    <div>
+        <span class="label-correct">✅ Growth</span>
+        <div class="formula formula-correct">P = P₀(1 + r)^t</div>
+    </div>
+    <div>
+        <span class="label-correct">✅ Decay</span>
+        <div class="formula formula-correct">P = P₀(1 - r)^t</div>
+    </div>
 </div>
 
-<h2>Mistake #5: Forgetting the Power Rule</h2>
+</section>
 
-<div class="card">
+<!-- ===== Mistake 9 ===== -->
+<section class="panel" aria-labelledby="mistake9-heading">
 
-<p class="wrong">
+<h2 id="mistake9-heading">Mistake #9: Confusing Annual and Continuous Growth</h2>
 
-❌ Wrong
+<div class="formula">Annual: ab^t
+Continuous: ae^(kt)</div>
 
-</p>
+</section>
 
-<pre>
-log(x²)
+<!-- ===== Mistake 10 ===== -->
+<section class="panel" aria-labelledby="mistake10-heading">
 
-=
+<h2 id="mistake10-heading">Mistake #10: Incorrect Conversion</h2>
 
-(log(x))²
-</pre>
+<p>To convert:</p>
+<div class="formula">ab^t → ae^(kt)
+k = ln(b)</div>
+<p>To convert back:</p>
+<div class="formula">b = e^k</div>
 
-<p class="correct">
+</section>
 
-✅ Correct
+<!-- ===== Mistake 11 ===== -->
+<section class="panel" aria-labelledby="mistake11-heading">
 
-</p>
+<h2 id="mistake11-heading">Mistake #11: Wrong Half-Life Formula</h2>
 
-<pre>
-log(x²)
+<div class="formula">Half-Life = ln(2) / |k|</div>
+<p>Use absolute value because decay constants are negative.</p>
 
-=
+</section>
 
-2log(x)
-</pre>
+<!-- ===== Mistake 12 ===== -->
+<section class="panel" aria-labelledby="mistake12-heading">
 
-</div>
+<h2 id="mistake12-heading">Mistake #12: Wrong Doubling Time Formula</h2>
 
-<h2>Mistake #6: Confusing Domain and Range</h2>
+<div class="formula">Doubling Time = ln(2) / k</div>
 
-<div class="card">
+</section>
 
-<pre>
-Domain:
+<!-- ===== Mistake 13 ===== -->
+<section class="panel" aria-labelledby="mistake13-heading">
 
-x > 0
+<h2 id="mistake13-heading">Mistake #13: Solving the Wrong Equation</h2>
 
-Range:
+<div class="formula">2^x = 50</div>
+<p>Variable is trapped in an exponent — take logarithms.</p>
 
-All Real Numbers
-</pre>
+</section>
 
-</div>
+<!-- ===== Mistake 14 ===== -->
+<section class="panel" aria-labelledby="mistake14-heading">
 
-<h2>Mistake #7: Missing the Vertical Asymptote</h2>
+<h2 id="mistake14-heading">Mistake #14: Not Recognizing When Logs Can't Help</h2>
 
-<div class="card">
-
-<pre>
-y = log(x)
-
-Vertical Asymptote:
-
-x = 0
-</pre>
-
-<p>
-
-The graph approaches but never reaches the asymptote.
-
-</p>
-
-</div>
-
-<h2>Mistake #8: Wrong Growth Formula</h2>
-
-<div class="card">
-
-<p class="correct">
-
-✅ Growth
-
-</p>
-
-<pre>
-P=P₀(1+r)^t
-</pre>
-
-<p class="correct">
-
-✅ Decay
-
-</p>
-
-<pre>
-P=P₀(1-r)^t
-</pre>
-
-</div>
-
-<h2>Mistake #9: Confusing Annual and Continuous Growth</h2>
-
-<div class="card">
-
-<pre>
-Annual
-
-ab^t
-
-Continuous
-
-ae^(kt)
-</pre>
-
-</div>
-
-<h2>Mistake #10: Incorrect Conversion</h2>
-
-<div class="card">
-
-<p>
-
-To convert:
-
-</p>
-
-<pre>
-ab^t
-
-↓
-
-ae^(kt)
-
-k = ln(b)
-</pre>
-
-<p>
-
-To convert back:
-
-</p>
-
-<pre>
-b = e^k
-</pre>
-
-</div>
-
-<h2>Mistake #11: Wrong Half-Life Formula</h2>
-
-<div class="card">
-
-<pre>
-Half-Life
-
-ln(2)/|k|
-</pre>
-
-<p>
-
-Use absolute value because decay constants are negative.
-
-</p>
-
-</div>
-
-<h2>Mistake #12: Wrong Doubling Time Formula</h2>
-
-<div class="card">
-
-<pre>
-Doubling Time
-
-ln(2)/k
-</pre>
-
-</div>
-
-<h2>Mistake #13: Solving the Wrong Equation</h2>
-
-<div class="card">
-
-<pre>
-2^x = 50
-</pre>
-
-<p>
-
-Variable is trapped in an exponent.
-
-</p>
-
-<p>
-
-Take logarithms.
-
-</p>
-
-</div>
-
-<h2>Mistake #14: Not Recognizing When Logs Can't Help</h2>
-
-<div class="card">
-
-<pre>
-2^x + x = 10
-</pre>
-
-<p>
-
-Variable appears:
-
-</p>
-
+<div class="formula">2^x + x = 10</div>
+<p>Variable appears:</p>
 <ul>
-
-<li>Inside exponent</li>
-
-<li>Outside exponent</li>
-
+    <li>Inside exponent</li>
+    <li>Outside exponent</li>
 </ul>
+<p>Logs cannot isolate x exactly — use graphing or numerical methods.</p>
 
-<p>
+</section>
 
-Logs cannot isolate x exactly.
+<!-- ===== Mistake 15 ===== -->
+<section class="panel" aria-labelledby="mistake15-heading">
 
-</p>
+<h2 id="mistake15-heading">Mistake #15: Memorizing Without Understanding</h2>
 
-</div>
-
-<h2>Mistake #15: Memorizing Without Understanding</h2>
-
-<div class="card">
-
-<p>
-
-Students often memorize:
-
-</p>
-
-<pre>
-Product Rule
-
+<p>Students often memorize:</p>
+<div class="formula">Product Rule
 Quotient Rule
+Power Rule</div>
+<p>but forget:</p>
+<div class="formula">Why they work.</div>
+<p>Understanding the mechanics improves retention.</p>
 
-Power Rule
-</pre>
+</section>
 
-<p>
+<!-- ===== Final Reminder ===== -->
+<section class="panel" aria-labelledby="final-heading">
 
-but forget:
+<h2 id="final-heading">Final Reminder</h2>
 
-</p>
-
-<pre>
-Why they work.
-</pre>
-
-<p>
-
-Understanding the mechanics improves retention.
-
-</p>
-
-</div>
-
-<h2>Final Reminder</h2>
-
-<div class="card">
-
-<h3>The 5 Things Most Tested</h3>
-
-<pre>
-1. Log Properties
-
+<div class="reminder">
+    <h3>🔥 The 5 Things Most Tested</h3>
+    <div class="formula">1. Log Properties
 2. Domain
-
 3. Graph Features
-
 4. Exponential Equations
+5. Growth & Decay Models</div>
+    <p>If you're strong in those areas, you are usually in good shape for a Chapter 5 exam.</p>
+</div>
 
-5. Growth & Decay Models
-</pre>
+</section>
+
+<a class="btn" href="calculators.html">← Calculators</a>
+<a class="btn" href="final-exam-cheat-sheet.html">Next: Final Exam Cheat Sheet →</a>
+
+</main>
+
+<script>
+(function () {
+    'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+})();
+</script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
 
 <p>
-
-If you're strong in those areas,
-you are usually in good shape for a Chapter 5 exam.
-
+Build confidence one concept at a time.
 </p>
 
-</div>
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
 
-<a class="btn"
-href="calculators.html">
-← Calculators
-</a>
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
 
-<a class="btn"
-href="final-exam-cheat-sheet.html">
-Next: Final Exam Cheat Sheet →
-</a>
-
-</div>
+</footer>
 
 </body>
-</html>
+</html>  
