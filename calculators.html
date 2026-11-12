@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Interactive Calculators | Chapter 5 Mastery Center</title>
+<meta name="description" content="Logarithm, growth, decay, half-life, doubling time, and continuous rate calculators for Chapter 5 practice.">
 
-<meta name="description"
-content="Interactive calculators for logarithms, half-life, doubling time, exponential form conversion, and solving exponential equations.">
+<link rel="stylesheet" href="styles.css">
 
 <style>
-
 :root{
     --primary:#2563eb;
     --secondary:#1d4ed8;
@@ -53,7 +51,7 @@ body{
     transition:background .3s, color .3s;
 }
 
-/* ===== Skip Link ===== */
+/* ===== Accessibility: Skip Link ===== */
 .skip-link{
     position:absolute;
     top:-60px;
@@ -70,6 +68,7 @@ body{
     top:0;
 }
 
+/* Screen-reader only utility */
 .sr-only{
     position:absolute;
     width:1px;
@@ -151,7 +150,7 @@ body{
     text-align:center;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero (card-styled to match tiles) ===== */
 .hero{
     max-width:1200px;
     margin:24px auto 0;
@@ -175,7 +174,7 @@ body{
     margin-top:15px;
 }
 
-/* ===== Navigation ===== */
+/* ===== Navigation (card-styled to match tiles) ===== */
 .site-nav{
     max-width:1200px;
     margin:16px auto 0;
@@ -225,89 +224,70 @@ body{
     padding:40px 20px;
 }
 
-.panel{
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+/* ===== Calculator Grid ===== */
+.calc-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:25px;
+}
+
+.calc-card{
     background:var(--bg-card);
-    padding:25px;
-    border-radius:12px;
-    margin-bottom:30px;
-    box-shadow:0 2px 8px var(--shadow);
     border:1px solid var(--border);
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px var(--shadow);
 }
 
-.panel h2{
+.calc-card h3{
     margin-top:0;
-    font-size:calc(1.4rem * var(--font-scale));
     color:var(--primary);
+    font-size:calc(1.25rem * var(--font-scale));
+    border-bottom:2px solid var(--border);
+    padding-bottom:10px;
 }
 
-.panel h3{
-    font-size:calc(1.1rem * var(--font-scale));
-    color:var(--text-main);
-    margin-top:0;
-}
-
-.panel p,
-.panel label,
-.panel span{
-    font-size:calc(1rem * var(--font-scale));
-}
-
-.panel .formula{
-    font-family:'Courier New', monospace;
-    font-size:calc(.9rem * var(--font-scale));
+.calc-card .hint{
     color:var(--text-muted);
-    margin:8px 0;
+    font-size:calc(.9rem * var(--font-scale));
+    margin:0 0 15px;
 }
 
-/* ===== Calculator Inputs ===== */
-.calc-field{
-    margin:12px 0;
+.field{
+    margin-bottom:12px;
 }
 
-.calc-field label{
+.field label{
     display:block;
     font-weight:600;
-    margin-bottom:4px;
-    font-size:calc(.9rem * var(--font-scale));
-    color:var(--text-muted);
+    font-size:calc(.92rem * var(--font-scale));
+    margin-bottom:5px;
 }
 
-.calc-field input{
+.field input{
     width:100%;
     padding:10px 12px;
     border:2px solid var(--border);
-    border-radius:6px;
-    font-size:calc(1rem * var(--font-scale));
+    border-radius:8px;
     background:var(--bg-body);
     color:var(--text-main);
-    transition:border-color .2s;
+    font-size:calc(1rem * var(--font-scale));
 }
 
-.calc-field input:focus{
+.field input:focus{
     outline:none;
     border-color:var(--primary);
 }
 
-.calc-field input::placeholder{
-    color:var(--text-muted);
-    opacity:.6;
-}
-
-.calc-group{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:12px 0;
-}
-
-.calc-group .calc-field{
-    flex:1 1 calc(33.33% - 10px);
-    min-width:120px;
-}
-
 .calc-btn{
-    display:inline-block;
-    padding:10px 20px;
+    padding:11px 18px;
     background:var(--primary);
     color:#fff;
     border:none;
@@ -317,71 +297,44 @@ body{
     cursor:pointer;
     transition:background .2s;
 }
+.calc-btn:hover, .calc-btn:focus-visible{ background:var(--secondary); }
+.calc-btn:focus-visible{ outline:3px solid var(--primary); outline-offset:3px; }
 
-.calc-btn:hover,
-.calc-btn:focus-visible{
-    background:var(--secondary);
-}
-
-.calc-btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:3px;
-}
-
-/* ===== Result ===== */
-.calc-result{
-    margin-top:15px;
-    padding:12px 16px;
-    border-radius:8px;
-    border:1px solid var(--border);
+.calc-out{
+    margin-top:14px;
+    padding:14px 16px;
     background:var(--bg-body);
-    font-weight:700;
-    font-size:calc(1rem * var(--font-scale));
-    color:var(--success);
-    display:none;
+    border:2px solid var(--border);
+    border-left:4px solid var(--success);
+    border-radius:8px;
+    font-family:Consolas, Monaco, monospace;
+    font-size:calc(.95rem * var(--font-scale));
+    line-height:1.6;
+    white-space:pre-wrap;
+    min-height:48px;
 }
 
-.calc-result.visible{
-    display:block;
+.calc-out.error{
+    border-left-color:#dc2626;
+    color:#b91c1c;
 }
+[data-theme="dark"] .calc-out.error{ color:#fca5a5; }
 
-/* ===== Buttons ===== */
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    margin-right:10px;
-    padding:12px 18px;
-    border:none;
-    border-radius:6px;
-    background:var(--primary);
-    color:#fff;
-    text-decoration:none;
-    font-size:calc(1rem * var(--font-scale));
-    font-weight:600;
-    cursor:pointer;
+.page-nav{
+    display:flex; flex-wrap:wrap;
+    justify-content:space-between; gap:12px;
+    margin-top:40px;
 }
-
-.btn:hover,
-.btn:focus-visible{
-    background:var(--secondary);
+.back{
+    display:inline-block; padding:10px 16px;
+    background:var(--primary); color:#fff;
+    text-decoration:none; border-radius:6px;
+    font-weight:600; font-size:calc(1rem * var(--font-scale));
 }
+.back:hover, .back:focus-visible{ background:var(--secondary); }
+.back:focus-visible{ outline:3px solid var(--primary); outline-offset:3px; }
 
-.btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:3px;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--footer-text);
-    border-top:1px solid var(--border);
-}
-
-ul{
-    padding-left:20px;
-}
-
+/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
     *{
         transition:none !important;
@@ -389,10 +342,11 @@ ul{
     }
 }
 
+/* Print styles */
 @media print{
     .a11y-bar, .site-nav{ display:none; }
     body{ background:#fff; color:#000; }
-    .panel{ box-shadow:none; border:1px solid #ccc; }
+    .calc-card{ box-shadow:none; border:1px solid #ccc; }
 }
 
 </style>
@@ -404,205 +358,144 @@ ul{
 
 <!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
-
     <div class="a11y-group" role="group" aria-label="Text size controls">
         <span class="a11y-label" id="font-label">Text Size</span>
-
         <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
-
         <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
-
         <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
-
         <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
     </div>
-
     <div class="a11y-group">
         <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
     </div>
-
 </div>
 
 <!-- Top Ribbon -->
 <div id="site-nav" class="site-nav" aria-label="Primary"></div>
 <script src="nav.js"></script>
-    
+
 <header class="hero">
-
-<h1>Interactive Calculators</h1>
-
-<p>Use these tools to check your Chapter 5 work.</p>
-
+    <h1>Interactive Calculators</h1>
+    <p>Check your work and explore how each parameter changes the answer.</p>
 </header>
 
 <main class="container" id="main-content">
 
-<!-- ===== Log Calculator ===== -->
-<section class="panel" aria-labelledby="log-calc-heading">
+<div class="calc-grid">
 
-<h2 id="log-calc-heading">Logarithm Calculator</h2>
-<p class="formula">log<sub>b</sub>(x) = ln(x) / ln(b)</p>
+    <!-- 1. Logarithm Calculator -->
+    <section class="calc-card" aria-labelledby="c1">
+        <h3 id="c1">Logarithm Calculator</h3>
+        <p class="hint">Computes log<sub>b</sub>(x) using the Change of Base formula.</p>
+        <div class="field">
+            <label for="log-base">Base (b)</label>
+            <input type="number" id="log-base" step="any" value="10">
+        </div>
+        <div class="field">
+            <label for="log-val">Argument (x)</label>
+            <input type="number" id="log-val" step="any" value="100">
+        </div>
+        <button type="button" class="calc-btn" data-calc="log">Calculate</button>
+        <div class="calc-out" id="out-log" aria-live="polite">Result appears here.</div>
+    </section>
 
-<div class="calc-group">
-    <div class="calc-field">
-        <label for="logBase">Base (b)</label>
-        <input id="logBase" type="number" placeholder="e.g. 10" step="any">
-    </div>
-    <div class="calc-field">
-        <label for="logValue">Value (x)</label>
-        <input id="logValue" type="number" placeholder="e.g. 1000" step="any">
-    </div>
+    <!-- 2. Growth / Decay Calculator -->
+    <section class="calc-card" aria-labelledby="c2">
+        <h3 id="c2">Growth &amp; Decay Calculator</h3>
+        <p class="hint">A = P · b<sup>t</sup></p>
+        <div class="field">
+            <label for="gd-p">Initial amount (P)</label>
+            <input type="number" id="gd-p" step="any" value="100">
+        </div>
+        <div class="field">
+            <label for="gd-b">Base / factor (b)</label>
+            <input type="number" id="gd-b" step="any" value="1.05">
+        </div>
+        <div class="field">
+            <label for="gd-t">Time (t)</label>
+            <input type="number" id="gd-t" step="any" value="10">
+        </div>
+        <button type="button" class="calc-btn" data-calc="growth">Calculate</button>
+        <div class="calc-out" id="out-growth" aria-live="polite">Result appears here.</div>
+    </section>
+
+    <!-- 3. Half-Life Calculator -->
+    <section class="calc-card" aria-labelledby="c3">
+        <h3 id="c3">Half-Life Calculator</h3>
+        <p class="hint">t½ = ln(2) / k &nbsp;•&nbsp; A = P·(1/2)<sup>t/h</sup></p>
+        <div class="field">
+            <label for="hl-k">Decay constant (k)</label>
+            <input type="number" id="hl-k" step="any" value="0.1">
+        </div>
+        <button type="button" class="calc-btn" data-calc="half">Find Half-Life</button>
+        <div class="calc-out" id="out-half" aria-live="polite">Result appears here.</div>
+    </section>
+
+    <!-- 4. Doubling Time Calculator -->
+    <section class="calc-card" aria-labelledby="c4">
+        <h3 id="c4">Doubling Time Calculator</h3>
+        <p class="hint">t<sub>d</sub> = ln(2) / k</p>
+        <div class="field">
+            <label for="dt-k">Continuous growth rate (k)</label>
+            <input type="number" id="dt-k" step="any" value="0.07">
+        </div>
+        <button type="button" class="calc-btn" data-calc="double">Find Doubling Time</button>
+        <div class="calc-out" id="out-double" aria-live="polite">Result appears here.</div>
+    </section>
+
+    <!-- 5. Rate Converter -->
+    <section class="calc-card" aria-labelledby="c5">
+        <h3 id="c5">ab<sup>t</sup> → ae<sup>kt</sup> Converter</h3>
+        <p class="hint">k = ln(b). Converts an annual factor to a continuous rate.</p>
+        <div class="field">
+            <label for="cv-b">Annual base (b)</label>
+            <input type="number" id="cv-b" step="any" value="1.08">
+        </div>
+        <button type="button" class="calc-btn" data-calc="convert">Convert</button>
+        <div class="calc-out" id="out-convert" aria-live="polite">Result appears here.</div>
+    </section>
+
+    <!-- 6. Solve for t -->
+    <section class="calc-card" aria-labelledby="c6">
+        <h3 id="c6">Solve ab<sup>t</sup> = c for t</h3>
+        <p class="hint">t = ln(c/a) / ln(b)</p>
+        <div class="field">
+            <label for="st-a">Initial (a)</label>
+            <input type="number" id="st-a" step="any" value="50">
+        </div>
+        <div class="field">
+            <label for="st-b">Base (b)</label>
+            <input type="number" id="st-b" step="any" value="2">
+        </div>
+        <div class="field">
+            <label for="st-c">Target (c)</label>
+            <input type="number" id="st-c" step="any" value="800">
+        </div>
+        <button type="button" class="calc-btn" data-calc="solve">Solve</button>
+        <div class="calc-out" id="out-solve" aria-live="polite">Result appears here.</div>
+    </section>
+
 </div>
 
-<button type="button" class="calc-btn" onclick="calculateLog()">Calculate</button>
-
-<div id="logResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Half-Life Calculator ===== -->
-<section class="panel" aria-labelledby="halflife-heading">
-
-<h2 id="halflife-heading">Half-Life Calculator</h2>
-<p class="formula">t<sub>½</sub> = ln(2) / |k|</p>
-
-<div class="calc-field">
-    <label for="halfK">Decay Constant (k)</label>
-    <input id="halfK" type="number" placeholder="e.g. -0.05" step="any">
-</div>
-
-<button type="button" class="calc-btn" onclick="halfLife()">Calculate</button>
-
-<div id="halfResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Doubling Time Calculator ===== -->
-<section class="panel" aria-labelledby="doubling-heading">
-
-<h2 id="doubling-heading">Doubling Time Calculator</h2>
-<p class="formula">t<sub>d</sub> = ln(2) / k</p>
-
-<div class="calc-field">
-    <label for="doubleK">Growth Constant (k)</label>
-    <input id="doubleK" type="number" placeholder="e.g. 0.03" step="any">
-</div>
-
-<button type="button" class="calc-btn" onclick="doublingTime()">Calculate</button>
-
-<div id="doubleResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Convert abᵗ → aeᵏᵗ ===== -->
-<section class="panel" aria-labelledby="convert1-heading">
-
-<h2 id="convert1-heading">Convert abᵗ → aeᵏᵗ</h2>
-<p class="formula">k = ln(b)</p>
-
-<div class="calc-field">
-    <label for="annualBase">Base (b)</label>
-    <input id="annualBase" type="number" placeholder="e.g. 1.05" step="any">
-</div>
-
-<button type="button" class="calc-btn" onclick="convertToContinuous()">Convert</button>
-
-<div id="annualResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Convert aeᵏᵗ → abᵗ ===== -->
-<section class="panel" aria-labelledby="convert2-heading">
-
-<h2 id="convert2-heading">Convert aeᵏᵗ → abᵗ</h2>
-<p class="formula">b = eᵏ</p>
-
-<div class="calc-field">
-    <label for="continuousRate">Rate (k)</label>
-    <input id="continuousRate" type="number" placeholder="e.g. 0.04879" step="any">
-</div>
-
-<button type="button" class="calc-btn" onclick="convertToAnnual()">Convert</button>
-
-<div id="continuousResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Solve abᵗ = c ===== -->
-<section class="panel" aria-labelledby="solve1-heading">
-
-<h2 id="solve1-heading">Solve abᵗ = c for t</h2>
-<p class="formula">t = ln(c/a) / ln(b)</p>
-
-<div class="calc-group">
-    <div class="calc-field">
-        <label for="a1">a</label>
-        <input id="a1" type="number" placeholder="Initial amount" step="any">
-    </div>
-    <div class="calc-field">
-        <label for="b1">b</label>
-        <input id="b1" type="number" placeholder="Base" step="any">
-    </div>
-    <div class="calc-field">
-        <label for="c1">c</label>
-        <input id="c1" type="number" placeholder="Target value" step="any">
-    </div>
-</div>
-
-<button type="button" class="calc-btn" onclick="solveAnnualTime()">Solve</button>
-
-<div id="annualTimeResult" class="calc-result" role="status"></div>
-
-</section>
-
-<!-- ===== Solve aeᵏᵗ = c ===== -->
-<section class="panel" aria-labelledby="solve2-heading">
-
-<h2 id="solve2-heading">Solve aeᵏᵗ = c for t</h2>
-<p class="formula">t = ln(c/a) / k</p>
-
-<div class="calc-group">
-    <div class="calc-field">
-        <label for="a2">a</label>
-        <input id="a2" type="number" placeholder="Initial amount" step="any">
-    </div>
-    <div class="calc-field">
-        <label for="k2">k</label>
-        <input id="k2" type="number" placeholder="Rate constant" step="any">
-    </div>
-    <div class="calc-field">
-        <label for="c2">c</label>
-        <input id="c2" type="number" placeholder="Target value" step="any">
-    </div>
-</div>
-
-<button type="button" class="calc-btn" onclick="solveContinuousTime()">Solve</button>
-
-<div id="continuousTimeResult" class="calc-result" role="status"></div>
-
-</section>
-
-<a class="btn" href="math-lab-companion.html">← Math Lab Companion</a>
-<a class="btn" href="common-mistakes.html">Next: Common Mistakes →</a>
+<nav class="page-nav" aria-label="Page navigation">
+    <a class="back" href="formula-reference.html">← Formula Reference</a>
+    <a class="back" href="graph-explorer.html">Next: Graph Explorer →</a>
+</nav>
 
 </main>
 
 <script>
 (function () {
     'use strict';
+
     // ---------- Copyright Year ----------
     var yearEl = document.getElementById('copyright-year');
-    if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-    }
-    
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+
     // ---------- Text Size Controls ----------
     var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
-    var MIN_INDEX = 0;
-    var MAX_INDEX = LEVELS.length - 1;
-    var DEFAULT_INDEX = 2;
-
-    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var MIN_INDEX = 0, MAX_INDEX = LEVELS.length - 1, DEFAULT_INDEX = 2;
+    var STORE_KEY_SIZE = 'ch5-font-scale-index';
     var STORE_KEY_THEME = 'ch5-theme';
 
     var btnIncrease = document.getElementById('font-increase');
@@ -611,9 +504,7 @@ ul{
     var display     = document.getElementById('font-level-display');
     var root        = document.documentElement;
 
-    function clamp(n, lo, hi) {
-        return Math.min(hi, Math.max(lo, n));
-    }
+    function clamp(n, lo, hi) { return Math.min(hi, Math.max(lo, n)); }
 
     function getStoredIndex() {
         try {
@@ -621,9 +512,7 @@ ul{
             if (raw === null) { return DEFAULT_INDEX; }
             var n = parseInt(raw, 10);
             return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
-        } catch (e) {
-            return DEFAULT_INDEX;
-        }
+        } catch (e) { return DEFAULT_INDEX; }
     }
 
     function applyScale(index, announce) {
@@ -636,12 +525,8 @@ ul{
         btnIncrease.disabled = (index === MAX_INDEX);
         btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
         btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
-        try {
-            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
-        } catch (e) { /* storage unavailable */ }
-        if (announce) {
-            display.textContent = Math.round(scale * 100) + '% text size';
-        }
+        try { window.localStorage.setItem(STORE_KEY_SIZE, String(index)); } catch (e) {}
+        if (announce) { display.textContent = Math.round(scale * 100) + '% text size'; }
     }
 
     var currentIndex = getStoredIndex();
@@ -651,12 +536,10 @@ ul{
         currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
         applyScale(currentIndex, true);
     });
-
     btnDecrease.addEventListener('click', function () {
         currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
         applyScale(currentIndex, true);
     });
-
     btnReset.addEventListener('click', function () {
         currentIndex = DEFAULT_INDEX;
         applyScale(currentIndex, true);
@@ -686,7 +569,7 @@ ul{
         try {
             var stored = window.localStorage.getItem(STORE_KEY_THEME);
             if (stored === 'dark' || stored === 'light') { return stored; }
-        } catch (e) { /* ignore */ }
+        } catch (e) {}
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             return 'dark';
         }
@@ -706,145 +589,147 @@ ul{
             themeToggle.setAttribute('aria-label', 'Switch to dark mode');
         }
         if (persist) {
-            try {
-                window.localStorage.setItem(STORE_KEY_THEME, theme);
-            } catch (e) { /* ignore */ }
+            try { window.localStorage.setItem(STORE_KEY_THEME, theme); } catch (e) {}
         }
     }
 
     var currentTheme = getPreferredTheme();
     applyTheme(currentTheme, false);
 
+    // ---------- Wire the theme toggle ----------
     themeToggle.addEventListener('click', function () {
         currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
         applyTheme(currentTheme, true);
     });
 
-    if (window.matchMedia) {
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        var onChange = function (e) {
-            var stored = null;
-            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
-            if (stored !== 'dark' && stored !== 'light') {
-                currentTheme = e.matches ? 'dark' : 'light';
-                applyTheme(currentTheme, false);
-            }
-        };
-        if (mq.addEventListener) {
-            mq.addEventListener('change', onChange);
-        } else if (mq.addListener) {
-            mq.addListener(onChange);
-        }
-    }
+    // ---------- Calculator Helpers ----------
+    var OUT = {
+        log:      document.getElementById('out-log'),
+        growth:   document.getElementById('out-growth'),
+        half:     document.getElementById('out-half'),
+        double:   document.getElementById('out-double'),
+        convert:  document.getElementById('out-convert'),
+        solve:    document.getElementById('out-solve')
+    };
 
-    // ---------- Calculator Functions ----------
-    function showResult(id, text) {
-        var el = document.getElementById(id);
+    function setOut(key, text, isError) {
+        var el = OUT[key];
+        if (!el) return;
         el.textContent = text;
-        el.classList.add('visible');
+        el.classList.toggle('error', !!isError);
     }
 
-    /* Log Calculator */
-    function calculateLog() {
-        var b = parseFloat(document.getElementById("logBase").value);
-        var x = parseFloat(document.getElementById("logValue").value);
-        if (isNaN(b) || isNaN(x) || b <= 0 || b === 1 || x <= 0) {
-            showResult("logResult", "⚠️ Enter valid values: b > 0, b ≠ 1, x > 0");
-            return;
-        }
-        var answer = Math.log(x) / Math.log(b);
-        showResult("logResult", "log<sub>" + b + "</sub>(" + x + ") = " + answer.toFixed(4));
+    function num(id) {
+        var v = parseFloat(document.getElementById(id).value);
+        if (isNaN(v)) { throw 'Please enter a valid number.'; }
+        return v;
     }
 
-    /* Half-Life */
-    function halfLife() {
-        var k = parseFloat(document.getElementById("halfK").value);
-        if (isNaN(k) || k === 0) {
-            showResult("halfResult", "⚠️ Enter a non-zero decay constant k");
-            return;
-        }
-        var t = Math.log(2) / Math.abs(k);
-        showResult("halfResult", "Half-Life = " + t.toFixed(4));
-    }
+    // ---------- Calculator Buttons ----------
+    document.querySelectorAll('.calc-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var type = this.getAttribute('data-calc');
 
-    /* Doubling Time */
-    function doublingTime() {
-        var k = parseFloat(document.getElementById("doubleK").value);
-        if (isNaN(k) || k === 0) {
-            showResult("doubleResult", "⚠️ Enter a non-zero growth constant k");
-            return;
-        }
-        var t = Math.log(2) / k;
-        showResult("doubleResult", "Doubling Time = " + t.toFixed(4));
-    }
+            try {
+                switch (type) {
 
-    /* ab^t → ae^kt */
-    function convertToContinuous() {
-        var b = parseFloat(document.getElementById("annualBase").value);
-        if (isNaN(b) || b <= 0) {
-            showResult("annualResult", "⚠️ Enter a positive base b");
-            return;
-        }
-        var k = Math.log(b);
-        showResult("annualResult", "k = " + k.toFixed(6));
-    }
+                /* ---- 1. Logarithm Calculator ---- */
+                case 'log': {
+                    var b = num('log-base');
+                    var x = num('log-val');
+                    if (b <= 0 || b === 1) throw 'Base must be > 0 and ≠ 1.';
+                    if (x <= 0) throw 'Argument must be > 0.';
+                    var result = Math.log(x) / Math.log(b);
+                    setOut('log',
+                        'log_' + b + '(' + x + ') = ' + result.toFixed(6),
+                        false);
+                    break;
+                }
 
-    /* ae^kt → ab^t */
-    function convertToAnnual() {
-        var k = parseFloat(document.getElementById("continuousRate").value);
-        if (isNaN(k)) {
-            showResult("continuousResult", "⚠️ Enter a valid rate k");
-            return;
-        }
-        var b = Math.exp(k);
-        showResult("continuousResult", "b = " + b.toFixed(6));
-    }
+                /* ---- 2. Growth / Decay ---- */
+                case 'growth': {
+                    var P = num('gd-p');
+                    var b = num('gd-b');
+                    var t = num('gd-t');
+                    if (b <= 0) throw 'Base must be > 0.';
+                    var result = P * Math.pow(b, t);
+                    setOut('growth',
+                        'A = ' + P + ' · (' + b + ')^' + t + '\n' +
+                        'A = ' + result.toFixed(4),
+                        false);
+                    break;
+                }
 
-    /* Solve ab^t = c */
-    function solveAnnualTime() {
-        var a = parseFloat(document.getElementById("a1").value);
-        var b = parseFloat(document.getElementById("b1").value);
-        var c = parseFloat(document.getElementById("c1").value);
-        if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0 || b <= 0 || b === 1 || c === 0) {
-            showResult("annualTimeResult", "⚠️ Enter valid values: a ≠ 0, b > 0, b ≠ 1, c ≠ 0");
-            return;
-        }
-        var t = Math.log(c / a) / Math.log(b);
-        showResult("annualTimeResult", "t = " + t.toFixed(4));
-    }
+                /* ---- 3. Half-Life ---- */
+                case 'half': {
+                    var k = num('hl-k');
+                    if (k <= 0) throw 'Decay constant must be > 0.';
+                    var halfLife = Math.LN2 / k;
+                    setOut('half',
+                        't½ = ln(2) / k\n' +
+                        't½ = ' + halfLife.toFixed(6),
+                        false);
+                    break;
+                }
 
-    /* Solve ae^(kt) = c */
-    function solveContinuousTime() {
-        var a = parseFloat(document.getElementById("a2").value);
-        var k = parseFloat(document.getElementById("k2").value);
-        var c = parseFloat(document.getElementById("c2").value);
-        if (isNaN(a) || isNaN(k) || isNaN(c) || a === 0 || k === 0) {
-            showResult("continuousTimeResult", "⚠️ Enter valid values: a ≠ 0, k ≠ 0");
-            return;
-        }
-        var t = Math.log(c / a) / k;
-        showResult("continuousTimeResult", "t = " + t.toFixed(4));
-    }
+                /* ---- 4. Doubling Time ---- */
+                case 'double': {
+                    var dk = num('dt-k');
+                    if (dk <= 0) throw 'Growth rate must be > 0.';
+                    var dt = Math.LN2 / dk;
+                    setOut('double',
+                        't_d = ln(2) / k\n' +
+                        't_d = ' + dt.toFixed(6),
+                        false);
+                    break;
+                }
+
+                /* ---- 5. Rate Converter ---- */
+                case 'convert': {
+                    var bv = num('cv-b');
+                    if (bv <= 0) throw 'Base must be > 0.';
+                    var k = Math.log(bv);
+                    setOut('convert',
+                        'k = ln(' + bv + ') = ' + k.toFixed(6) + '\n' +
+                        bv + 'ᵗ  →  e^(' + k.toFixed(6) + 't)',
+                        false);
+                    break;
+                }
+
+                /* ---- 6. Solve abᵗ = c for t ---- */
+                case 'solve': {
+                    var a = num('st-a');
+                    var bb = num('st-b');
+                    var cc = num('st-c');
+                    if (a <= 0 || bb <= 0 || bb === 1) throw 'Invalid a or b.';
+                    if (cc <= 0) throw 'Target must be > 0.';
+                    var t = Math.log(cc / a) / Math.log(bb);
+                    setOut('solve',
+                        't = ln(c/a) / ln(b)\n' +
+                        't = ln(' + cc + '/' + a + ') / ln(' + bb + ')\n' +
+                        't = ' + t.toFixed(6),
+                        false);
+                    break;
+                }
+
+                default:
+                    setOut(type, 'Unknown calculator.', true);
+                }
+            } catch (err) {
+                setOut(type, 'Error: ' + err, true);
+            }
+        });
+    });
 
 })();
 </script>
 
 <footer>
-
-<h3>Chapter 5 Mastery Center</h3>
-
-<p>
-Build confidence one concept at a time.
-</p>
-
-<p>
-Next Milestone: Complete the Confidence Check with at least 80% mastery.
-</p>
-
-<p class="copyright">
-&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
-</p>
-
+    <h3>Chapter 5 Mastery Center</h3>
+    <p>Build confidence one concept at a time.</p>
+    <p class="copyright">
+        &copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+    </p>
 </footer>
 
 </body>
