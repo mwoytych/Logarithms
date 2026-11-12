@@ -6,84 +6,408 @@
 
 <title>Random Practice Generator | Chapter 5 Mastery Center</title>
 
+<meta name="description"
+content="Generate unlimited randomized Chapter 5 practice problems for logarithms, domain, expansion, growth models, half-life, doubling time, and exponential equations.">
+
 <style>
 
 :root{
     --primary:#2563eb;
-    --success:#16a34a;
+    --secondary:#1d4ed8;
+    --success:#059669;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
-    font-family:Segoe UI,Arial,sans-serif;
-    line-height:1.6;
-    color:#111827;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
 }
 
-.card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin-bottom:25px;
-    border-radius:8px;
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
 }
 
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    margin:5px;
-    cursor:pointer;
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
     border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
 }
 
-button:hover{
-    background:#1d4ed8;
+.a11y-btn:hover{
+    border-color:var(--primary);
 }
 
-#problem{
-    font-size:1.3rem;
-    font-weight:bold;
-    margin-top:20px;
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
 }
 
-#solution{
-    margin-top:20px;
-    padding:15px;
-    background:white;
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
+    text-align:center;
+}
+
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
     border:1px solid var(--border);
-    border-radius:8px;
-    display:none;
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
 }
 
-select{
-    padding:10px;
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.panel{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:30px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+}
+
+.panel h2{
+    margin-top:0;
+    font-size:calc(1.4rem * var(--font-scale));
+    color:var(--primary);
+    border-bottom:2px solid var(--border);
+    padding-bottom:10px;
     margin-bottom:15px;
 }
 
+.panel p,
+.panel label,
+.panel select,
+.panel button{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+/* ===== Topic Selector ===== */
+.topic-select{
+    width:100%;
+    padding:12px 14px;
+    border:2px solid var(--border);
+    border-radius:8px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    font-size:calc(1rem * var(--font-scale));
+    margin-bottom:15px;
+}
+
+.topic-select:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+.topic-select option{
+    background:var(--bg-card);
+    color:var(--text-main);
+}
+
+/* ===== Buttons ===== */
+.btn-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:15px 0;
+}
+
+.calc-btn{
+    padding:12px 20px;
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+    transition:background .2s;
+}
+
+.calc-btn:hover,
+.calc-btn:focus-visible{
+    background:var(--secondary);
+}
+
+.calc-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+.calc-btn-secondary{
+    background:var(--bg-body);
+    color:var(--primary);
+    border:2px solid var(--border);
+}
+
+.calc-btn-secondary:hover,
+.calc-btn-secondary:focus-visible{
+    background:var(--bg-card);
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+/* ===== Problem Display ===== */
+.problem-display{
+    font-size:calc(1.4rem * var(--font-scale));
+    font-weight:700;
+    color:var(--text-main);
+    padding:20px;
+    background:var(--bg-body);
+    border:2px solid var(--border);
+    border-radius:10px;
+    margin-top:20px;
+    text-align:center;
+    min-height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.problem-display .problem-text{
+    white-space:pre-line;
+    line-height:1.6;
+}
+
+/* ===== Solution Display ===== */
+.solution-box{
+    margin-top:20px;
+    padding:20px;
+    border:2px solid var(--success);
+    border-radius:10px;
+    background:color-mix(in srgb, var(--success) 8%, var(--bg-card));
+    display:none;
+}
+
+.solution-box.visible{
+    display:block;
+}
+
+.solution-box h3{
+    margin-top:0;
+    color:var(--success);
+    font-size:calc(1.1rem * var(--font-scale));
+}
+
+.solution-box .solution-text{
+    font-family:'Courier New', monospace;
+    font-size:calc(.95rem * var(--font-scale));
+    line-height:1.7;
+    white-space:pre-line;
+    color:var(--text-main);
+}
+
+/* ===== Buttons ===== */
 .btn{
     display:inline-block;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:10px 16px;
+    padding:12px 18px;
+    border:none;
     border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+}
+
+@media print{
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .panel{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    .calc-btn, .btn{ display:none; }
 }
 
 </style>
@@ -91,278 +415,483 @@ select{
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Random Practice Generator</h1>
 
-<p>
-Generate Unlimited Chapter 5 Problems
-</p>
+<p>Generate Unlimited Chapter 5 Practice Problems</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<div class="card">
+<section class="panel" aria-labelledby="generator-heading">
 
-<h2>Select Topic</h2>
+<h2 id="generator-heading">Select a Topic</h2>
 
-<select id="topic">
-
-<option value="evaluate">Evaluate Logs</option>
-
-<option value="domain">Domain</option>
-
-<option value="expand">Expand Logs</option>
-
-<option value="growth">Growth Models</option>
-
-<option value="half">Half-Life</option>
-
-<option value="double">Doubling Time</option>
-
-<option value="solve">Solve Exponential Equations</option>
-
+<label for="topic-select" class="sr-only">Choose a topic</label>
+<select id="topic-select" class="topic-select">
+    <option value="evaluate">Evaluate Logs</option>
+    <option value="domain">Domain</option>
+    <option value="expand">Expand Logs</option>
+    <option value="condense">Condense Logs</option>
+    <option value="growth">Growth Models</option>
+    <option value="decay">Decay Models</option>
+    <option value="half">Half-Life</option>
+    <option value="double">Doubling Time</option>
+    <option value="solve-annual">Solve ab<sup>t</sup> = c</option>
+    <option value="solve-continuous">Solve ae<sup>kt</sup> = c</option>
+    <option value="convert">Convert ab<sup>t</sup> → ae<sup>kt</sup></option>
+    <option value="pH">pH Problems</option>
+    <option value="decibel">Decibel Problems</option>
 </select>
 
-<br>
-
-<button onclick="generateProblem()">
-Generate Problem
-</button>
-
-<button onclick="showSolution()">
-Show Solution
-</button>
-
-<div id="problem">
-Select a topic and generate a problem.
+<div class="btn-group">
+    <button type="button" class="calc-btn" id="generate-btn">Generate Problem</button>
+    <button type="button" class="calc-btn calc-btn-secondary" id="solution-btn">Show Solution</button>
+    <button type="button" class="calc-btn calc-btn-secondary" id="new-btn">New Problem</button>
 </div>
 
-<div id="solution"></div>
-
+<div class="problem-display">
+    <span class="problem-text" id="problem-text">Select a topic and click Generate Problem.</span>
 </div>
 
-<a class="btn"
-href="../index.html">
-Return Home
-</a>
-
+<div class="solution-box" id="solution-box">
+    <h3>📝 Solution</h3>
+    <div class="solution-text" id="solution-text"></div>
 </div>
+
+</section>
+
+</main>
 
 <script>
+(function () {
+    'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
 
-let currentAnswer = "";
-let currentSolution = "";
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
 
-function randomInt(min,max){
-    return Math.floor(
-        Math.random()*(max-min+1)
-    )+min;
-}
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
 
-function generateProblem(){
-
-    const topic =
-    document.getElementById("topic").value;
-
-    const problem =
-    document.getElementById("problem");
-
-    const solution =
-    document.getElementById("solution");
-
-    solution.style.display="none";
-
-    if(topic==="evaluate"){
-
-        let exponent =
-        randomInt(2,8);
-
-        let value =
-        Math.pow(2,exponent);
-
-        problem.innerHTML=
-        `Evaluate: log₂(${value})`;
-
-        currentAnswer=
-        exponent;
-
-        currentSolution=
-        `2^${exponent}=${value}
-        therefore
-        log₂(${value})=${exponent}`;
-
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
     }
 
-    else if(topic==="domain"){
-
-        let shift=
-        randomInt(2,15);
-
-        problem.innerHTML=
-        `Find the domain:
-        y=log(x-${shift})`;
-
-        currentSolution=
-        `
-        x-${shift}>0
-
-        x>${shift}
-
-        Domain:
-        (${shift},∞)
-        `;
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
     }
 
-    else if(topic==="expand"){
-
-        let a=randomInt(2,5);
-        let b=randomInt(2,5);
-
-        problem.innerHTML=
-        `
-        Expand:
-
-        log(
-        x^${a}y /
-        z^${b})
-        `;
-
-        currentSolution=
-        `
-        ${a}log(x)
-        +
-        log(y)
-        -
-        ${b}log(z)
-        `;
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
     }
 
-    else if(topic==="growth"){
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
 
-        let p=
-        randomInt(100,500);
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
 
-        let r=
-        randomInt(2,9);
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
 
-        problem.innerHTML=
-        `
-        Growth Model:
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
 
-        P=${p}(1.${r})^t
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
 
-        What is the growth rate?
-        `;
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
 
-        currentSolution=
-        `
-        Growth Rate
-
-        =
-        ${r}%
-        `;
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
     }
 
-    else if(topic==="half"){
-
-        let k=
-        (Math.random()*0.4+0.05)
-        .toFixed(2);
-
-        let value=
-        (
-        Math.log(2)/k
-        ).toFixed(2);
-
-        problem.innerHTML=
-        `
-        Find Half-Life
-
-        A=100e^(-${k}t)
-        `;
-
-        currentSolution=
-        `
-        Half-Life
-
-        = ln(2)/${k}
-
-        ≈ ${value}
-        `;
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
     }
 
-    else if(topic==="double"){
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
 
-        let k=
-        (Math.random()*0.3+0.05)
-        .toFixed(2);
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
 
-        let value=
-        (
-        Math.log(2)/k
-        ).toFixed(2);
-
-        problem.innerHTML=
-        `
-        Find Doubling Time
-
-        A=100e^(${k}t)
-        `;
-
-        currentSolution=
-        `
-        Doubling Time
-
-        = ln(2)/${k}
-
-        ≈ ${value}
-        `;
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
     }
 
-    else if(topic==="solve"){
+    // ---------- Problem Generator ----------
+    var problemText = document.getElementById('problem-text');
+    var solutionBox = document.getElementById('solution-box');
+    var solutionText = document.getElementById('solution-text');
+    var topicSelect = document.getElementById('topic-select');
+    var generateBtn = document.getElementById('generate-btn');
+    var solutionBtn = document.getElementById('solution-btn');
+    var newBtn = document.getElementById('new-btn');
 
-        let answer=
-        randomInt(3,8);
+    var currentProblem = '';
+    var currentSolution = '';
 
-        let value=
-        Math.pow(3,answer);
-
-        problem.innerHTML=
-        `
-        Solve:
-
-        3^x=${value}
-        `;
-
-        currentSolution=
-        `
-        x=${answer}
-
-        because
-
-        3^${answer}
-        =
-        ${value}
-        `;
+    function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-}
+    function randomFloat(min, max, decimals) {
+        var val = Math.random() * (max - min) + min;
+        return parseFloat(val.toFixed(decimals));
+    }
 
-function showSolution(){
+    function generateProblem() {
+        var topic = topicSelect.value;
+        solutionBox.classList.remove('visible');
+        currentProblem = '';
+        currentSolution = '';
 
-    const solution=
-    document.getElementById("solution");
+        switch (topic) {
 
-    solution.style.display="block";
+        case 'evaluate': {
+            var base = [2, 3, 5, 10][randomInt(0, 3)];
+            var exponent = randomInt(1, 6);
+            var value = Math.pow(base, exponent);
+            currentProblem = 'Evaluate: log' + base + '(' + value + ')';
+            currentSolution = 'Step 1: Rewrite in exponential form\n' +
+                base + 'y = ' + value + '\n\n' +
+                'Step 2: Solve for y\n' +
+                base + '^' + exponent + ' = ' + value + '\n\n' +
+                'Answer: y = ' + exponent;
+            break;
+        }
 
-    solution.innerHTML=
-    currentSolution;
+        case 'domain': {
+            var shift = randomInt(1, 10);
+            var ops = ['+', '-'];
+            var op = ops[randomInt(0, 1)];
+            if (op === '-') {
+                currentProblem = 'Find the domain: y = log(x ' + op + ' ' + shift + ')';
+                currentSolution = 'Step 1: Set the inside expression > 0\n' +
+                    'x ' + op + ' ' + shift + ' > 0\n\n' +
+                    'Step 2: Solve for x\n' +
+                    'x > ' + shift + '\n\n' +
+                    'Domain: (' + shift + ', ∞)';
+            } else {
+                var negShift = -shift;
+                currentProblem = 'Find the domain: y = log(x ' + op + ' ' + shift + ')';
+                currentSolution = 'Step 1: Set the inside expression > 0\n' +
+                    'x ' + op + ' ' + shift + ' > 0\n\n' +
+                    'Step 2: Solve for x\n' +
+                    'x > ' + negShift + '\n\n' +
+                    'Domain: (' + negShift + ', ∞)';
+            }
+            break;
+        }
 
-}
+        case 'expand': {
+            var a = randomInt(2, 5);
+            var b = randomInt(1, 4);
+            var c = randomInt(1, 3);
+            currentProblem = 'Expand: log(x^' + a + ' · y / z^' + c + ')';
+            currentSolution = 'Step 1: Quotient Rule\n' +
+                'log(x^' + a + ' · y) - log(z^' + c + ')\n\n' +
+                'Step 2: Product Rule\n' +
+                'log(x^' + a + ') + log(y) - log(z^' + c + ')\n\n' +
+                'Step 3: Power Rule\n' +
+                a + 'log(x) + log(y) - ' + c + 'log(z)';
+            break;
+        }
 
+        case 'condense': {
+            var a = randomInt(2, 4);
+            var b = randomInt(2, 6);
+            currentProblem = 'Condense: ' + a + 'log(x) + log(y) - ' + b + 'log(z)';
+            currentSolution = 'Step 1: Power Rule (move coefficients)\n' +
+                'log(x^' + a + ') + log(y) - log(z^' + b + ')\n\n' +
+                'Step 2: Product Rule (add → multiply)\n' +
+                'log(x^' + a + ' · y) - log(z^' + b + ')\n\n' +
+                'Step 3: Quotient Rule (subtract → divide)\n' +
+                'log(x^' + a + 'y / z^' + b + ')';
+            break;
+        }
+
+                case 'growth': {
+            var p = randomInt(100, 500);
+            var r = randomInt(2, 9);
+            currentProblem = 'A population grows according to:\n\nP = ' + p + '(1.' + r + ')^t\n\nWhat is the annual growth rate?';
+            currentSolution = 'Step 1: Identify the base\nb = 1.' + r + '\n\n' +
+                'Step 2: Use b = 1 + r\nr = b - 1\nr = 1.' + r + ' - 1\nr = 0.' + r + '\n\n' +
+                'Answer: Growth rate = ' + r + '% per year';
+            break;
+        }
+
+        case 'decay': {
+            var p = randomInt(100, 500);
+            var r = randomInt(2, 9);
+            currentProblem = 'A substance decays according to:\n\nP = ' + p + '(0.9' + (r === 9 ? '' : '') + ')^t\n\nWait — let me use a clean form.\n\nP = ' + p + '(0.' + (10 - r) + ')^t\n\nWhat is the annual decay rate?';
+            currentSolution = 'Step 1: Identify the base\nb = 0.' + (10 - r) + '\n\n' +
+                'Step 2: Use b = 1 - r\nr = 1 - b\nr = 1 - 0.' + (10 - r) + '\nr = 0.' + r + '\n\n' +
+                'Answer: Decay rate = ' + r + '% per year';
+            break;
+        }
+
+        case 'half': {
+            var k = randomFloat(0.05, 0.45, 2);
+            var tHalf = (Math.log(2) / k).toFixed(2);
+            currentProblem = 'Find the half-life of:\n\nA = 100e^(-' + k + 't)';
+            currentSolution = 'Step 1: Half-life formula\nt½ = ln(2) / |k|\n\n' +
+                'Step 2: Substitute\n|k| = ' + k + '\nt½ = ln(2) / ' + k + '\n\n' +
+                'Answer: t½ ≈ ' + tHalf + ' time units';
+            break;
+        }
+
+        case 'double': {
+            var k = randomFloat(0.03, 0.35, 2);
+            var tDouble = (Math.log(2) / k).toFixed(2);
+            currentProblem = 'Find the doubling time of:\n\nA = 100e^(' + k + 't)';
+            currentSolution = 'Step 1: Doubling time formula\ntd = ln(2) / k\n\n' +
+                'Step 2: Substitute\nk = ' + k + '\ntd = ln(2) / ' + k + '\n\n' +
+                'Answer: td ≈ ' + tDouble + ' time units';
+            break;
+        }
+
+        case 'solve-annual': {
+            var a = randomInt(2, 20);
+            var b = randomInt(2, 4);
+            var t = randomInt(2, 5);
+            var c = Math.round(a * Math.pow(b, t));
+            currentProblem = 'Solve for t:\n\n' + a + '(' + b + ')^t = ' + c;
+            var ratio = (c / a).toFixed(4);
+            currentSolution = 'Step 1: Isolate the exponential\n' +
+                b + '^t = ' + c + ' / ' + a + '\n' + b + '^t = ' + ratio + '\n\n' +
+                'Step 2: Take logarithms\nt · log(' + b + ') = log(' + ratio + ')\n\n' +
+                'Step 3: Solve for t\nt = log(' + ratio + ') / log(' + b + ')\n\n' +
+                'Answer: t = ' + t;
+            break;
+        }
+
+        case 'solve-continuous': {
+            var a = randomInt(50, 200);
+            var k = randomFloat(0.05, 0.3, 2);
+            var t = randomInt(2, 8);
+            var c = Math.round(a * Math.exp(k * t));
+            currentProblem = 'Solve for t:\n\n' + a + 'e^(' + k + 't) = ' + c;
+            var ratio2 = (c / a).toFixed(4);
+            currentSolution = 'Step 1: Isolate the exponential\ne^(' + k + 't) = ' + c + ' / ' + a + '\ne^(' + k + 't) = ' + ratio2 + '\n\n' +
+                'Step 2: Take natural log\n' + k + 't = ln(' + ratio2 + ')\n\n' +
+                'Step 3: Solve for t\nt = ln(' + ratio2 + ') / ' + k + '\n\n' +
+                'Answer: t ≈ ' + t;
+            break;
+        }
+
+        case 'convert': {
+            var b = randomFloat(1.02, 1.15, 2);
+            var k = Math.log(b).toFixed(6);
+            currentProblem = 'Convert to continuous form:\n\nA = A₀(' + b + ')^t\n\nFind k in A = A₀e^(kt)';
+            currentSolution = 'Step 1: Relationship between forms\nab^t = ae^(kt)\nSo b = e^k\n\n' +
+                'Step 2: Solve for k\nk = ln(b)\nk = ln(' + b + ')\n\n' +
+                'Answer: k ≈ ' + k;
+            break;
+        }
+
+        case 'pH': {
+            var pH = randomInt(2, 11);
+            currentProblem = 'Find the hydrogen ion concentration [H⁺] when pH = ' + pH;
+            currentSolution = 'Step 1: pH formula\npH = -log[H⁺]\n\n' +
+                'Step 2: Rearrange\nlog[H⁺] = -pH\n[H⁺] = 10^(-pH)\n\n' +
+                'Step 3: Substitute\n[H⁺] = 10^(-' + pH + ')\n\n' +
+                'Answer: [H⁺] = 1 × 10⁻' + pH + ' mol/L';
+            break;
+        }
+
+        case 'decibel': {
+            var dB = randomInt(40, 110);
+            var I = Math.pow(10, dB / 10);
+            var IStr = I >= 1 ? I.toFixed(1) : I.toExponential(2);
+            currentProblem = 'A sound measures ' + dB + ' dB.\n\nFind I/I₀ (the intensity ratio).\n\nUse: dB = 10·log(I/I₀)';
+            currentSolution = 'Step 1: Set up equation\n' + dB + ' = 10·log(I/I₀)\n\n' +
+                'Step 2: Divide by 10\n' + (dB / 10) + ' = log(I/I₀)\n\n' +
+                'Step 3: Convert from log form\nI/I₀ = 10^(' + (dB / 10) + ')\n\n' +
+                'Answer: I/I₀ = ' + IStr;
+            break;
+        }
+
+        default:
+            currentProblem = 'Select a topic and click Generate Problem.';
+            currentSolution = '';
+        }
+
+        problemText.textContent = currentProblem;
+    }
+
+    generateBtn.addEventListener('click', generateProblem);
+
+    solutionBtn.addEventListener('click', function () {
+        if (!currentSolution) {
+            solutionBox.classList.remove('visible');
+            return;
+        }
+        solutionText.textContent = currentSolution;
+        solutionBox.classList.add('visible');
+    });
+
+    newBtn.addEventListener('click', function () {
+        solutionBox.classList.remove('visible');
+        problemText.textContent = 'Select a topic and click Generate Problem.';
+        currentProblem = '';
+        currentSolution = '';
+    });
+
+})();
 </script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
