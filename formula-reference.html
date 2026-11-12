@@ -2,652 +2,672 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Formula Reference | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="Complete formula sheet for Chapter 5: logarithm properties, exponential models, growth and decay, half-life, doubling time, pH, and decibel formulas.">
 
 <style>
 
 :root{
-  --primary:#2563eb;
-  --light:#f8fafc;
-  --border:#d1d5db;
+    --primary:#2563eb;
+    --secondary:#1d4ed8;
+    --success:#059669;
+    --light:#f8fafc;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
 }
 
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  font-family:Segoe UI,Arial,sans-serif;
-  line-height:1.5;
-  color:#111827;
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
 }
 
-header{
-  background:#2563eb;
-  color:white;
-  text-align:center;
-  padding:40px 20px;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
 }
 
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
+    text-align:center;
+}
+
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:25px;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(320px,1fr));
-  gap:20px;
+/* ===== Formula Grid ===== */
+.formula-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px;
 }
 
-.card{
-  background:var(--light);
-  border-left:5px solid var(--primary);
-  padding:20px;
-  border-radius:8px;
+.formula-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
 }
 
-h2{
-  color:#2563eb;
+.formula-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px var(--shadow);
 }
 
-pre{
-  background:#111827;
-  color:white;
-  padding:15px;
-  border-radius:8px;
-  overflow:auto;
+.formula-card h2{
+    margin-top:0;
+    font-size:calc(1.2rem * var(--font-scale));
+    color:var(--primary);
+    border-bottom:2px solid var(--border);
+    padding-bottom:8px;
+    margin-bottom:12px;
 }
 
+.formula-card p{
+    font-size:calc(1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin:0 0 10px;
+}
+
+.formula-card .formula{
+    background:#1e293b;
+    color:#e2e8f0;
+    padding:14px;
+    border-radius:8px;
+    font-family:'Courier New', monospace;
+    font-size:calc(.92rem * var(--font-scale));
+    line-height:1.6;
+    overflow-x:auto;
+    white-space:pre;
+    margin:10px 0;
+}
+
+[data-theme="dark"] .formula-card .formula{
+    background:#0f172a;
+    color:#e2e8f0;
+}
+
+.formula-card .formula-label{
+    font-size:calc(.85rem * var(--font-scale));
+    color:var(--text-muted);
+    font-style:italic;
+    margin-top:8px;
+}
+
+/* ===== Buttons ===== */
 .btn{
-  display:inline-block;
-  margin-top:20px;
-  margin-right:10px;
-  background:#2563eb;
-  color:white;
-  text-decoration:none;
-  padding:10px 16px;
-  border-radius:6px;
+    display:inline-block;
+    margin-top:20px;
+    margin-right:10px;
+    padding:12px 18px;
+    border:none;
+    border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .formula-card:hover{
+        transform:none;
+    }
 }
 
 @media print{
-
-  .btn{
-    display:none;
-  }
-
-  body{
-    font-size:12px;
-  }
-
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; font-size:12px; }
+    .formula-card{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    .formula-card .formula{ background:#f0f0f0; color:#000; }
+    .btn{ display:none; }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html" aria-current="page">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Chapter 5 Formula Reference</h1>
 
-<p>
-Complete Formula Sheet for Logarithms & Exponential Models
-</p>
+<p>Complete Formula Sheet for Logarithms &amp; Exponential Models</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<div class="grid">
+<div class="formula-grid">
 
-<div class="card">
-
-<h2>Logarithm Definition</h2>
-
-<pre>
-logb(x)=y
+<!-- Logarithm Definition -->
+<div class="formula-card">
+    <h2>Logarithm Definition</h2>
+    <div class="formula">log<sub>b</sub>(x) = y
 
 ⇔
 
-b^y=x
-</pre>
-
-<p>
-A logarithm answers:
-"What exponent?"
-</p>
-
+b<sup>y</sup> = x</div>
+    <p class="formula-label">A logarithm answers: "What exponent?"</p>
 </div>
 
-<div class="card">
+<!-- Common & Natural Logs -->
+<div class="formula-card">
+    <h2>Common &amp; Natural Logs</h2>
+    <div class="formula">Common:
 
-<h2>Common & Natural Logs</h2>
+log(x) = log<sub>10</sub>(x)
 
-<pre>
-Common:
-
-log(x)
-
-= log10(x)
-
-----------------
+-------------------------
 
 Natural:
 
-ln(x)
+ln(x) = log<sub>e</sub>(x)
 
-= loge(x)
-
-e ≈ 2.718
-</pre>
-
+e ≈ 2.718</div>
 </div>
 
-<div class="card">
+<!-- Exact Values -->
+<div class="formula-card">
+    <h2>Exact Values</h2>
+    <div class="formula">log(1) = 0
+log(10) = 1
+log(100) = 2
+log(1000) = 3
 
-<h2>Exact Values</h2>
+-------------------------
 
-<pre>
-log(1)=0
-
-log(10)=1
-
-log(100)=2
-
-log(1000)=3
-
-----------------
-
-ln(1)=0
-
-ln(e)=1
-
-ln(e²)=2
-
-ln(e³)=3
-</pre>
-
+ln(1) = 0
+ln(e) = 1
+ln(e²) = 2
+ln(e³) = 3</div>
 </div>
 
-<div class="card">
-
-<h2>Inverse Relationships</h2>
-
-<pre>
-log(10^x)=x
-
-----------------
-
-10^(log(x))=x
-
-----------------
-
-ln(e^x)=x
-
-----------------
-
-e^(ln(x))=x
-</pre>
-
+<!-- Inverse Relationships -->
+<div class="formula-card">
+    <h2>Inverse Relationships</h2>
+    <div class="formula">log(10<sup>x</sup>) = x
+-------------------------
+10<sup>log(x)</sup> = x
+-------------------------
+ln(e<sup>x</sup>) = x
+-------------------------
+e<sup>ln(x)</sup> = x</div>
 </div>
 
-<div class="card">
-
-<h2>Product Rule</h2>
-
-<pre>
-log(MN)
-
-=
-
-log(M)+log(N)
-</pre>
-
+<!-- Product Rule -->
+<div class="formula-card">
+    <h2>Product Rule</h2>
+    <div class="formula">log(MN) = log(M) + log(N)</div>
 </div>
 
-<div class="card">
-
-<h2>Quotient Rule</h2>
-
-<pre>
-log(M/N)
-
-=
-
-log(M)-log(N)
-</pre>
-
+<!-- Quotient Rule -->
+<div class="formula-card">
+    <h2>Quotient Rule</h2>
+    <div class="formula">log(M/N) = log(M) − log(N)</div>
 </div>
 
-<div class="card">
-
-<h2>Power Rule</h2>
-
-<pre>
-log(M^p)
-
-=
-
-p log(M)
-</pre>
-
+<!-- Power Rule -->
+<div class="formula-card">
+    <h2>Power Rule</h2>
+    <div class="formula">log(M<sup>p</sup>) = p · log(M)</div>
 </div>
 
-<div class="card">
-
-<h2>Change of Base</h2>
-
-<pre>
-logb(x)
-
-=
-
-log(x)
-/log(b)
-
-----------------
-
-=
-
-ln(x)
-/ln(b)
-</pre>
-
+<!-- Change of Base -->
+<div class="formula-card">
+    <h2>Change of Base</h2>
+    <div class="formula">log<sub>b</sub>(x) = log(x) / log(b)
+                 = ln(x) / ln(b)</div>
 </div>
 
-<div class="card">
-
-<h2>Expansion Mechanics</h2>
-
-<pre>
-Multiply → Add
-
+<!-- Expansion Mechanics -->
+<div class="formula-card">
+    <h2>Expansion Mechanics</h2>
+    <div class="formula">Multiply → Add
 Divide → Subtract
-
-Power → Front
-</pre>
-
+Power → Front</div>
 </div>
 
-<div class="card">
-
-<h2>Condensing Mechanics</h2>
-
-<pre>
-Add → Multiply
-
+<!-- Condensing Mechanics -->
+<div class="formula-card">
+    <h2>Condensing Mechanics</h2>
+    <div class="formula">Add → Multiply
 Subtract → Divide
-
-Coefficient → Exponent
-</pre>
-
+Coefficient → Exponent</div>
 </div>
 
-<div class="card">
+<!-- Domain of Logs -->
+<div class="formula-card">
+    <h2>Domain of Logs</h2>
+    <div class="formula">Inside > 0
+Always.</div>
+    <p>Example:</p>
+    <div class="formula">log(x − 5)
 
-<h2>Domain of Logs</h2>
+x − 5 &gt; 0
 
-<pre>
-Inside > 0
-
-Always.
-</pre>
-
-Example:
-
-<pre>
-log(x−5)
-
-x−5 > 0
-
-x > 5
-</pre>
-
+x &gt; 5</div>
 </div>
 
-<div class="card">
+<!-- Range of Logs -->
+<div class="formula-card">
+    <h2>Range of Logs</h2>
+    <div class="formula">(−∞, ∞)
 
-<h2>Range of Logs</h2>
-
-<pre>
-(-∞,∞)
-
-All Real Numbers
-</pre>
-
+All Real Numbers</div>
 </div>
 
-<div class="card">
-
-<h2>Asymptotes</h2>
-
-<pre>
-Vertical:
+<!-- Asymptotes -->
+<div class="formula-card">
+    <h2>Asymptotes</h2>
+    <div class="formula">Vertical:
 
 x = a
 
-----------------
+-------------------------
 
 Horizontal:
 
-y = b
-</pre>
-
+y = b</div>
 </div>
 
-<div class="card">
-
-<h2>Parent Log Graph</h2>
-
-<pre>
-Domain:
-
-(0,∞)
-
-Range:
-
-(-∞,∞)
-
-Vertical Asymptote:
-
-x=0
-
-Key Point:
-
-(1,0)
-</pre>
-
+<!-- Parent Log Graph -->
+<div class="formula-card">
+    <h2>Parent Log Graph</h2>
+    <div class="formula">Domain: (0, ∞)
+Range: (−∞, ∞)
+Vertical Asymptote: x = 0
+Key Point: (1, 0)</div>
 </div>
 
-<div class="card">
-
-<h2>Concavity</h2>
-
-<pre>
-log(x)
-
-Concave Down
-
-----------------
-
-ln(x)
-
-Concave Down
-</pre>
-
+<!-- Concavity -->
+<div class="formula-card">
+    <h2>Concavity</h2>
+    <div class="formula">log(x) → Concave Down
+ln(x) → Concave Down</div>
 </div>
 
-<div class="card">
+<!-- Limits -->
+<div class="formula-card">
+    <h2>Limits</h2>
+    <div class="formula">lim ln(x)  = −∞
+x→0⁺
 
-<h2>Limits</h2>
+-------------------------
 
-<pre>
-lim ln(x)
-
-x→0+
-
-=
-
-−∞
-
-----------------
-
-lim ln(x)
-
-x→∞
-
-=
-
-∞
-</pre>
-
+lim ln(x)  = ∞
+x→∞</div>
 </div>
 
-<div class="card">
-
-<h2>Growth Model</h2>
-
-<pre>
-P=P₀(1+r)^t
-</pre>
-
-<p>
-
-r > 0
-
-</p>
-
+<!-- Growth Model -->
+<div class="formula-card">
+    <h2>Growth Model</h2>
+    <div class="formula">P = P₀(1 + r)<sup>t</sup></div>
+    <p>r &gt; 0</p>
 </div>
 
-<div class="card">
-
-<h2>Decay Model</h2>
-
-<pre>
-P=P₀(1-r)^t
-</pre>
-
-<p>
-
-r > 0
-
-</p>
-
+<!-- Decay Model -->
+<div class="formula-card">
+    <h2>Decay Model</h2>
+    <div class="formula">P = P₀(1 − r)<sup>t</sup></div>
+    <p>r &gt; 0</p>
 </div>
 
-<div class="card">
+<!-- Continuous Growth/Decay -->
+<div class="formula-card">
+    <h2>Continuous Growth/Decay</h2>
+    <div class="formula">A = A₀e<sup>kt</sup>
 
-<h2>Continuous Growth/Decay</h2>
-
-<pre>
-A=A₀e^(kt)
-
-k > 0
-
-Growth
-
-----------------
-
-k < 0
-
-Decay
-</pre>
-
+k &gt; 0 → Growth
+k &lt; 0 → Decay</div>
 </div>
 
-<div class="card">
+<!-- Convert Forms -->
+<div class="formula-card">
+    <h2>Convert Forms</h2>
+    <div class="formula">ab<sup>t</sup> → ae<sup>kt</sup>
+k = ln(b)
 
-<h2>Convert Forms</h2>
+-------------------------
 
-<pre>
-ab^t
+ae<sup>kt</sup> → ab<sup>t</sup>
+b = e<sup>k</sup></div>
+</div>
+
+<!-- Find Time -->
+<div class="formula-card">
+    <h2>Find Time</h2>
+    <div class="formula">ab<sup>t</sup> = c
+
+t = log(c/a) / log(b)
+
+-------------------------
+
+ae<sup>kt</sup> = c
+
+t = ln(c/a) / k</div>
+</div>
+
+<!-- Annual Growth Rate -->
+<div class="formula-card">
+    <h2>Annual Growth Rate</h2>
+    <div class="formula">b = 1 + r
+-------------------------
+r = b − 1</div>
+</div>
+
+<!-- Half-Life -->
+<div class="formula-card">
+    <h2>Half-Life</h2>
+    <div class="formula">t<sub>½</sub> = ln(2) / |k|</div>
+    <p class="formula-label">Time required to reach half.</p>
+</div>
+
+<!-- Doubling Time -->
+<div class="formula-card">
+    <h2>Doubling Time</h2>
+    <div class="formula">t<sub>d</sub> = ln(2) / k</div>
+    <p class="formula-label">Time required to double.</p>
+</div>
+
+<!-- pH Formula -->
+<div class="formula-card">
+    <h2>pH Formula</h2>
+    <div class="formula">pH = −log[H⁺]</div>
+</div>
+
+<!-- Sound Intensity -->
+<div class="formula-card">
+    <h2>Sound Intensity</h2>
+    <div class="formula">dB = 10 · log(I / I₀)</div>
+</div>
+
+<!-- Solving Exponential Equations -->
+<div class="formula-card">
+    <h2>Solving Exponential Equations</h2>
+    <div class="formula">Variable in exponent?
 
 ↓
 
-ae^(kt)
+Take logarithms.</div>
+    <p>Example:</p>
+    <div class="formula">3<sup>x</sup> = 40
 
-k=ln(b)
-
-----------------
-
-ae^(kt)
-
-↓
-
-ab^t
-
-b=e^k
-</pre>
-
+x = log(40) / log(3)</div>
 </div>
 
-<div class="card">
-
-<h2>Find Time</h2>
-
-<pre>
-ab^t=c
-
-t=
-
-log(c/a)
-/log(b)
-</pre>
-
-<pre>
-ae^(kt)=c
-
-t=
-
-ln(c/a)
-/k
-</pre>
-
-</div>
-
-<div class="card">
-
-<h2>Annual Growth Rate</h2>
-
-<pre>
-b=1+r
-
-----------------
-
-r=b−1
-</pre>
-
-</div>
-
-<div class="card">
-
-<h2>Half-Life</h2>
-
-<pre>
-t=ln(2)/|k|
-</pre>
-
-Meaning:
-
-<p>
-Time required to reach half.
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>Doubling Time</h2>
-
-<pre>
-t=ln(2)/k
-</pre>
-
-Meaning:
-
-<p>
-Time required to double.
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>pH Formula</h2>
-
-<pre>
-pH
-
-=
-
--log[H+]
-</pre>
-
-</div>
-
-<div class="card">
-
-<h2>Sound Intensity</h2>
-
-<pre>
-dB
-
-=
-
-10log(I/I₀)
-</pre>
-
-</div>
-
-<div class="card">
-
-<h2>Solving Exponential Equations</h2>
-
-<pre>
-Variable in exponent?
-
-↓
-
-Take logarithms.
-</pre>
-
-Example:
-
-<pre>
-3^x=40
-
-x=
-
-log(40)
-/log(3)
-</pre>
-
-</div>
-
-<div class="card">
-
-<h2>When Logs Will NOT Work</h2>
-
-<pre>
-2^x+x=10
-</pre>
-
-Variable appears:
-
-<pre>
-Inside exponent
+<!-- When Logs Will NOT Work -->
+<div class="formula-card">
+    <h2>When Logs Will NOT Work</h2>
+    <div class="formula">2<sup>x</sup> + x = 10</div>
+    <p>Variable appears:</p>
+    <div class="formula">Inside exponent
 
 AND
 
-Outside exponent
-</pre>
-
-Requires:
-
-<pre>
-Graphing
-
+Outside exponent</div>
+    <p>Requires:</p>
+    <div class="formula">Graphing
 Numerical Methods
-
-Technology
-</pre>
-
+Technology</div>
 </div>
 
-<div class="card">
-
-<h2>Algebraic Mechanics</h2>
-
-<pre>
-IDENTIFY
+<!-- Algebraic Mechanics -->
+<div class="formula-card">
+    <h2>Algebraic Mechanics</h2>
+    <div class="formula">IDENTIFY
 
 ↓
 
@@ -663,26 +683,186 @@ SOLVE
 
 ↓
 
-VERIFY
-</pre>
-
+VERIFY</div>
 </div>
 
 </div>
 
-<a
-class="btn"
-href="graph-explorer.html">
-← Graph Explorer
-</a>
+<a class="btn" href="graph-explorer.html">← Graph Explorer</a>
+<a class="btn" href="index.html">Home</a>
 
-<a
-class="btn"
-href="../index.html">
-Home
-</a>
+</main>
 
-</div>
+<script>
+(function () {
+    'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+})();
+</script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
