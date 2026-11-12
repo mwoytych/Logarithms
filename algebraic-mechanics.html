@@ -1,114 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Algebraic Mechanics | Chapter 5 Mastery Center</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<style>
+<meta name="description"
+content="Algebraic problem-solving framework for logarithms, exponential equations, growth models, half-life, and doubling time.">
 
-:root{
-    --primary:#2563eb;
-    --success:#059669;
-    --light:#f8fafc;
-    --border:#d1d5db;
-}
+<title>
+Algebraic Mechanics |
+Logarithms & Exponential Models Mastery Center
+</title>
 
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    line-height:1.6;
-    color:#111827;
-}
-
-header{
-    background:#2563eb;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
-}
-
-.card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:20px 0;
-    border-radius:8px;
-}
-
-h2{
-    color:var(--primary);
-    border-bottom:2px solid var(--primary);
-    padding-bottom:10px;
-}
-
-pre{
-    background:#111827;
-    color:white;
-    padding:15px;
-    border-radius:8px;
-    overflow:auto;
-}
-
-.flow{
-    text-align:center;
-    font-size:1.2rem;
-    font-weight:bold;
-    line-height:2;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:10px 16px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border-radius:6px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th,td{
-    border:1px solid var(--border);
-    padding:12px;
-}
-
-th{
-    background:#eff6ff;
-}
-
-</style>
+<link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
+
+<a href="#main-content" class="skip-link">
+Skip to Main Content
+</a>
 
 <header>
 
 <h1>Algebraic Mechanics</h1>
 
 <p>
-A universal problem-solving framework for Chapter 5.
+The universal problem-solving framework for logarithms and exponential models.
 </p>
 
 </header>
 
-<div class="container">
+<nav aria-label="Site Navigation">
+
+<ul>
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="what-should-i-know.html">
+What Should I Know?
+</a>
+</li>
+
+<li>
+<a href="worked-examples.html">
+Worked Examples
+</a>
+</li>
+
+<li>
+<a href="exam-practice.html">
+Exam Practice
+</a>
+</li>
+
+<li>
+<a href="confidence-check.html">
+Confidence Check
+</a>
+</li>
+
+<li>
+<a href="calculators.html">
+Calculators
+</a>
+</li>
+
+<li>
+<a href="formula-reference.html">
+Formula Reference
+</a>
+</li>
+
+<li>
+<a href="graph-explorer.html">
+Graph Explorer
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+<main
+class="container"
+id="main-content">
+
+<section>
 
 <h2>The Master Framework</h2>
 
@@ -117,13 +102,21 @@ A universal problem-solving framework for Chapter 5.
 <div class="flow">
 
 IDENTIFY<br>
+
 ↓<br>
+
 TRANSFORM<br>
+
 ↓<br>
+
 ISOLATE<br>
+
 ↓<br>
+
 SOLVE<br>
+
 ↓<br>
+
 VERIFY
 
 </div>
@@ -132,9 +125,13 @@ VERIFY
 
 <p>
 
-Every problem in Chapter 5 follows this process. The only difference is which transformation you use.
+Every Chapter 5 problem follows this framework. The mathematics changes, but the process remains the same.
 
 </p>
+
+</section>
+
+<section>
 
 <h2>Mechanic #1: Translate Logarithms</h2>
 
@@ -150,9 +147,15 @@ logb(x)=y
 b^y=x
 </pre>
 
-</div>
+<p>
 
-Example:
+A logarithm answers the question:
+
+<strong>"What exponent produces this value?"</strong>
+
+</p>
+
+</div>
 
 <pre>
 log₂(32)
@@ -166,16 +169,26 @@ Answer:
 5
 </pre>
 
+</section>
+
+<section>
+
 <h2>Mechanic #2: Expand Logarithms</h2>
 
 <div class="card">
 
 <table>
 
+<thead>
+
 <tr>
 <th>Operation</th>
 <th>Log Rule</th>
 </tr>
+
+</thead>
+
+<tbody>
 
 <tr>
 <td>Multiply</td>
@@ -189,14 +202,14 @@ Answer:
 
 <tr>
 <td>Power</td>
-<td>Bring Exponent Forward</td>
+<td>Move Exponent Forward</td>
 </tr>
+
+</tbody>
 
 </table>
 
 </div>
-
-Example:
 
 <pre>
 log((x²y)/z³)
@@ -210,16 +223,26 @@ log(x²)+log(y)-log(z³)
 2log(x)+log(y)-3log(z)
 </pre>
 
+</section>
+
+<section>
+
 <h2>Mechanic #3: Condense Logarithms</h2>
 
 <div class="card">
 
 <table>
 
+<thead>
+
 <tr>
 <th>Expression</th>
 <th>Action</th>
 </tr>
+
+</thead>
+
+<tbody>
 
 <tr>
 <td>+</td>
@@ -236,11 +259,11 @@ log(x²)+log(y)-log(z³)
 <td>Exponent</td>
 </tr>
 
+</tbody>
+
 </table>
 
 </div>
-
-Example:
 
 <pre>
 2log(x)+log(y)-3log(z)
@@ -262,6 +285,10 @@ log(z³)
 log((x²y)/z³)
 </pre>
 
+</section>
+
+<section>
+
 <h2>Mechanic #4: Find Domains</h2>
 
 <div class="card">
@@ -272,9 +299,13 @@ log((x²y)/z³)
 Inside > 0
 </pre>
 
-</div>
+<p>
 
-Example:
+The argument of a logarithm must always be positive.
+
+</p>
+
+</div>
 
 <pre>
 y = log(x-4)
@@ -285,199 +316,24 @@ x > 4
 
 Domain:
 
-(4,∞)
+(4, ∞)
 </pre>
+
+</section>
+
+<section>
 
 <h2>Mechanic #5: Analyze Graphs</h2>
 
 <div class="card">
 
-<h3>Remember</h3>
-
 <pre>
 Domain:
+
 x > 0
 
+----------------
+
 Range:
-All Real Numbers
 
-Vertical Asymptote:
-x = 0
-
-Key Point:
-(1,0)
-</pre>
-
-</div>
-
-<h2>Mechanic #6: Solve Exponential Equations</h2>
-
-Example:
-
-<pre>
-2^x = 20
-
-Take logs.
-
-log(2^x)=log(20)
-
-x log(2)=log(20)
-
-x=log(20)/log(2)
-</pre>
-
-<div class="card">
-
-<h3>Trigger</h3>
-
-<p>
-
-If the variable is trapped in an exponent, use logarithms.
-
-</p>
-
-</div>
-
-<h2>Mechanic #7: Find Time in Growth & Decay Models</h2>
-
-Annual growth model:
-
-<pre>
-ab^t = c
-
-t =
-log(c/a)
-/ log(b)
-</pre>
-
-Continuous model:
-
-<pre>
-ae^(kt) = c
-
-t =
-ln(c/a)
-/ k
-</pre>
-
-<h2>Mechanic #8: Half-Life & Doubling Time</h2>
-
-<div class="card">
-
-<h3>Half-Life</h3>
-
-<pre>
-t = ln(2)/|k|
-</pre>
-
-<p>
-Time needed for quantity to be cut in half.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Doubling Time</h3>
-
-<pre>
-t = ln(2)/k
-</pre>
-
-<p>
-Time needed for quantity to double.
-</p>
-
-</div>
-
-<h2>Mechanic #9: Know When Logs Fail</h2>
-
-Example:
-
-<pre>
-2^x + x = 10
-</pre>
-
-Problem:
-
-<pre>
-Variable appears:
-
-Inside exponent
-
-AND
-
-Outside exponent
-</pre>
-
-Result:
-
-<pre>
-Cannot solve algebraically
-with logarithms alone.
-</pre>
-
-<h2>Quick Decision Tree</h2>
-
-<pre>
-Need to Evaluate?
-↓
-Convert to Exponential
-
-Need to Expand?
-↓
-Use Product, Quotient, Power Rules
-
-Need Domain?
-↓
-Inside > 0
-
-Unknown Exponent?
-↓
-Take Logs
-
-Growth/Decay?
-↓
-Use Exponential Model
-
-Finding Time?
-↓
-Solve for t with Logs
-
-Variable Inside and Outside Exponent?
-↓
-Logs Cannot Solve Exactly
-</pre>
-
-<h2>Mini Self-Check</h2>
-
-<div class="card">
-
-□ Can I convert log form to exponential form?
-
-□ Can I expand logarithms?
-
-□ Can I condense logarithms?
-
-□ Can I find domains?
-
-□ Can I solve exponential equations?
-
-□ Can I find time in growth models?
-
-□ Can I identify when logs won't work?
-
-</div>
-
-<a class="btn" href="../index.html">
-← Home
-</a>
-
-<a class="btn" href="worked-examples.html">
-Next: Worked Examples →
-</a>
-
-</div>
-
-</body>
-</html>
+All Real 
