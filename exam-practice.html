@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
 <title>Exam Practice | Chapter 5 Mastery Center</title>
 
 <meta name="description"
-content="Practice problems for evaluating logarithms, properties, domain/range, graph analysis, exponential equations, growth/decay, half-life, doubling time, and real-world applications.">
+content="Practice evaluating logarithms, finding domains, using log properties, solving exponential equations, and modeling growth and decay.">
 
 <style>
 
@@ -16,8 +15,6 @@ content="Practice problems for evaluating logarithms, properties, domain/range, 
     --primary:#2563eb;
     --secondary:#1d4ed8;
     --success:#059669;
-    --warning:#d97706;
-    --danger:#dc2626;
     --light:#f8fafc;
     --border:#e5e7eb;
     --bg-body:#f9fafb;
@@ -34,8 +31,6 @@ content="Practice problems for evaluating logarithms, properties, domain/range, 
     --primary:#58a6ff;
     --secondary:#79b8ff;
     --success:#3fb950;
-    --warning:#f59e0b;
-    --danger:#ef4444;
     --light:#161b22;
     --border:#30363d;
     --bg-body:#0d1117;
@@ -46,16 +41,13 @@ content="Practice problems for evaluating logarithms, properties, domain/range, 
     --shadow:rgba(0,0,0,.4);
 }
 
-*{
-    box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
     background:var(--bg-body);
     color:var(--text-main);
-    line-height:1.6;
     transition:background .3s, color .3s;
 }
 
@@ -72,11 +64,8 @@ body{
     border-radius:0 0 8px 0;
     transition:top .2s;
 }
-.skip-link:focus{
-    top:0;
-}
+.skip-link:focus{ top:0; }
 
-/* Screen-reader only utility */
 .sr-only{
     position:absolute;
     width:1px;
@@ -104,11 +93,7 @@ body{
     z-index:900;
 }
 
-.a11y-group{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
+.a11y-group{ display:flex; align-items:center; gap:6px; }
 
 .a11y-label{
     font-size:.85rem;
@@ -130,26 +115,14 @@ body{
     cursor:pointer;
     transition:background .2s, border-color .2s;
 }
-
-.a11y-btn:hover{
-    border-color:var(--primary);
-}
-
-.a11y-btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:2px;
-}
-
+.a11y-btn:hover{ border-color:var(--primary); }
+.a11y-btn:focus-visible{ outline:3px solid var(--primary); outline-offset:2px; }
 .a11y-btn[aria-pressed="true"]{
     background:var(--primary);
     color:#fff;
     border-color:var(--primary);
 }
-
-.a11y-btn:disabled{
-    opacity:.45;
-    cursor:not-allowed;
-}
+.a11y-btn:disabled{ opacity:.45; cursor:not-allowed; }
 
 #font-level-display{
     font-size:.85rem;
@@ -158,7 +131,7 @@ body{
     text-align:center;
 }
 
-/* ===== Hero (card-styled to match tiles) ===== */
+/* ===== Hero ===== */
 .hero{
     max-width:1200px;
     margin:24px auto 0;
@@ -169,20 +142,18 @@ body{
     box-shadow:0 2px 8px var(--shadow);
     text-align:center;
 }
-
 .hero h1{
     margin:0;
     font-size:calc(2.4rem * var(--font-scale));
     color:var(--primary);
 }
-
 .hero p{
     font-size:calc(1.1rem * var(--font-scale));
     color:var(--text-muted);
     margin-top:15px;
 }
 
-/* ===== Navigation (card-styled to match tiles) ===== */
+/* ===== Navigation ===== */
 .site-nav{
     max-width:1200px;
     margin:16px auto 0;
@@ -192,7 +163,6 @@ body{
     border-radius:12px;
     box-shadow:0 2px 8px var(--shadow);
 }
-
 .site-nav ul{
     list-style:none;
     margin:0 auto;
@@ -202,7 +172,6 @@ body{
     gap:8px;
     justify-content:center;
 }
-
 .site-nav a{
     display:inline-block;
     padding:10px 14px;
@@ -212,14 +181,12 @@ body{
     border-radius:6px;
     font-size:calc(1rem * var(--font-scale));
 }
-
 .site-nav a:hover,
 .site-nav a:focus-visible{
     background:var(--primary);
     color:#fff;
     outline:none;
 }
-
 .site-nav a[aria-current="page"]{
     background:var(--primary);
     color:#fff;
@@ -232,14 +199,29 @@ body{
     padding:40px 20px;
 }
 
-h2{
-    color:var(--primary);
+.progress-box{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:40px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+}
+.progress-box h2{
+    margin-top:0;
     font-size:calc(1.6rem * var(--font-scale));
-    border-bottom:2px solid var(--primary);
-    padding-bottom:10px;
+}
+.progress-box p,
+.progress-box li{
+    font-size:calc(1rem * var(--font-scale));
 }
 
-/* ===== Cards ===== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
 .card{
     background:var(--bg-card);
     border-radius:12px;
@@ -248,102 +230,32 @@ h2{
     transition:transform .25s, box-shadow .25s;
     border:1px solid var(--border);
 }
-
 .card:hover{
     transform:translateY(-4px);
     box-shadow:0 6px 16px var(--shadow);
 }
-
 .card h3{
     color:var(--primary);
     margin-top:0;
     font-size:calc(1.3rem * var(--font-scale));
 }
-
-.card p,
-.card li{
+.card p{
     color:var(--text-muted);
     font-size:calc(1rem * var(--font-scale));
 }
-
-/* ===== Level Badges ===== */
-.level{
+.card a{
     display:inline-block;
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:.8rem;
-    font-weight:bold;
-    color:white;
-    margin-bottom:10px;
-}
-
-.easy{background:var(--success);}
-.medium{background:var(--warning);}
-.hard{background:var(--danger);}
-
-/* ===== Details/Summary ===== */
-details{
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:8px;
-    margin-top:15px;
-    padding:15px;
-}
-
-summary{
-    cursor:pointer;
-    font-weight:600;
-    color:var(--primary);
-    font-size:calc(1rem * var(--font-scale));
-}
-
-/* ===== Code Blocks ===== */
-pre{
-    background:var(--light);
-    border:1px solid var(--border);
-    border-left:4px solid var(--primary);
-    border-radius:8px;
-    padding:16px 20px;
-    overflow-x:auto;
-    font-family:Consolas, Monaco, monospace;
-    font-size:calc(.95rem * var(--font-scale));
-    white-space:pre-wrap;
-    color:var(--text-main);
-}
-
-code{
-    font-family:Consolas, Monaco, monospace;
-}
-
-/* ===== Page Navigation ===== */
-.page-nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    gap:12px;
-    margin-top:40px;
-}
-
-.back{
-    display:inline-block;
-    padding:10px 16px;
-    background:var(--primary);
-    color:#fff;
+    margin-top:10px;
     text-decoration:none;
+    color:white;
+    background:var(--primary);
+    padding:10px 16px;
     border-radius:6px;
-    font-weight:600;
     font-size:calc(1rem * var(--font-scale));
 }
-
-.back:hover,
-.back:focus-visible{
-    background:var(--secondary);
-}
-
-.back:focus-visible{
-       outline:3px solid var(--primary);
-    outline-offset:3px;
-}
+.card a:hover,
+.card a:focus-visible{ background:var(--secondary); }
+.card a:focus-visible{ outline:3px solid var(--primary); outline-offset:3px; }
 
 footer{
     text-align:center;
@@ -352,15 +264,89 @@ footer{
     border-top:1px solid var(--border);
 }
 
-.copyright{
-    font-size:.85rem;
-    color:var(--footer-text);
-    margin-top:15px;
+ul{ padding-left:20px; }
+
+/* ===== Exam Practice additions ===== */
+.topic-links{
+    list-style:none;
+    padding:0;
+    margin:15px 0 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.topic-links a{
+    display:inline-block;
+    padding:8px 14px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    color:var(--primary);
+    text-decoration:none;
+    font-weight:600;
+    font-size:calc(.95rem * var(--font-scale));
+}
+.topic-links a:hover,
+.topic-links a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
 }
 
-ul{
-    padding-left:20px;
+.progress-box .lead{ color:var(--text-muted); }
+
+.problems{
+    list-style:none;
+    padding:0;
+    margin:0;
+    counter-reset:q;
 }
+.problems > li{
+    counter-increment:q;
+    padding:16px 0;
+    border-top:1px solid var(--border);
+}
+.problems > li:first-child{ border-top:0; }
+
+.q-text::before{
+    content:counter(q) ". ";
+    font-weight:700;
+    color:var(--primary);
+}
+.q-text{ font-size:calc(1.05rem * var(--font-scale)); }
+
+details{
+    margin-top:10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--light);
+}
+summary{
+    cursor:pointer;
+    padding:10px 14px;
+    font-weight:600;
+    color:var(--primary);
+    font-size:calc(.95rem * var(--font-scale));
+    border-radius:8px;
+}
+summary:focus-visible{ outline:3px solid var(--primary); outline-offset:2px; }
+details[open] summary{ border-bottom:1px solid var(--border); }
+.answer{
+    padding:12px 14px;
+    font-size:calc(1rem * var(--font-scale));
+}
+.answer strong{ color:var(--success); }
+.answer p{ margin:4px 0; color:var(--text-main); }
+
+.tip{
+    border-left:4px solid var(--primary);
+    background:var(--light);
+    padding:10px 14px;
+    border-radius:0 8px 8px 0;
+    font-size:calc(1rem * var(--font-scale));
+    color:var(--text-muted);
+}
+
+.toolbar-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:15px; }
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
@@ -368,16 +354,14 @@ ul{
         transition:none !important;
         animation:none !important;
     }
-    .card:hover{
-        transform:none;
-    }
+    .card:hover{ transform:none; }
 }
 
 /* Print styles */
 @media print{
-    .a11y-bar, .site-nav, .page-nav{ display:none; }
+    .a11y-bar, .site-nav, .toolbar-row{ display:none; }
     body{ background:#fff; color:#000; }
-    .card{ box-shadow:none; border:1px solid #ccc; }
+    .card, .progress-box{ box-shadow:none; border:1px solid #ccc; }
 }
 
 </style>
@@ -391,25 +375,34 @@ ul{
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
 
     <div class="a11y-group" role="group" aria-label="Text size controls">
-        <span class="a11y-label" id="font-scale-label">Text Size</span>
+        <span class="a11y-label" id="font-label">Text Size</span>
 
-        <button type="button" class="a11y-btn" id="font-decrease"
+        <button type="button"
+                class="a11y-btn"
+                id="font-decrease"
                 aria-label="Decrease text size">A−</button>
 
         <span id="font-level-display"
               aria-live="polite"
-              aria-describedby="font-scale-label">100%</span>
+              aria-describedby="font-label">100%</span>
 
-        <button type="button" class="a11y-btn" id="font-increase"
+        <button type="button"
+                class="a11y-btn"
+                id="font-increase"
                 aria-label="Increase text size">A+</button>
 
-        <button type="button" class="a11y-btn" id="font-reset"
+        <button type="button"
+                class="a11y-btn"
+                id="font-reset"
                 aria-label="Reset text size to 100 percent">Reset</button>
     </div>
 
     <div class="a11y-group">
-        <button type="button" class="a11y-btn" id="theme-toggle"
-                aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        <button type="button"
+                class="a11y-btn"
+                id="theme-toggle"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">🌙 Dark Mode</button>
     </div>
 
 </div>
@@ -420,7 +413,6 @@ ul{
         <li><a href="index.html">Home</a></li>
         <li><a href="what-should-i-know.html">What Should I Know?</a></li>
         <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
-        that will be used to solve
         <li><a href="worked-examples.html">Worked Examples</a></li>
         <li><a href="exam-practice.html" aria-current="page">Exam Practice</a></li>
         <li><a href="confidence-check.html">Confidence Check</a></li>
@@ -434,490 +426,154 @@ ul{
 
 <h1>Exam Practice</h1>
 
-<p>Practice First. Check Solutions Second.</p>
+<p>
+Evaluating Logs • Domains • Log Properties • Exponential Equations • Growth &amp; Decay
+</p>
 
 </header>
 
 <main class="container" id="main-content">
 
-<h2>Part A: Evaluate Logarithms</h2>
-
-<div class="card">
-
-<span class="level easy">Easy</span>
-
-<pre>
-1) log₂(64)
-</pre>
-
-<details>
-
-<summary>Answer</summary>
-
-<pre>
-2^6 = 64
-
-Answer:
-
-6
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level easy">Easy</span>
-
-<pre>
-2) ln(e⁵)
-</pre>
-
-<details>
-
-<summary>Answer</summary>
-
-<pre>
-ln(e^x)=x
-
-Answer:
-
-5
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part B: Logarithm Properties</h2>
-
-<div class="card">
-
-<span class="level medium">Medium</span>
-
-<pre>
-3)
-
-Expand:
-
-log((x³y)/z²)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-3log(x)
-
-+
-
-log(y)
-
--
-
-2log(z)
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level medium">Medium</span>
-
-<pre>
-4)
-
-Condense:
-
-2log(x)+log(y)-log(z)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-log(x²y/z)
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part C: Domain & Range</h2>
-
-<div class="card">
-
-<span class="level medium">Medium</span>
-
-<pre>
-5)
-
-Find the domain:
-
-y = log(x−8)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-Inside > 0
-
-x−8 > 0
-
-x > 8
-
-Domain:
-
-(8,∞)
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level medium">Medium</span>
-
-<pre>
-6)
-
-What is the range of:
-
-y = log(x)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-Range:
-
-All Real Numbers
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part D: Graph Analysis</h2>
-
-<div class="card">
-
-<span class="level medium">Medium</span>
-
-<pre>
-7)
-
-Identify:
-
-Domain
-
-Range
-
-Vertical Asymptote
-
-for y = ln(x)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-Domain:
-(0,∞)
-
-Range:
-All Real Numbers
-
-Vertical Asymptote:
-x=0
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part E: Solving Exponential Equations</h2>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-8)
-
-Solve:
-
-2^x = 40
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-Take logs
-
-x=log(40)/log(2)
-
-x≈5.322
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-9)
-
-Solve:
-
-ae^(kt)=c
-
-for t
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-e^(kt)=c/a
-
-ln both sides
-
-kt=ln(c/a)
-
-t=ln(c/a)/k
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part F: Growth & Decay</h2>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-10)
-
-P=1000(1.05)^t
-
-What is the annual growth rate?
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-1+r=1.05
-
-r=.05
-
-5%
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-11)
-
-Convert
-
-100e^(0.06t)
-
-to ab^t form
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-b=e^(0.06)
-
-≈1.0618
-
-Answer:
-
-100(1.0618)^t
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part G: Half-Life & Doubling Time</h2>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-12)
-
-Find the half-life:
-
-A=500e^(-0.12t)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-t=ln(2)/0.12
-
-≈5.78
-</pre>
-
-</details>
-
-</div>
-
-<div class="card">
-
-<span class="level hard">Hard</span>
-
-<pre>
-13)
-
-Find the doubling time:
-
-A=500e^(0.08t)
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-t=ln(2)/0.08
-
-≈8.66
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part H: Applications</h2>
-
-<div class="card">
-
-<span class="level hard">Application</span>
-
-<pre>
-14)
-
-pH = -log[H+]
-
-If [H+] = 10^-4
-
-Find pH
-</pre>
-
-<details>
-
-<summary>Solution</summary>
-
-<pre>
-pH=-log(10^-4)
-
-=4
-</pre>
-
-</details>
-
-</div>
-
-<h2>Part I: Challenge Problems</h2>
-
-<div class="card">
-
-<span class="level hard">Challenge</span>
-
-<pre>
-15)
-
-Can logarithms solve?
-
-2^x + x = 10
-</pre>
-
-<details>
-
-<summary>Explanation</summary>
-
-<pre>
-No.
-
-Variable appears:
-
-Inside exponent
-
-and
-
-Outside exponent
-
-Requires numerical methods
-or graphing technology.
-</pre>
-
-</details>
-
-</div>
-
-<h2>Score Yourself</h2>
-
-<div class="card">
-
-<ul>
-
-<li>13-15 Correct = Exam Ready ✅</li>
-
-<li>10-12 Correct = Nearly Ready 👍</li>
-
-<li>7-9 Correct = Review Areas of Weakness 📘</li>
-
-<li>0-6 Correct = Return to Worked Examples 🔄</li>
-
+<section class="progress-box" aria-labelledby="how-heading">
+
+<h2 id="how-heading">How to Use This Page</h2>
+
+<p class="lead">
+Work each problem on paper first. Then open the answer to check your result and your steps. Use the Identify → Transform → Isolate → Solve → Verify framework from Algebraic Mechanics.
+</p>
+
+<ul class="topic-links" aria-label="Jump to a practice section">
+    <li><a href="#evaluating">Evaluating Logs</a></li>
+    <li><a href="#domain">Domain &amp; Range</a></li>
+    <li><a href="#properties">Log Properties</a></li>
+    <li><a href="#solving">Exponential &amp; Log Equations</a></li>
+    <li><a href="#modeling">Growth &amp; Decay</a></li>
+    <li><a href="#applications">pH &amp; Decibels</a></li>
 </ul>
 
+<div class="toolbar-row">
+    <button type="button" class="a11y-btn" id="show-all">Show all answers</button>
+    <button type="button" class="a11y-btn" id="hide-all">Hide all answers</button>
 </div>
 
-<!-- ===== Prev / Next Navigation ===== -->
-<nav class="page-nav" aria-label="Page navigation">
+</section>
 
-<a class="back" href="worked-examples.html">← Worked Examples</a>
+<section class="progress-box" id="evaluating" aria-labelledby="evaluating-h">
+<h2 id="evaluating-h">1. Evaluating Logarithms</h2>
+<p class="tip">Rewrite <strong>log<sub>b</sub> x = y</strong> as <strong>b<sup>y</sup> = x</strong>. Evaluate without a calculator.</p>
+<ol class="problems">
+<li><span class="q-text">log₂ 32</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>5</strong> — because 2⁵ = 32.</p></div></details></li>
+<li><span class="q-text">log₃ (1/9)</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>−2</strong> — because 3⁻² = 1/9.</p></div></details></li>
+<li><span class="q-text">log 0.001</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>−3</strong> — common log has base 10, and 10⁻³ = 0.001.</p></div></details></li>
+<li><span class="q-text">ln e⁴</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>4</strong> — ln and eˣ are inverses.</p></div></details></li>
+<li><span class="q-text">log₄ 8</span>
+<details><summary>Show answer</summary><div class="answer"><p>4ˣ = 8 → 2²ˣ = 2³ → 2x = 3, so <strong>x = 3/2</strong>.</p></div></details></li>
+</ol>
+</section>
 
-<a class="back" href="confidence-check.html">Next: Confidence Check →</a>
+<section class="progress-box" id="domain" aria-labelledby="domain-h">
+<h2 id="domain-h">2. Domain, Range &amp; Asymptotes</h2>
+<p class="tip">The argument of a log must be <strong>greater than 0</strong>. Set it &gt; 0 to find the domain; the vertical asymptote is where the argument equals 0.</p>
+<ol class="problems">
+<li><span class="q-text">Find the domain and vertical asymptote of f(x) = log(x − 3).</span>
+<details><summary>Show answer</summary><div class="answer"><p>x − 3 &gt; 0 → <strong>domain: (3, ∞)</strong>; <strong>vertical asymptote: x = 3</strong>.</p></div></details></li>
+<li><span class="q-text">Find the domain of f(x) = ln(5 − 2x).</span>
+<details><summary>Show answer</summary><div class="answer"><p>5 − 2x &gt; 0 → x &lt; 5/2. <strong>Domain: (−∞, 5/2)</strong>. Note the inequality flips when dividing by −2.</p></div></details></li>
+<li><span class="q-text">Find the domain of f(x) = log₂(x² − 4).</span>
+<details><summary>Show answer</summary><div class="answer"><p>x² &gt; 4 → <strong>x &lt; −2 or x &gt; 2</strong>, i.e. (−∞, −2) ∪ (2, ∞).</p></div></details></li>
+<li><span class="q-text">State the range and vertical asymptote of g(x) = ln(x + 1) + 2.</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>Range: all real numbers.</strong> Vertical asymptote: <strong>x = −1</strong>. The +2 shifts the graph up but does not move the asymptote.</p></div></details></li>
+</ol>
+</section>
 
-</nav>
+<section class="progress-box" id="properties" aria-labelledby="properties-h">
+<h2 id="properties-h">3. Log Properties &amp; Change of Base</h2>
+<ol class="problems">
+<li><span class="q-text">Expand log₃(9x² / y).</span>
+<details><summary>Show answer</summary><div class="answer"><p>log₃ 9 + 2 log₃ x − log₃ y = <strong>2 + 2 log₃ x − log₃ y</strong>.</p></div></details></li>
+<li><span class="q-text">Condense 2 ln x + ln 3 − ln y into a single logarithm.</span>
+<details><summary>Show answer</summary><div class="answer"><p>ln x² + ln 3 − ln y = <strong>ln(3x² / y)</strong>.</p></div></details></li>
+<li><span class="q-text">Use change of base to approximate log₅ 20.</span>
+<details><summary>Show answer</summary><div class="answer"><p>ln 20 / ln 5 ≈ 2.9957 / 1.6094 ≈ <strong>1.861</strong>.</p></div></details></li>
+</ol>
+</section>
+
+<section class="progress-box" id="solving" aria-labelledby="solving-h">
+<h2 id="solving-h">4. Solving Exponential &amp; Logarithmic Equations</h2>
+<p class="tip">Same base? Match exponents. Different bases? Take a log of both sides. Always <strong>verify</strong> log solutions against the domain.</p>
+<ol class="problems">
+<li><span class="q-text">Solve 3ˣ = 81.</span>
+<details><summary>Show answer</summary><div class="answer"><p>81 = 3⁴, so <strong>x = 4</strong>.</p></div></details></li>
+<li><span class="q-text">Solve 5<sup>2x−1</sup> = 40. Give a decimal answer.</span>
+<details><summary>Show answer</summary><div class="answer"><p>(2x − 1) ln 5 = ln 40 → 2x − 1 ≈ 2.292 → 2x ≈ 3.292 → <strong>x ≈ 1.646</strong>.</p></div></details></li>
+<li><span class="q-text">Solve 2e<sup>0.3x</sup> = 14.</span>
+<details><summary>Show answer</summary><div class="answer"><p>e<sup>0.3x</sup> = 7 → 0.3x = ln 7 → x = ln 7 / 0.3 ≈ <strong>6.486</strong>.</p></div></details></li>
+<li><span class="q-text">Solve log₂(x + 3) = 5.</span>
+<details><summary>Show answer</summary><div class="answer"><p>x + 3 = 2⁵ = 32 → <strong>x = 29</strong>. Check: 29 + 3 &gt; 0 ✓.</p></div></details></li>
+<li><span class="q-text">Solve ln x + ln(x − 2) = ln 8.</span>
+<details><summary>Show answer</summary><div class="answer"><p>x(x − 2) = 8 → x² − 2x − 8 = 0 → x = 4 or x = −2. Since x must be greater than 2, reject −2. <strong>x = 4</strong>.</p></div></details></li>
+<li><span class="q-text">Solve 3ˣ = −5.</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>No solution.</strong> 3ˣ is always positive, and the log of a negative number is undefined.</p></div></details></li>
+<li><span class="q-text">Can 2ˣ = 5x be solved exactly using logarithms? Why or why not?</span>
+<details><summary>Show answer</summary><div class="answer"><p><strong>No.</strong> The variable appears both as an exponent and as a base term, so logs cannot isolate it. Use a graph or numerical method (find where the two graphs intersect).</p></div></details></li>
+</ol>
+</section>
+
+<section class="progress-box" id="modeling" aria-labelledby="modeling-h">
+<h2 id="modeling-h">5. Growth, Decay, Half-Life &amp; Doubling Time</h2>
+<p class="tip">Annual: <strong>A = P(1 + r)<sup>t</sup></strong> &nbsp;|&nbsp; Continuous: <strong>A = Pe<sup>rt</sup></strong> &nbsp;|&nbsp; Half-life: <strong>A = A₀(1/2)<sup>t/h</sup></strong> &nbsp;|&nbsp; Doubling time: <strong>t = ln 2 / ln(1 + r)</strong></p>
+<ol class="problems">
+<li><span class="q-text">$2,000 grows at 5% compounded annually. Find the value after 8 years.</span>
+<details><summary>Show answer</summary><div class="answer"><p>2000(1.05)⁸ ≈ <strong>$2,954.91</strong>.</p></div></details></li>
+<li><span class="q-text">The same $2,000 grows at 5% compounded continuously for 8 years. Find the value.</span>
+<details><summary>Show answer</summary><div class="answer"><p>2000e<sup>0.05·8</sup> = 2000e<sup>0.4</sup> ≈ <strong>$2,983.65</strong>.</p></div></details></li>
+<li><span class="q-text">80 mg of a substance has a half-life of 6 days. How much remains after 15 days?</span>
+<details><summary>Show answer</summary><div class="answer"><p>80(1/2)<sup>15/6</sup> = 80(0.5)<sup>2.5</sup> ≈ <strong>14.14 mg</strong>.</p></div></details></li>
+<li><span class="q-text">A population grows 4% per year. How long until it doubles?</span>
+<details><summary>Show answer</summary><div class="answer"><p>1.04ᵗ = 2 → t = ln 2 / ln 1.04 ≈ <strong>17.67 years</strong>.</p></div></details></li>
+<li><span class="q-text">Rewrite y = 500(1.08)ᵗ in the form y = ae<sup>kt</sup>.</span>
+<details><summary>Show answer</summary><div class="answer"><p>k = ln 1.08 ≈ 0.0770, so <strong>y ≈ 500e<sup>0.0770t</sup></strong>.</p></div></details></li>
+<li><span class="q-text">A substance decays continuously at 3% per year. How long until 25% remains?</span>
+<details><summary>Show answer</summary><div class="answer"><p>e<sup>−0.03t</sup> = 0.25 → t = ln 4 / 0.03 ≈ <strong>46.21 years</strong>.</p></div></details></li>
+</ol>
+</section>
+
+<section class="progress-box" id="applications" aria-labelledby="applications-h">
+<h2 id="applications-h">6. pH &amp; Decibel Applications</h2>
+<p class="tip">pH = −log[H⁺] &nbsp;|&nbsp; Loudness: L = 10 log(I / I₀), where I₀ = 10⁻¹² W/m²</p>
+<ol class="problems">
+<li><span class="q-text">Find the pH of a solution with [H⁺] = 3.2 × 10⁻⁵.</span>
+<details><summary>Show answer</summary><div class="answer"><p>pH = −log(3.2 × 10⁻⁵) = 5 − log 3.2 ≈ <strong>4.49</strong>.</p></div></details></li>
+<li><span class="q-text">A sound has intensity I = 10⁻⁵ W/m². Find its loudness in decibels.</span>
+<details><summary>Show answer</summary><div class="answer"><p>L = 10 log(10⁻⁵ / 10⁻¹²) = 10 log(10⁷) = <strong>70 dB</strong>.</p></div></details></li>
+</ol>
+</section>
+
+<section class="grid" aria-label="Next steps">
+
+<div class="card">
+<h3>Need Full Solutions?</h3>
+<p>Review complete step-by-step solutions from easy to challenging.</p>
+<a href="worked-examples.html">Open<span class="sr-only"> Worked Examples</span></a>
+</div>
+
+<div class="card">
+<h3>Check Your Readiness</h3>
+<p>Rate your confidence and track your mastery of each topic.</p>
+<a href="confidence-check.html">Open<span class="sr-only"> Confidence Check</span></a>
+</div>
+
+<div class="card">
+<h3>Verify with a Calculator</h3>
+<p>Check your numeric answers with the interactive calculators.</p>
+<a href="calculators.html">Open<span class="sr-only"> Interactive Calculators</span></a>
+</div>
+
+</section>
 
 </main>
 
@@ -925,89 +581,180 @@ or graphing technology.
 
 <h3>Chapter 5 Mastery Center</h3>
 
-<p>Build confidence one concept at a time.</p>
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
 
 <p class="copyright">
-
 &copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
-
 </p>
 
 </footer>
 
 <script>
-
 (function () {
+    'use strict';
 
-'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
 
-// ---------- Copyright Year ----------
-var yearEl = document.getElementById('copyright-year');
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
 
-if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-}
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
 
-// ---------- Text Size Controls ----------
-var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
-var DEFAULT_INDEX = 2;   // starts at 100%
-var MIN_INDEX = 0;
-var MAX_INDEX = LEVELS.length - 1;
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
 
-var STORE_KEY_SIZE  = 'ch5-font-scale-index';
-var STORE_KEY_THEME = 'ch5-theme';
+    function clamp(n, lo, hi) { return Math.min(hi, Math.max(lo, n)); }
 
-var btnIncrease = document.getElementById('font-increase');
-var btnDecrease = document.getElementById('font-decrease');
-var btnReset    = document.getElementById('font-reset');
-var display     = document.getElementById('font-level-display');
-var root        = document.documentElement;
-
-function clamp(n, lo, hi) {
-    return Math.min(hi, Math.max(lo, n));
-}
-
-function getStoredIndex() {
-    try {
-        var raw = window.localStorage.getItem(STORE_KEY_SIZE);
-        if (raw === null) { return DEFAULT_INDEX; }
-        var n = parseInt(raw, 10);
-        return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
-    } catch (e) {
-        return DEFAULT_INDEX;
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) { return DEFAULT_INDEX; }
     }
-}
 
-function applyScale(index, announce) {
-    index = clamp(index, MIN_INDEX, MAX_INDEX);
-    var scale = LEVELS[index];
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
 
-    root.style.setProperty('--font-scale', String(scale));
-    document.body.style.fontSize = (scale * 100) + '%';
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
 
-    display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
 
-    btnDecrease.disabled = (index === MIN_INDEX);
-    btnIncrease.disabled = (index === MAX_INDEX);
-    btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
-    btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try { window.localStorage.setItem(STORE_KEY_SIZE, String(index)); }
+        catch (e) { /* storage unavailable — degrade silently */ }
 
-    try {
-        window.localStorage.setItem(STORE_KEY_SIZE, String(index));
-    } catch (e) { /* storage unavailable */ }
-
-    if (announce) {
-        display.textContent = Math.round(scale * 100) + '% text size';
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
     }
-}
 
-var currentIndex = getStoredIndex();
-applyScale(currentIndex, false);
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
 
-btnIncrease.addEventListener('click', function () {
-    currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
-    applyScale(currentIndex, true);
-});
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
 
-btnDecrease.addEventListener('click', function () {
-    currentIndex = clamp
+    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        if (persist) {
+            try { window.localStorage.setItem(STORE_KEY_THEME, theme); }
+            catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    // Follow OS changes only when the user hasn't chosen manually
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
+            catch (err) { stored = null; }
+
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) { mq.addEventListener('change', onChange); }
+        else if (mq.addListener) { mq.addListener(onChange); }
+    }
+
+    // ---------- Show / Hide All Answers ----------
+    function setAll(open) {
+        var items = document.querySelectorAll('details');
+        for (var i = 0; i < items.length; i++) { items[i].open = open; }
+    }
+    document.getElementById('show-all').addEventListener('click', function () { setAll(true); });
+    document.getElementById('hide-all').addEventListener('click', function () { setAll(false); });
+
+})();
+</script>
+
+</body>
+</html>
