@@ -258,9 +258,26 @@ ul{
 /* ===== Skills Checklist ===== */
 .skill-list{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:12px;
-    margin:20px 0;
+    /* auto-fill (not auto-fit) + vw floor = columns never collapse */
+    grid-template-columns:repeat(auto-fill,minmax(max(280px,26vw),1fr));
+    gap:14px;
+    margin:0 0 24px;
+}
+
+.skill-group{
+    grid-column:1 / -1;              /* heading spans full width */
+    font-size:calc(.95rem * var(--font-scale));
+    font-weight:700;
+    color:var(--text-muted);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    border-bottom:1px solid var(--border);
+    padding-bottom:6px;
+    margin:18px 0 0;
+}
+
+.skill-group:first-child{
+    margin-top:0;
 }
 
 .skill{
@@ -274,11 +291,17 @@ ul{
     box-shadow:0 2px 8px var(--shadow);
     cursor:pointer;
     transition:border-color .2s, transform .2s;
+    min-width:0;                     /* lets long words wrap, not overflow */
 }
 
 .skill:hover{
     border-color:var(--primary);
     transform:translateY(-2px);
+}
+
+.skill > span{
+    min-width:0;                     /* allows text to wrap inside flex item */
+    overflow-wrap:anywhere;
 }
 
 .skill input[type="checkbox"]{
@@ -300,10 +323,10 @@ ul{
     background:color-mix(in srgb, var(--success) 8%, var(--bg-card));
 }
 
-.skill-count{
-    font-size:calc(1rem * var(--font-scale));
-    color:var(--text-muted);
-    font-weight:600;
+@media (max-width:640px){
+    .skill-list{
+        grid-template-columns:1fr;   /* one column on phones */
+    }
 }
 
 /* ===== Buttons ===== */
@@ -496,6 +519,8 @@ Check every skill you can complete confidently from memory. Your score updates a
 
 <div class="skill-list">
 
+<h3 class="skill-group">Logarithm Basics</h3>
+
 <label class="skill">
 <input type="checkbox" name="skill">
 <span>Evaluate logarithms</span>
@@ -505,6 +530,8 @@ Check every skill you can complete confidently from memory. Your score updates a
 <input type="checkbox" name="skill">
 <span>Convert logarithmic and exponential forms</span>
 </label>
+
+<h3 class="skill-group">Properties of Logarithms</h3>
 
 <label class="skill">
 <input type="checkbox" name="skill">
@@ -531,6 +558,8 @@ Check every skill you can complete confidently from memory. Your score updates a
 <span>Condense logarithmic expressions</span>
 </label>
 
+<h3 class="skill-group">Graphs, Domain &amp; Range</h3>
+
 <label class="skill">
 <input type="checkbox" name="skill">
 <span>Find the domain of a logarithmic function</span>
@@ -556,14 +585,19 @@ Check every skill you can complete confidently from memory. Your score updates a
 <span>Interpret limits</span>
 </label>
 
+<h3 class="skill-group">Solving Equations</h3>
+
 <label class="skill">
 <input type="checkbox" name="skill">
 <span>Solve exponential equations using logarithms</span>
 </label>
 
+<h3 class="skill-group">Growth &amp; Decay Models</h3>
+
 <label class="skill">
 <input type="checkbox" name="skill">
 <span>Find annual growth rates</span>
+</label>
 
 <label class="skill">
 <input type="checkbox" name="skill">
@@ -585,6 +619,8 @@ Check every skill you can complete confidently from memory. Your score updates a
 <span>Find doubling time</span>
 </label>
 
+<h3 class="skill-group">Applications</h3>
+
 <label class="skill">
 <input type="checkbox" name="skill">
 <span>Solve pH problems</span>
@@ -596,7 +632,6 @@ Check every skill you can complete confidently from memory. Your score updates a
 </label>
 
 </div>
-
 <button type="button" class="btn" id="score-btn">Calculate Readiness</button>
 <button type="button" class="btn btn-secondary" id="clear-btn">Clear All</button>
 
