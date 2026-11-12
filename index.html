@@ -531,24 +531,15 @@ A condensed review containing formulas, graph facts, properties, and problem-sol
 
 </main>
 
-<footer>
-
-<h3>Chapter 5 Mastery Center</h3>
-
-<p>
-Build confidence one concept at a time.
-</p>
-
-<p>
-Next Milestone: Complete the Confidence Check with at least 80% mastery.
-</p>
-
-</footer>
-
 <script>
 (function () {
     'use strict';
-
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
     // ---------- Text Size Controls ----------
     var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];   // matches Algebraic Mechanics
     var MIN_INDEX = 0;
@@ -709,6 +700,24 @@ Next Milestone: Complete the Confidence Check with at least 80% mastery.
 
 })();
 </script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
