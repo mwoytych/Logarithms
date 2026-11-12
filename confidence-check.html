@@ -9,254 +9,10 @@
 <meta name="description"
 content="Measure how prepared you are for a Chapter 5 exam with a self-assessment of logarithm and exponential model skills.">
 
+<link rel="stylesheet" href="styles.css">
+
 <style>
-
-:root{
-    --primary:#2563eb;
-    --secondary:#1d4ed8;
-    --success:#059669;
-    --light:#f8fafc;
-    --border:#e5e7eb;
-    --bg-body:#f9fafb;
-    --bg-card:#ffffff;
-    --text-main:#111827;
-    --text-muted:#4b5563;
-    --footer-text:#6b7280;
-    --shadow:rgba(0,0,0,.08);
-    --font-scale:1;
-}
-
-/* Dark Mode */
-[data-theme="dark"]{
-    --primary:#58a6ff;
-    --secondary:#79b8ff;
-    --success:#3fb950;
-    --light:#161b22;
-    --border:#30363d;
-    --bg-body:#0d1117;
-    --bg-card:#161b22;
-    --text-main:#f0f6fc;
-    --text-muted:#8b949e;
-    --footer-text:#8b949e;
-    --shadow:rgba(0,0,0,.4);
-}
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:var(--bg-body);
-    color:var(--text-main);
-    transition:background .3s, color .3s;
-}
-
-/* ===== Accessibility: Skip Link ===== */
-.skip-link{
-    position:absolute;
-    top:-60px;
-    left:0;
-    background:var(--primary);
-    color:#fff;
-    padding:10px 16px;
-    z-index:1000;
-    text-decoration:none;
-    border-radius:0 0 8px 0;
-    transition:top .2s;
-}
-.skip-link:focus{
-    top:0;
-}
-
-/* Screen-reader only utility */
-.sr-only{
-    position:absolute;
-    width:1px;
-    height:1px;
-    padding:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(0,0,0,0);
-    white-space:nowrap;
-    border:0;
-}
-
-/* ===== Accessibility Toolbar ===== */
-.a11y-bar{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    background:var(--bg-card);
-    border-bottom:1px solid var(--border);
-    padding:10px 16px;
-    position:sticky;
-    top:0;
-    z-index:900;
-}
-
-.a11y-group{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.a11y-label{
-    font-size:.85rem;
-    font-weight:600;
-    color:var(--text-muted);
-    margin-right:4px;
-}
-
-.a11y-btn{
-    min-width:40px;
-    min-height:40px;
-    padding:8px 12px;
-    font-size:1rem;
-    font-weight:600;
-    border:2px solid var(--border);
-    border-radius:6px;
-    background:var(--bg-body);
-    color:var(--text-main);
-    cursor:pointer;
-    transition:background .2s, border-color .2s;
-}
-
-.a11y-btn:hover{
-    border-color:var(--primary);
-}
-
-.a11y-btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:2px;
-}
-
-.a11y-btn[aria-pressed="true"]{
-    background:var(--primary);
-    color:#fff;
-    border-color:var(--primary);
-}
-
-.a11y-btn:disabled{
-    opacity:.45;
-    cursor:not-allowed;
-}
-
-#font-level-display{
-    font-size:.85rem;
-    color:var(--text-muted);
-    min-width:44px;
-    text-align:center;
-}
-
-/* ===== Hero (card-styled to match tiles) ===== */
-.hero{
-    max-width:1200px;
-    margin:24px auto 0;
-    padding:40px 25px;
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
-    text-align:center;
-}
-
-.hero h1{
-    margin:0;
-    font-size:calc(2.4rem * var(--font-scale));
-    color:var(--primary);
-}
-
-.hero p{
-    font-size:calc(1.1rem * var(--font-scale));
-    color:var(--text-muted);
-    margin-top:15px;
-}
-
-/* ===== Navigation (card-styled to match tiles) ===== */
-.site-nav{
-    max-width:1200px;
-    margin:16px auto 0;
-    padding:12px 20px;
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
-}
-
-.site-nav ul{
-    list-style:none;
-    margin:0 auto;
-    padding:0;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:center;
-}
-
-.site-nav a{
-    display:inline-block;
-    padding:10px 14px;
-    text-decoration:none;
-    color:var(--primary);
-    font-weight:600;
-    border-radius:6px;
-    font-size:calc(1rem * var(--font-scale));
-}
-
-.site-nav a:hover,
-.site-nav a:focus-visible{
-    background:var(--primary);
-    color:#fff;
-    outline:none;
-}
-
-.site-nav a[aria-current="page"]{
-    background:var(--primary);
-    color:#fff;
-}
-
-/* ===== Layout ===== */
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:40px 20px;
-}
-
-.panel{
-    background:var(--bg-card);
-    padding:25px;
-    border-radius:12px;
-    margin-bottom:40px;
-    box-shadow:0 2px 8px var(--shadow);
-    border:1px solid var(--border);
-}
-
-.panel h2{
-    margin-top:0;
-    font-size:calc(1.6rem * var(--font-scale));
-    color:var(--primary);
-}
-
-.panel h3{
-    font-size:calc(1.2rem * var(--font-scale));
-}
-
-.panel p,
-.panel li,
-.panel label{
-    font-size:calc(1rem * var(--font-scale));
-}
-
-ul{
-    padding-left:20px;
-}
-
-/* ===== Skills Checklist ===== */
-/* ===== Skills Checklist ===== */
+/* ===== Confidence Check: page-specific styles ===== */
 .skill-list{
     display:flex;
     flex-wrap:wrap;
@@ -265,8 +21,8 @@ ul{
 }
 
 .skill{
-    flex:1 1 calc(33.333% - 10px);    /* 3 per row on wide screens */
-    min-width:260px;                    /* never get narrower than this */
+    flex:1 1 calc(33.333% - 10px);
+    min-width:260px;
     max-width:100%;
     display:flex;
     align-items:flex-start;
@@ -304,20 +60,27 @@ ul{
     background:color-mix(in srgb, var(--success) 8%, var(--bg-card));
 }
 
-/* Responsive: 2 per row on tablets, 1 on phones */
-@media (max-width:900px){
-    .skill{
-        flex:1 1 calc(50% - 10px);
-    }
+/* Section headers inside the checklist */
+.skill-list .skill-group{
+    flex:1 1 100%;
+    margin:18px 0 4px;
+    padding:0 4px;
+    font-size:calc(1.05rem * var(--font-scale));
+    color:var(--text-main);
+    font-weight:700;
+    letter-spacing:.02em;
 }
 
-@media (max-width:600px){
-    .skill{
-        flex:1 1 100%;
-    }
+.skill-list .skill-group:first-child{
+    margin-top:0;
 }
 
-/* ===== Buttons ===== */
+.skill-count{
+    font-weight:600;
+    color:var(--text-muted);
+    margin-bottom:16px;
+}
+
 .btn{
     display:inline-block;
     margin-top:20px;
@@ -332,31 +95,11 @@ ul{
     font-weight:600;
     cursor:pointer;
 }
+.btn:hover, .btn:focus-visible{ background:var(--secondary); }
+.btn:focus-visible{ outline:3px solid var(--primary); outline-offset:3px; }
+.btn-secondary{ background:var(--bg-body); color:var(--primary); border:2px solid var(--border); }
+.btn-secondary:hover, .btn-secondary:focus-visible{ background:var(--bg-card); border-color:var(--primary); color:var(--primary); }
 
-.btn:hover,
-.btn:focus-visible{
-    background:var(--secondary);
-}
-
-.btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:3px;
-}
-
-.btn-secondary{
-    background:var(--bg-body);
-    color:var(--primary);
-    border:2px solid var(--border);
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus-visible{
-    background:var(--bg-card);
-    border-color:var(--primary);
-    color:var(--primary);
-}
-
-/* ===== Result Box ===== */
 #result{
     margin-top:25px;
     padding:20px;
@@ -365,64 +108,20 @@ ul{
     display:none;
     font-size:calc(1rem * var(--font-scale));
 }
+#result h3{ margin-top:0; }
+.ready{ background:color-mix(in srgb, var(--success) 15%, var(--bg-card)); border-color:var(--success); }
+.improving{ background:#fef3c7; border-color:#d97706; color:#92400e; }
+.review{ background:#fee2e2; border-color:#dc2626; color:#991b1b; }
+[data-theme="dark"] .improving{ background:#3a2a08; color:#fcd34d; }
+[data-theme="dark"] .review{ background:#3b1113; color:#fca5a5; }
 
-#result h3{
-    margin-top:0;
+/* Responsive */
+@media (max-width:900px){
+    .skill{ flex:1 1 calc(50% - 10px); }
 }
-
-.ready{
-    background:color-mix(in srgb, var(--success) 15%, var(--bg-card));
-    border-color:var(--success);
-    color:var(--text-main);
+@media (max-width:600px){
+    .skill{ flex:1 1 100%; }
 }
-
-.improving{
-    background:#fef3c7;
-    border-color:#d97706;
-    color:#92400e;
-}
-
-.review{
-    background:#fee2e2;
-    border-color:#dc2626;
-    color:#991b1b;
-}
-
-[data-theme="dark"] .improving{
-    background:#3a2a08;
-    color:#fcd34d;
-}
-
-[data-theme="dark"] .review{
-    background:#3b1113;
-    color:#fca5a5;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--footer-text);
-    border-top:1px solid var(--border);
-}
-
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce){
-    *{
-        transition:none !important;
-        animation:none !important;
-    }
-    .skill:hover{
-        transform:none;
-    }
-}
-
-/* Print styles */
-@media print{
-    .a11y-bar, .site-nav{ display:none; }
-    body{ background:#fff; color:#000; }
-    .panel, .skill{ box-shadow:none; border:1px solid #ccc; }
-}
-
 </style>
 </head>
 
@@ -432,38 +131,16 @@ footer{
 
 <!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
-
     <div class="a11y-group" role="group" aria-label="Text size controls">
         <span class="a11y-label" id="font-label">Text Size</span>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-decrease"
-                aria-label="Decrease text size">A−</button>
-
-        <span id="font-level-display"
-              aria-live="polite"
-              aria-describedby="font-label">100%</span>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-increase"
-                aria-label="Increase text size">A+</button>
-
-        <button type="button"
-                class="a11y-btn"
-                id="font-reset"
-                aria-label="Reset text size to 100 percent">Reset</button>
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
     </div>
-
     <div class="a11y-group">
-        <button type="button"
-                class="a11y-btn"
-                id="theme-toggle"
-                aria-pressed="false"
-                aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
     </div>
-
 </div>
 
 <!-- Top Ribbon -->
@@ -471,213 +148,107 @@ footer{
 <script src="nav.js"></script>
 
 <header class="hero">
-
-<h1>Confidence Check</h1>
-
-<p>
-Measure how prepared you are for a Chapter 5 exam.
-</p>
-
+    <h1>Confidence Check</h1>
+    <p>Measure how prepared you are for a Chapter 5 exam.</p>
 </header>
 
 <main class="container" id="main-content">
 
 <section class="panel" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Can You Do These Without Notes?</h2>
+    <p>Check every skill you can complete confidently from memory. Your score updates as you check boxes.</p>
+    <p class="skill-count" id="skill-count" aria-live="polite">0 of 20 skills checked</p>
 
-<h2 id="skills-heading">Can You Do These Without Notes?</h2>
+    <form id="confidenceForm">
+        <div class="skill-list">
 
-<p>
-Check every skill you can complete confidently from memory. Your score updates as you check boxes.
-</p>
+            <h3 class="skill-group">Logarithm Basics</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Evaluate logarithms</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Convert logarithmic and exponential forms</span></label>
 
-<p class="skill-count" id="skill-count" aria-live="polite">0 of 20 skills checked</p>
+            <h3 class="skill-group">Properties of Logarithms</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Use Product Rule</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Use Quotient Rule</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Use Power Rule</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Expand logarithmic expressions</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Condense logarithmic expressions</span></label>
 
-<form id="confidenceForm">
+            <h3 class="skill-group">Graphs, Domain &amp; Range</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Find the domain of a logarithmic function</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Identify the range of a logarithmic function</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Sketch a logarithmic graph</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Identify vertical asymptotes</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Interpret limits</span></label>
 
-<div class="skill-list">
+            <h3 class="skill-group">Solving Equations</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Solve exponential equations using logarithms</span></label>
 
-<h3 class="skill-group">Logarithm Basics</h3>
+            <h3 class="skill-group">Growth &amp; Decay Models</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Find annual growth rates</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Find continuous growth rates</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Convert between abᵗ and aeᵏᵗ</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Find half-life</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Find doubling time</span></label>
 
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Evaluate logarithms</span>
-</label>
+            <h3 class="skill-group">Applications</h3>
+            <label class="skill"><input type="checkbox" name="skill"><span>Solve pH problems</span></label>
+            <label class="skill"><input type="checkbox" name="skill"><span>Solve decibel problems</span></label>
 
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Convert logarithmic and exponential forms</span>
-</label>
+        </div>
 
-<h3 class="skill-group">Properties of Logarithms</h3>
+        <button type="button" class="btn" id="score-btn">Calculate Readiness</button>
+        <button type="button" class="btn btn-secondary" id="clear-btn">Clear All</button>
 
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Use Product Rule</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Use Quotient Rule</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Use Power Rule</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Expand logarithmic expressions</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Condense logarithmic expressions</span>
-</label>
-
-<h3 class="skill-group">Graphs, Domain &amp; Range</h3>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Find the domain of a logarithmic function</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Identify the range of a logarithmic function</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Sketch a logarithmic graph</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Identify vertical asymptotes</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Interpret limits</span>
-</label>
-
-<h3 class="skill-group">Solving Equations</h3>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Solve exponential equations using logarithms</span>
-</label>
-
-<h3 class="skill-group">Growth &amp; Decay Models</h3>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Find annual growth rates</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Find continuous growth rates</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Convert between abᵗ and aeᵏᵗ</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Find half-life</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Find doubling time</span>
-</label>
-
-<h3 class="skill-group">Applications</h3>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Solve pH problems</span>
-</label>
-
-<label class="skill">
-<input type="checkbox" name="skill">
-<span>Solve decibel problems</span>
-</label>
-
-</div>
-<button type="button" class="btn" id="score-btn">Calculate Readiness</button>
-<button type="button" class="btn btn-secondary" id="clear-btn">Clear All</button>
-
-<div id="result" role="status"></div>
-
-</form>
-
+        <div id="result" role="status"></div>
+    </form>
 </section>
 
 <section class="panel" aria-labelledby="reflection-heading">
-
-<h2 id="reflection-heading">Reflection Questions</h2>
-
-<p><strong>1.</strong> What topic feels strongest?</p>
-
-<p><strong>2.</strong> What topic still causes confusion?</p>
-
-<p><strong>3.</strong> What question will you bring to the Math Lab?</p>
-
-<p><strong>4.</strong> Can you solve problems without looking at examples?</p>
-
+    <h2 id="reflection-heading">Reflection Questions</h2>
+    <p><strong>1.</strong> What topic feels strongest?</p>
+    <p><strong>2.</strong> What topic still causes confusion?</p>
+    <p><strong>3.</strong> What question will you bring to the Math Lab?</p>
+    <p><strong>4.</strong> Can you solve problems without looking at examples?</p>
 </section>
 
 <section class="panel" aria-labelledby="paths-heading">
-
-<h2 id="paths-heading">Recommended Review Paths</h2>
-
-<h3>If Domain &amp; Range Feels Weak</h3>
-<ul>
-<li>Review Graphing Logarithmic Functions</li>
-<li>Practice "Inside &gt; 0" problems</li>
-<li>Use Desmos for visualization</li>
-</ul>
-
-<h3>If Exponential Models Feel Weak</h3>
-<ul>
-<li>Review Growth &amp; Decay formulas</li>
-<li>Practice solving for time</li>
-<li>Review half-life and doubling time</li>
-</ul>
-
-<h3>If Log Properties Feel Weak</h3>
-<ul>
-<li>Practice expansion problems</li>
-<li>Practice condensing problems</li>
-<li>Memorize Product, Quotient, Power Rules</li>
-</ul>
-
+    <h2 id="paths-heading">Recommended Review Paths</h2>
+    <h3>If Domain &amp; Range Feels Weak</h3>
+    <ul>
+        <li>Review Graphing Logarithmic Functions</li>
+        <li>Practice "Inside &gt; 0" problems</li>
+        <li>Use Desmos for visualization</li>
+    </ul>
+    <h3>If Exponential Models Feel Weak</h3>
+    <ul>
+        <li>Review Growth &amp; Decay formulas</li>
+        <li>Practice solving for time</li>
+        <li>Review half-life and doubling time</li>
+    </ul>
+    <h3>If Log Properties Feel Weak</h3>
+    <ul>
+        <li>Practice expansion problems</li>
+        <li>Practice condensing problems</li>
+        <li>Memorize Product, Quotient, Power Rules</li>
+    </ul>
 </section>
 
-<a class="btn" href="exam-practice.html">← Exam Practice</a>
-<a class="btn" href="study-resources.html">Next: Study Resources →</a>
+<div style="margin-top:20px;">
+    <a class="btn" href="exam-practice.html">← Exam Practice</a>
+    <a class="btn" href="study-resources.html">Next: Study Resources →</a>
+</div>
 
 </main>
 
 <script>
 (function () {
     'use strict';
-    // ---------- Copyright Year ----------
-    var yearEl = document.getElementById('copyright-year');
-    if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-    }
-    
+
     // ---------- Text Size Controls ----------
-    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];   // matches Algebraic Mechanics
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
     var MIN_INDEX = 0;
     var MAX_INDEX = LEVELS.length - 1;
-    var DEFAULT_INDEX = 2;                       // 100%
+    var DEFAULT_INDEX = 2;
 
     var STORE_KEY_SIZE  = 'ch5-font-scale-index';
     var STORE_KEY_THEME = 'ch5-theme';
@@ -706,24 +277,16 @@ Check every skill you can complete confidently from memory. Your score updates a
     function applyScale(index, announce) {
         index = clamp(index, MIN_INDEX, MAX_INDEX);
         var scale = LEVELS[index];
-
-        // CSS custom property drives all calc()-based font sizes
         root.style.setProperty('--font-scale', String(scale));
-        // Also set body font-size so unstyled text scales too
         document.body.style.fontSize = (scale * 100) + '%';
-
         display.textContent = Math.round(scale * 100) + '%';
-
-        // Disable buttons at the ends so users get feedback
         btnDecrease.disabled = (index === MIN_INDEX);
         btnIncrease.disabled = (index === MAX_INDEX);
         btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
         btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
-
         try {
             window.localStorage.setItem(STORE_KEY_SIZE, String(index));
-        } catch (e) { /* storage unavailable — degrade silently */ }
-
+        } catch (e) {}
         if (announce) {
             display.textContent = Math.round(scale * 100) + '% text size';
         }
@@ -747,10 +310,8 @@ Check every skill you can complete confidently from memory. Your score updates a
         applyScale(currentIndex, true);
     });
 
-    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
     document.addEventListener('keydown', function (evt) {
         if (!(evt.ctrlKey || evt.metaKey)) { return; }
-
         if (evt.key === '+' || evt.key === '=') {
             evt.preventDefault();
             currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
@@ -773,11 +334,8 @@ Check every skill you can complete confidently from memory. Your score updates a
         try {
             var stored = window.localStorage.getItem(STORE_KEY_THEME);
             if (stored === 'dark' || stored === 'light') { return stored; }
-        } catch (e) { /* ignore */ }
-
-        // Fall back to OS preference
-        if (window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        } catch (e) {}
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             return 'dark';
         }
         return 'light';
@@ -795,11 +353,10 @@ Check every skill you can complete confidently from memory. Your score updates a
             themeToggle.textContent = '🌙 Dark Mode';
             themeToggle.setAttribute('aria-label', 'Switch to dark mode');
         }
-
         if (persist) {
             try {
                 window.localStorage.setItem(STORE_KEY_THEME, theme);
-            } catch (e) { /* ignore */ }
+            } catch (e) {}
         }
     }
 
@@ -811,14 +368,11 @@ Check every skill you can complete confidently from memory. Your score updates a
         applyTheme(currentTheme, true);
     });
 
-    // Follow OS changes only when the user hasn't chosen manually
     if (window.matchMedia) {
         var mq = window.matchMedia('(prefers-color-scheme: dark)');
         var onChange = function (e) {
             var stored = null;
-            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
-            catch (err) { stored = null; }
-
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
             if (stored !== 'dark' && stored !== 'light') {
                 currentTheme = e.matches ? 'dark' : 'light';
                 applyTheme(currentTheme, false);
@@ -827,7 +381,7 @@ Check every skill you can complete confidently from memory. Your score updates a
         if (mq.addEventListener) {
             mq.addEventListener('change', onChange);
         } else if (mq.addListener) {
-            mq.addListener(onChange);   // older Safari
+            mq.addListener(onChange);
         }
     }
 
@@ -894,21 +448,10 @@ Check every skill you can complete confidently from memory. Your score updates a
 </script>
 
 <footer>
-
-<h3>Chapter 5 Mastery Center</h3>
-
-<p>
-Build confidence one concept at a time.
-</p>
-
-<p>
-Next Milestone: Complete the Confidence Check with at least 80% mastery.
-</p>
-
-<p class="copyright">
-&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
-</p>
-
+    <h3>Chapter 5 Mastery Center</h3>
+    <p>Build confidence one concept at a time.</p>
+    <p>Next Milestone: Complete the Confidence Check with at least 80% mastery.</p>
+    <p class="copyright">&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.</p>
 </footer>
 
 </body>
