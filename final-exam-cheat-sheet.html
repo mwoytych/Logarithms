@@ -1,574 +1,816 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Final Exam Cheat Sheet | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="A condensed Chapter 5 review containing logarithm properties, graph facts, growth and decay models, half-life, doubling time, and problem-solving shortcuts.">
 
 <style>
 
 :root{
     --primary:#2563eb;
+    --secondary:#1d4ed8;
     --success:#059669;
+    --warning:#d97706;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --code-bg:#111827;
+    --code-text:#f0f6fc;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --warning:#fbbf24;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --code-bg:#010409;
+    --code-text:#f0f6fc;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
-    font-family:Segoe UI,Arial,sans-serif;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
     line-height:1.5;
-    color:#111827;
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
+}
+
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
     text-align:center;
+}
+
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:1200px;
+    margin:auto;
     padding:40px 20px;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:25px;
+.intro{
+    background:var(--bg-card);
+    padding:20px 25px;
+    border-radius:12px;
+    margin-bottom:30px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+    border-left:5px solid var(--warning);
+    font-size:calc(1rem * var(--font-scale));
 }
 
 .grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(max(300px,30vw),1fr));
     gap:20px;
 }
 
 .card{
-    background:var(--light);
+    background:var(--bg-card);
+    border:1px solid var(--border);
     border-left:5px solid var(--primary);
+    border-radius:12px;
     padding:20px;
-    border-radius:8px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
 }
 
-h2{
-    color:#2563eb;
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px var(--shadow);
+}
+
+.card h2{
+    margin:0 0 12px;
+    font-size:calc(1.2rem * var(--font-scale));
+    color:var(--primary);
 }
 
 pre{
-    background:#111827;
-    color:white;
+    background:var(--code-bg);
+    color:var(--code-text);
     padding:15px;
     border-radius:8px;
-    overflow:auto;
+    overflow-x:auto;
+    margin:0;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:calc(.95rem * var(--font-scale));
+    line-height:1.45;
+    white-space:pre-wrap;
+    word-break:break-word;
 }
 
+/* ===== Buttons ===== */
 .btn{
     display:inline-block;
     margin-top:20px;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:10px 16px;
+    margin-right:10px;
+    padding:12px 18px;
+    border:none;
     border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+.btn-secondary{
+    background:var(--bg-body);
+    color:var(--primary);
+    border:2px solid var(--border);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible{
+    background:var(--bg-card);
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .card:hover{
+        transform:none;
+    }
 }
 
 @media print{
-
-    .btn{
-        display:none;
+    .a11y-bar, .site-nav, .btn{ display:none; }
+    body{ background:#fff; color:#000; font-size:11px; }
+    .hero{ box-shadow:none; border:1px solid #ccc; }
+    .card{
+        box-shadow:none;
+        border:1px solid #ccc;
+        break-inside:avoid;
+        page-break-inside:avoid;
     }
-
-    body{
-        font-size:12px;
+    pre{
+        background:#fff;
+        color:#000;
+        border:1px solid #999;
+        font-size:10px;
     }
-
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="study-resources.html">Study Resources</a></li>
+        <li><a href="math-lab-companion.html">Math Lab Companion</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Chapter 5 Final Exam Cheat Sheet</h1>
 
-<p>
-Last-Minute Review Guide
-</p>
+<p>Last-Minute Review Guide • Logarithms • Exponentials • Growth &amp; Decay</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
+
+<div class="intro">
+<strong>How to use this page:</strong> Skim every card once, then cover each
+`<pre>` block and try to reproduce it from memory. Anything you cannot
+reproduce is a gap — take that topic to the Math Lab or Exam Practice.
+</div>
 
 <div class="grid">
 
 <div class="card">
-
 <h2>Logarithm Basics</h2>
-
-<pre>
-logb(x)=y
-
-⇔
-
-b^y=x
+<pre>log_b(x) = y
+     ⇔
+b^y = x
 
 Logs answer:
-
-"What exponent?"
-</pre>
-
+"What exponent?"</pre>
 </div>
 
 <div class="card">
+<h2>Common &amp; Natural Logs</h2>
+<pre>log(x) = log₁₀(x)
+ln(x)  = logₑ(x)
 
-<h2>Common & Natural Logs</h2>
-
-<pre>
-log(x)=log₁₀(x)
-
-ln(x)=logₑ(x)
-
-e≈2.718
-</pre>
-
+e ≈ 2.718</pre>
 </div>
 
 <div class="card">
-
 <h2>Exact Values</h2>
+<pre>log(1)   = 0
+log(10)  = 1
+log(100) = 2
 
-<pre>
-log(1)=0
-
-log(10)=1
-
-log(100)=2
-
-ln(1)=0
-
-ln(e)=1
-
-ln(e³)=3
-</pre>
-
+ln(1)  = 0
+ln(e)  = 1
+ln(e³) = 3</pre>
 </div>
 
 <div class="card">
-
 <h2>Log Properties</h2>
-
-<pre>
-Product:
-
-log(MN)
-
-=
-
-log(M)+log(N)
-
-----------------
+<pre>Product:
+log(MN) = log(M) + log(N)
 
 Quotient:
-
-log(M/N)
-
-=
-
-log(M)-log(N)
-
-----------------
+log(M/N) = log(M) − log(N)
 
 Power:
-
-log(M^p)
-
-=
-
-p log(M)
-</pre>
-
+log(Mᵖ) = p · log(M)</pre>
 </div>
 
 <div class="card">
-
 <h2>Expand Mechanics</h2>
-
-<pre>
-Multiply → Add
-
-Divide → Subtract
-
-Power → Front
-</pre>
-
+<pre>Multiply   → Add
+Divide     → Subtract
+Power      → Front</pre>
 </div>
 
 <div class="card">
-
 <h2>Condense Mechanics</h2>
-
-<pre>
-Add → Multiply
-
-Subtract → Divide
-
-Coefficient → Exponent
-</pre>
-
+<pre>Add          → Multiply
+Subtract     → Divide
+Coefficient  → Exponent</pre>
 </div>
 
 <div class="card">
-
 <h2>Change of Base</h2>
+<pre>log_b(x) = log(x) / log(b)
 
-<pre>
-logb(x)
-
-=
-
-log(x)
-/ log(b)
-</pre>
-
+Also valid with ln:
+log_b(x) = ln(x) / ln(b)</pre>
 </div>
 
 <div class="card">
-
-<h2>Domain & Range</h2>
-
-<pre>
-Domain:
-
-Inside > 0
-
-----------------
+<h2>Domain &amp; Range</h2>
+<pre>Domain:
+Set the inside > 0
+and solve for x.
 
 Range:
-
-All Real Numbers
-</pre>
-
+All real numbers
+(−∞, ∞)</pre>
 </div>
 
 <div class="card">
-
 <h2>Graph Facts</h2>
+<pre>Vertical Asymptote: x = 0
+Key Point:          (1, 0)
 
-<pre>
-Vertical Asymptote:
-
-x=0
-
-Key Point:
-
-(1,0)
-
-Concavity:
-
-Concave Down
-
-for log(x)
-and ln(x)
-</pre>
-
+Concave Down for
+log(x) and ln(x)</pre>
 </div>
 
 <div class="card">
-
 <h2>Asymptotes</h2>
+<pre>Vertical:   x = a
+Graph approaches x = a
 
-<pre>
-Vertical:
-
-x=a
-
-Graph approaches
-x=a
-
-----------------
-
-Horizontal:
-
-y=b
-
-Graph approaches
-y=b
-</pre>
-
+Horizontal: y = b
+Graph approaches y = b</pre>
 </div>
 
 <div class="card">
-
 <h2>Limits</h2>
+<pre>lim ln(x) = −∞
+x→0⁺
 
-<pre>
-lim ln(x)
-
-x→0+
-
-=
-
-−∞
-
-----------------
-
-lim ln(x)
-
-x→∞
-
-=
-
-∞
-</pre>
-
+lim ln(x) =  ∞
+x→∞</pre>
 </div>
 
 <div class="card">
-
 <h2>Growth Models</h2>
+<pre>P = P₀(1 + r)^t
 
-<pre>
-P=P₀(1+r)^t
-
-Growth:
-
-r positive
-
-Decay:
-
-r negative
-</pre>
-
+Growth: r positive
+Decay:  r negative</pre>
 </div>
 
 <div class="card">
-
 <h2>Continuous Growth</h2>
+<pre>A = A₀e^(kt)
 
-<pre>
-A=A₀e^(kt)
+k > 0  →  Growth
+k < 0  →  Decay</pre>
+</div>
 
-k>0
-
-Growth
-
-k<0
-
-Decay
-</pre>
-
+<div class="question">
+    <strong>Question #3</strong>
+    "How do I know when to use logarithms?"
 </div>
 
 <div class="card">
-
 <h2>Convert Forms</h2>
+<pre>ab^t → ae^(kt)
+k = ln(b)
 
-<pre>
-ab^t
-
-→
-
-ae^(kt)
-
-k=ln(b)
-
-----------------
-
-ae^(kt)
-
-→
-
-ab^t
-
-b=e^k
-</pre>
-
+ae^(kt) → ab^t
+b = e^k</pre>
 </div>
 
 <div class="card">
-
 <h2>Finding Time</h2>
+<pre>ab^t = c
+t = log(c/a) / log(b)
 
-<pre>
-ab^t=c
-
-t=
-
-log(c/a)
-/ log(b)
-
-----------------
-
-ae^(kt)=c
-
-t=
-
-ln(c/a)
-/ k
-</pre>
-
+ae^(kt) = c
+t = ln(c/a) / k</pre>
 </div>
 
 <div class="card">
-
 <h2>Half-Life</h2>
-
-<pre>
-t=ln(2)/|k|
+<pre>t = ln(2) / |k|
 
 Meaning:
-
 Time to cut
-in half.
-</pre>
-
+in half.</pre>
 </div>
 
 <div class="card">
-
 <h2>Doubling Time</h2>
-
-<pre>
-t=ln(2)/k
+<pre>t = ln(2) / k
 
 Meaning:
-
-Time to double.
-</pre>
-
+Time to double.</pre>
 </div>
 
 <div class="card">
-
 <h2>Applications</h2>
+<pre>pH = −log[H+]
 
-<pre>
-pH
-
-=
-
--log[H+]
-
-----------------
-
-Decibels
-
-=
-
-10log(I/I₀)
-</pre>
-
+Decibels = 10 log(I / I₀)</pre>
 </div>
 
 <div class="card">
-
 <h2>Solve Exponential Equations</h2>
-
-<pre>
-Variable in exponent?
-
+<pre>Variable in exponent?
 Take logs.
 
 Example:
+2^x = 50
 
-2^x=50
-
-↓
-
-x=log(50)
-/log(2)
-</pre>
-
+x = log(50) / log(2)</pre>
 </div>
 
 <div class="card">
-
 <h2>When Logs Fail</h2>
+<pre>2^x + x = 10
 
-<pre>
-2^x+x=10
-
-Variable
-
-inside exponent
-
-AND
-
+Variable inside
+exponent AND
 outside exponent
 
 Cannot solve
 algebraically
-with logs.
-</pre>
-
+with logs.</pre>
 </div>
 
 <div class="card">
-
 <h2>Most Tested Concepts</h2>
-
-<pre>
-1. Log Properties
-
+<pre>1. Log Properties
 2. Domain
-
 3. Graph Features
-
 4. Exponential Equations
-
-5. Growth & Decay
-
+5. Growth &amp; Decay
 6. Half-Life
-
-7. Doubling Time
-</pre>
-
+7. Doubling Time</pre>
 </div>
 
 <div class="card">
-
 <h2>Algebraic Mechanics</h2>
-
-<pre>
-IDENTIFY
-
+<pre>IDENTIFY
 ↓
-
 TRANSFORM
-
 ↓
-
 ISOLATE
-
 ↓
-
 SOLVE
-
 ↓
-
-VERIFY
-</pre>
-
+VERIFY</pre>
 </div>
 
 </div>
 
-<a
-class="btn"
-href="common-mistakes.html">
-← Common Mistakes
-</a>
+<a class="btn btn-secondary" href="common-mistakes.html">← Common Mistakes</a>
+<a class="btn" href="index.html">Home</a>
 
-<a 
-class="btn" href="index.html">
-← Home
-</a>
+</main>
 
-</div>
+<script>
+(function () {
+    'use strict';
+
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+})();
+</script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
 
 </body>
 </html>
