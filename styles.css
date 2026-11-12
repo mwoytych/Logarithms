@@ -607,3 +607,17 @@ ul {
     color: black;
   }
 }
+
+.site-nav ul {
+  justify-content: center;
+  row-gap: 5px;
+  column-gap: 6px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  padding: 7px 12px;
+  font-size: calc(.9rem * var(--font-scale));
+  line-height: 1.1;
+  white-space: nowrap;
+}
