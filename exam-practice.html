@@ -3,126 +3,442 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Exam Practice | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="Practice problems for evaluating logarithms, properties, domain/range, graph analysis, exponential equations, growth/decay, half-life, doubling time, and real-world applications.">
 
 <style>
 
 :root{
     --primary:#2563eb;
-    --easy:#059669;
-    --medium:#d97706;
-    --hard:#dc2626;
+    --secondary:#1d4ed8;
+    --success:#059669;
+    --warning:#d97706;
+    --danger:#dc2626;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
     line-height:1.6;
-    color:#111827;
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
+/* ===== Accessibility: Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
+}
+
+/* Screen-reader only utility */
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
     text-align:center;
-    padding:50px 20px;
 }
 
+/* ===== Hero (card-styled to match tiles) ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation (card-styled to match tiles) ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
 .container{
-    max-width:1000px;
+    max-width:1200px;
     margin:auto;
-    padding:30px;
+    padding:40px 20px;
 }
 
+h2{
+    color:var(--primary);
+    font-size:calc(1.6rem * var(--font-scale));
+    border-bottom:2px solid var(--primary);
+    padding-bottom:10px;
+}
+
+/* ===== Cards ===== */
 .card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:25px 0;
-    border-radius:8px;
+    background:var(--bg-card);
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--border);
 }
 
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px var(--shadow);
+}
+
+.card h3{
+    color:var(--primary);
+    margin-top:0;
+    font-size:calc(1.3rem * var(--font-scale));
+}
+
+.card p,
+.card li{
+    color:var(--text-muted);
+    font-size:calc(1rem * var(--font-scale));
+}
+
+/* ===== Level Badges ===== */
+.level{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:.8rem;
+    font-weight:bold;
+    color:white;
+    margin-bottom:10px;
+}
+
+.easy{background:var(--success);}
+.medium{background:var(--warning);}
+.hard{background:var(--danger);}
+
+/* ===== Details/Summary ===== */
 details{
-    background:white;
+    background:var(--bg-card);
     border:1px solid var(--border);
     border-radius:8px;
+    margin-top:15px;
     padding:15px;
-    margin-top:10px;
 }
 
 summary{
     cursor:pointer;
-    font-weight:bold;
-    color:#2563eb;
+    font-weight:600;
+    color:var(--primary);
+    font-size:calc(1rem * var(--font-scale));
 }
 
-.level{
-    padding:5px 10px;
-    border-radius:20px;
-    color:white;
-    font-size:.8rem;
-    font-weight:bold;
-}
-
-.easy{
-    background:var(--easy);
-}
-
-.medium{
-    background:var(--medium);
-}
-
-.hard{
-    background:var(--hard);
-}
-
+/* ===== Code Blocks ===== */
 pre{
-    background:#111827;
-    color:white;
-    padding:15px;
+    background:var(--light);
+    border:1px solid var(--border);
+    border-left:4px solid var(--primary);
     border-radius:8px;
-    overflow:auto;
+    padding:16px 20px;
+    overflow-x:auto;
+    font-family:Consolas, Monaco, monospace;
+    font-size:calc(.95rem * var(--font-scale));
+    white-space:pre-wrap;
+    color:var(--text-main);
 }
 
-.btn{
+code{
+    font-family:Consolas, Monaco, monospace;
+}
+
+/* ===== Page Navigation ===== */
+.page-nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:40px;
+}
+
+.back{
     display:inline-block;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
     padding:10px 16px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
     border-radius:6px;
-    margin-right:10px;
-    margin-top:20px;
+    font-weight:600;
+    font-size:calc(1rem * var(--font-scale));
 }
 
-h2{
-    color:#2563eb;
-    border-bottom:2px solid #2563eb;
-    padding-bottom:10px;
+.back:hover,
+.back:focus-visible{
+    background:var(--secondary);
+}
+
+.back:focus-visible{
+       outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+.copyright{
+    font-size:.85rem;
+    color:var(--footer-text);
+    margin-top:15px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .card:hover{
+        transform:none;
+    }
+}
+
+/* Print styles */
+@media print{
+    .a11y-bar, .site-nav, .page-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .card{ box-shadow:none; border:1px solid #ccc; }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-scale-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease"
+                aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display"
+              aria-live="polite"
+              aria-describedby="font-scale-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase"
+                aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset"
+                aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle"
+                aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Primary Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        that will be used to solve
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html" aria-current="page">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Exam Practice</h1>
 
-<p>
-Practice First. Check Solutions Second.
-</p>
+<p>Practice First. Check Solutions Second.</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
 <h2>Part A: Evaluate Logarithms</h2>
 
@@ -135,6 +451,7 @@ Practice First. Check Solutions Second.
 </pre>
 
 <details>
+
 <summary>Answer</summary>
 
 <pre>
@@ -158,6 +475,7 @@ Answer:
 </pre>
 
 <details>
+
 <summary>Answer</summary>
 
 <pre>
@@ -187,6 +505,7 @@ log((x³y)/z²)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -218,6 +537,7 @@ Condense:
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -243,6 +563,7 @@ y = log(x−8)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -274,6 +595,7 @@ y = log(x)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -307,6 +629,7 @@ for y = ln(x)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -339,6 +662,7 @@ Solve:
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -368,6 +692,7 @@ for t
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -399,6 +724,7 @@ What is the annual growth rate?
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -428,6 +754,7 @@ to ab^t form
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -459,6 +786,7 @@ A=500e^(-0.12t)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -484,6 +812,7 @@ A=500e^(0.08t)
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -513,6 +842,7 @@ Find pH
 </pre>
 
 <details>
+
 <summary>Solution</summary>
 
 <pre>
@@ -540,6 +870,7 @@ Can logarithms solve?
 </pre>
 
 <details>
+
 <summary>Explanation</summary>
 
 <pre>
@@ -579,17 +910,104 @@ or graphing technology.
 
 </div>
 
-<a class="btn"
-href="worked-examples.html">
-← Worked Examples
-</a>
+<!-- ===== Prev / Next Navigation ===== -->
+<nav class="page-nav" aria-label="Page navigation">
 
-<a class="btn"
-href="confidence-check.html">
-Next: Confidence Check →
-</a>
+<a class="back" href="worked-examples.html">← Worked Examples</a>
 
-</div>
+<a class="back" href="confidence-check.html">Next: Confidence Check →</a>
 
-</body>
-</html>
+</nav>
+
+</main>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>Build confidence one concept at a time.</p>
+
+<p class="copyright">
+
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+
+</p>
+
+</footer>
+
+<script>
+
+(function () {
+
+'use strict';
+
+// ---------- Copyright Year ----------
+var yearEl = document.getElementById('copyright-year');
+
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
+
+// ---------- Text Size Controls ----------
+var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+var DEFAULT_INDEX = 2;   // starts at 100%
+var MIN_INDEX = 0;
+var MAX_INDEX = LEVELS.length - 1;
+
+var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+var STORE_KEY_THEME = 'ch5-theme';
+
+var btnIncrease = document.getElementById('font-increase');
+var btnDecrease = document.getElementById('font-decrease');
+var btnReset    = document.getElementById('font-reset');
+var display     = document.getElementById('font-level-display');
+var root        = document.documentElement;
+
+function clamp(n, lo, hi) {
+    return Math.min(hi, Math.max(lo, n));
+}
+
+function getStoredIndex() {
+    try {
+        var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+        if (raw === null) { return DEFAULT_INDEX; }
+        var n = parseInt(raw, 10);
+        return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+    } catch (e) {
+        return DEFAULT_INDEX;
+    }
+}
+
+function applyScale(index, announce) {
+    index = clamp(index, MIN_INDEX, MAX_INDEX);
+    var scale = LEVELS[index];
+
+    root.style.setProperty('--font-scale', String(scale));
+    document.body.style.fontSize = (scale * 100) + '%';
+
+    display.textContent = Math.round(scale * 100) + '%';
+
+    btnDecrease.disabled = (index === MIN_INDEX);
+    btnIncrease.disabled = (index === MAX_INDEX);
+    btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+    btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+
+    try {
+        window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+    } catch (e) { /* storage unavailable */ }
+
+    if (announce) {
+        display.textContent = Math.round(scale * 100) + '% text size';
+    }
+}
+
+var currentIndex = getStoredIndex();
+applyScale(currentIndex, false);
+
+btnIncrease.addEventListener('click', function () {
+    currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+    applyScale(currentIndex, true);
+});
+
+btnDecrease.addEventListener('click', function () {
+    currentIndex = clamp
