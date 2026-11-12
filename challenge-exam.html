@@ -41,9 +41,7 @@
     --shadow:rgba(0,0,0,.4);
 }
 
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
     margin:0;
@@ -53,312 +51,145 @@ body{
     transition:background .3s, color .3s;
 }
 
-/* ===== Accessibility: Skip Link ===== */
 .skip-link{
-    position:absolute;
-    top:-60px;
-    left:0;
-    background:var(--primary);
-    color:#fff;
-    padding:10px 16px;
-    z-index:1000;
-    text-decoration:none;
-    border-radius:0 0 8px 0;
-    transition:top .2s;
+    position:absolute;top:-60px;left:0;background:var(--primary);color:#fff;
+    padding:10px 16px;z-index:1000;text-decoration:none;border-radius:0 0 8px 0;transition:top .2s;
 }
-.skip-link:focus{
-    top:0;
-}
+.skip-link:focus{top:0;}
 
 .sr-only{
-    position:absolute;
-    width:1px;
-    height:1px;
-    padding:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(0,0,0,0);
-    white-space:nowrap;
-    border:0;
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
-/* ===== Accessibility Toolbar ===== */
 .a11y-bar{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    background:var(--bg-card);
-    border-bottom:1px solid var(--border);
-    padding:10px 16px;
-    position:sticky;
-    top:0;
-    z-index:900;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;
+    background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;
+    position:sticky;top:0;z-index:900;
 }
-
-.a11y-group{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.a11y-label{
-    font-size:.85rem;
-    font-weight:600;
-    color:var(--text-muted);
-    margin-right:4px;
-}
-
+.a11y-group{display:flex;align-items:center;gap:6px;}
+.a11y-label{font-size:.85rem;font-weight:600;color:var(--text-muted);margin-right:4px;}
 .a11y-btn{
-    min-width:40px;
-    min-height:40px;
-    padding:8px 12px;
-    font-size:1rem;
-    font-weight:600;
-    border:2px solid var(--border);
-    border-radius:6px;
-    background:var(--bg-body);
-    color:var(--text-main);
-    cursor:pointer;
-    transition:background .2s, border-color .2s;
+    min-width:40px;min-height:40px;padding:8px 12px;font-size:1rem;font-weight:600;
+    border:2px solid var(--border);border-radius:6px;background:var(--bg-body);
+    color:var(--text-main);cursor:pointer;transition:background .2s,border-color .2s;
 }
+.a11y-btn:hover{border-color:var(--primary);}
+.a11y-btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px;}
+.a11y-btn[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary);}
+.a11y-btn:disabled{opacity:.45;cursor:not-allowed;}
+#font-level-display{font-size:.85rem;color:var(--text-muted);min-width:44px;text-align:center;}
 
-.a11y-btn:hover{
-    border-color:var(--primary);
-}
-
-.a11y-btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:2px;
-}
-
-.a11y-btn[aria-pressed="true"]{
-    background:var(--primary);
-    color:#fff;
-    border-color:var(--primary);
-}
-
-.a11y-btn:disabled{
-    opacity:.45;
-    cursor:not-allowed;
-}
-
-#font-level-display{
-    font-size:.85rem;
-    color:var(--text-muted);
-    min-width:44px;
-    text-align:center;
-}
-
-/* ===== Navigation ===== */
 .site-nav{
-    max-width:1200px;
-    margin:16px auto 0;
-    padding:12px 20px;
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
+    max-width:1200px;margin:16px auto 0;padding:12px 20px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);
 }
-
-.site-nav ul{
-    list-style:none;
-    margin:0 auto;
-    padding:0;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:center;
-}
-
+.site-nav ul{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
 .site-nav a{
-    display:inline-block;
-    padding:10px 14px;
-    text-decoration:none;
-    color:var(--primary);
-    font-weight:600;
-    border-radius:6px;
-    font-size:calc(1rem * var(--font-scale));
+    display:inline-block;padding:10px 14px;text-decoration:none;color:var(--primary);
+    font-weight:600;border-radius:6px;font-size:calc(1rem * var(--font-scale));
 }
+.site-nav a:hover,.site-nav a:focus-visible{background:var(--primary);color:#fff;outline:none;}
+.site-nav a[aria-current="page"]{background:var(--primary);color:#fff;}
 
-.site-nav a:hover,
-.site-nav a:focus-visible{
-    background:var(--primary);
-    color:#fff;
-    outline:none;
-}
-
-.site-nav a[aria-current="page"]{
-    background:var(--primary);
-    color:#fff;
-}
-
-/* ===== Hero ===== */
 .hero{
-    max-width:1200px;
-    margin:24px auto 0;
-    padding:40px 25px;
-    background:var(--bg-card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
-    text-align:center;
+    max-width:1200px;margin:24px auto 0;padding:40px 25px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);text-align:center;
 }
+.hero h1{margin:0;font-size:calc(2.4rem * var(--font-scale));color:var(--primary);}
+.hero p{font-size:calc(1.1rem * var(--font-scale));color:var(--text-muted);margin-top:15px;}
 
-.hero h1{
-    margin:0;
-    font-size:calc(2.4rem * var(--font-scale));
-    color:var(--primary);
-}
+.container{max-width:1000px;margin:auto;padding:40px 20px;}
 
-.hero p{
-    font-size:calc(1.1rem * var(--font-scale));
-    color:var(--text-muted);
-    margin-top:15px;
-}
-
-/* ===== Main Container ===== */
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:40px 20px;
-}
-
-/* ===== Exam Form Styles ===== */
 .exam-form{
-    background:var(--bg-card);
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 2px 8px var(--shadow);
-    border:1px solid var(--border);
+    background:var(--bg-card);padding:30px;border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);border:1px solid var(--border);
 }
 
 .question-block{
-    margin-bottom:25px;
-    padding-bottom:20px;
-    border-bottom:1px solid var(--border);
+    margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid var(--border);
 }
-
-.question-block:last-of-type{
-    border-bottom:none;
-}
+.question-block:last-of-type{border-bottom:none;}
 
 .question-label{
-    display:block;
-    font-weight:600;
-    font-size:calc(1.05rem * var(--font-scale));
-    margin-bottom:8px;
-    color:var(--text-main);
+    display:block;font-weight:600;font-size:calc(1.05rem * var(--font-scale));
+    margin-bottom:8px;color:var(--text-main);
 }
 
 .question-input{
-    width:100%;
-    padding:12px;
-    font-size:calc(1rem * var(--font-scale));
-    border:1px solid var(--border);
-    border-radius:6px;
-    background:var(--bg-body);
-    color:var(--text-main);
-    transition:border-color .2s;
+    width:100%;padding:12px;font-size:calc(1rem * var(--font-scale));
+    border:1px solid var(--border);border-radius:6px;background:var(--bg-body);
+    color:var(--text-main);transition:border-color .2s;
+}
+.question-input:focus{
+    outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.2);
 }
 
-.question-input:focus{
-    outline:none;
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(37, 99, 235, 0.2);
+/* ===== Feedback (added) ===== */
+.question-block.is-correct .question-input{
+    border-color:var(--success);box-shadow:0 0 0 3px rgba(5,150,105,.15);
+}
+.question-block.is-wrong .question-input{
+    border-color:var(--danger);box-shadow:0 0 0 3px rgba(220,38,38,.15);
+}
+
+.feedback{
+    display:none;margin-top:12px;padding:14px 16px;border-radius:8px;
+    border-left:4px solid var(--primary);background:var(--bg-body);
+}
+.question-block.is-correct .feedback{display:block;border-left-color:var(--success);}
+.question-block.is-wrong   .feedback{display:block;border-left-color:var(--danger);}
+
+.feedback-head{
+    font-weight:700;font-size:calc(1rem * var(--font-scale));margin-bottom:8px;
+}
+.question-block.is-correct .feedback-head{color:var(--success);}
+.question-block.is-wrong   .feedback-head{color:var(--danger);}
+
+.correct-answer{
+    font-size:calc(.95rem * var(--font-scale));margin-bottom:10px;color:var(--text-main);
+}
+.correct-answer strong{color:var(--primary);}
+
+.steps-title{
+    font-size:calc(.85rem * var(--font-scale));font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--text-muted);margin-bottom:6px;
+}
+.solution-steps{margin:0;padding-left:20px;}
+.solution-steps li{
+    font-size:calc(.95rem * var(--font-scale));line-height:1.6;
+    margin-bottom:4px;color:var(--text-muted);
 }
 
 .submit-btn{
-    display:block;
-    width:100%;
-    padding:15px;
-    font-size:calc(1.1rem * var(--font-scale));
-    font-weight:700;
-    color:#fff;
-    background:var(--primary);
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:20px;
-    transition:background .2s;
+    display:block;width:100%;padding:15px;font-size:calc(1.1rem * var(--font-scale));
+    font-weight:700;color:#fff;background:var(--primary);border:none;border-radius:8px;
+    cursor:pointer;margin-top:20px;transition:background .2s;
 }
+.submit-btn:hover{background:var(--secondary);}
+.submit-btn:focus-visible{outline:3px solid var(--primary);outline-offset:3px;}
 
-.submit-btn:hover{
-    background:var(--secondary);
-}
-
-.submit-btn:focus-visible{
-    outline:3px solid var(--primary);
-    outline-offset:3px;
-}
-
-/* ===== Results Section ===== */
 #results-area{
-    margin-top:30px;
-    padding:30px;
-    border-radius:12px;
-    text-align:center;
-    display:none;
-    border:1px solid var(--border);
+    margin-top:30px;padding:30px;border-radius:12px;text-align:center;
+    display:none;border:1px solid var(--border);
 }
+#results-area.ready{background:rgba(5,150,105,.1);border-color:var(--success);}
+#results-area.improving{background:rgba(217,119,6,.1);border-color:var(--warning);}
+#results-area.review{background:rgba(220,38,38,.1);border-color:var(--danger);}
 
-#results-area.ready{
-    background:rgba(5, 150, 105, 0.1);
-    border-color:var(--success);
-}
+.score-display{font-size:calc(2rem * var(--font-scale));font-weight:700;margin:10px 0;}
+.result-message{font-size:calc(1.1rem * var(--font-scale));margin-bottom:20px;}
 
-#results-area.improving{
-    background:rgba(217, 119, 6, 0.1);
-    border-color:var(--warning);
-}
+footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px solid var(--border);margin-top:40px;}
+footer a{color:var(--primary);text-decoration:none;margin:0 10px;}
+footer a:hover{text-decoration:underline;}
 
-#results-area.review{
-    background:rgba(220, 38, 38, 0.1);
-    border-color:var(--danger);
-}
-
-.score-display{
-    font-size:calc(2rem * var(--font-scale));
-    font-weight:700;
-    margin:10px 0;
-}
-
-.result-message{
-    font-size:calc(1.1rem * var(--font-scale));
-    margin-bottom:20px;
-}
-
-/* ===== Footer ===== */
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--footer-text);
-    border-top:1px solid var(--border);
-    margin-top:40px;
-}
-
-footer a{
-    color:var(--primary);
-    text-decoration:none;
-    margin:0 10px;
-}
-
-footer a:hover{
-    text-decoration:underline;
-}
-
-@media (prefers-reduced-motion: reduce){
-    *{
-        transition:none !important;
-        animation:none !important;
-    }
-}
-
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 @media print{
-    .a11y-bar, .site-nav, .submit-btn, footer { display:none; }
-    body{ background:#fff; color:#000; }
-    .exam-form, .hero { box-shadow:none; border:1px solid #ccc; }
+    .a11y-bar,.site-nav,.submit-btn,footer{display:none;}
+    body{background:#fff;color:#000;}
+    .exam-form,.hero{box-shadow:none;border:1px solid #ccc;}
+    .feedback{display:block!important;}
 }
 </style>
 </head>
@@ -370,9 +201,9 @@ footer a:hover{
 <!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
     <div class="a11y-group" role="group" aria-label="Text size controls">
-        <span class="a1y-label" id="font-label">Text Size</span>
+        <span class="a11y-label" id="font-label">Text Size</span>
         <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
-        <span id="font-level-display" aria-live="polite">100%</span>
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
         <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
         <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
     </div>
@@ -392,109 +223,129 @@ footer a:hover{
 
 <main class="container" id="main-content">
 
-    <form class="exam-form" id="exam-form" aria-label="Chapter 5 Challenge Exam">
-        
-        <div class="question-block">
+    <form class="exam-form" id="exam-form" aria-label="Chapter 5 Challenge Exam" novalidate>
+
+        <div class="question-block" data-q="1">
             <label class="question-label" for="q1">1. log₂(128) = ?</label>
-            <input type="text" id="q1" class="question-input" placeholder="Enter your answer">
+            <input type="text" id="q1" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="2">
             <label class="question-label" for="q2">2. ln(e⁵) = ?</label>
-            <input type="text" id="q2" class="question-input" placeholder="Enter your answer">
+            <input type="text" id="q2" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="3">
             <label class="question-label" for="q3">3. Domain of y = log(x − 4)?</label>
-            <input type="text" id="q3" class="question-input" placeholder="e.g., x > 4">
+            <input type="text" id="q3" class="question-input" placeholder="e.g., x > 4" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="4">
             <label class="question-label" for="q4">4. Range of y = ln(x)?</label>
-            <input type="text" id="q4" class="question-input" placeholder="Enter your answer">
+            <input type="text" id="q4" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="5">
             <label class="question-label" for="q5">5. Vertical asymptote of y = log(x)?</label>
-            <input type="text" id="q5" class="question-input" placeholder="e.g., x = 0">
+            <input type="text" id="q5" class="question-input" placeholder="e.g., x = 0" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="6">
             <label class="question-label" for="q6">6. Product Rule: log(MN) = ?</label>
-            <input type="text" id="q6" class="question-input" placeholder="Formula">
+            <input type="text" id="q6" class="question-input" placeholder="Formula" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="7">
             <label class="question-label" for="q7">7. Quotient Rule: log(M/N) = ?</label>
-            <input type="text" id="q7" class="question-input" placeholder="Formula">
+            <input type="text" id="q7" class="question-input" placeholder="Formula" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="8">
             <label class="question-label" for="q8">8. Power Rule: log(Mᵖ) = ?</label>
-            <input type="text" id="q8" class="question-input" placeholder="Formula">
+            <input type="text" id="q8" class="question-input" placeholder="Formula" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
-            <label class="question-label" for="q9">9. Convert: log₂(32) = ?</label>
-            <input type="text" id="q9" class="question-input" placeholder="Enter your answer">
+        <div class="question-block" data-q="9">
+            <label class="question-label" for="q9">9. Evaluate: log₂(32) = ?</label>
+            <input type="text" id="q9" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="10">
             <label class="question-label" for="q10">10. Solve: 2ˣ = 32</label>
-            <input type="text" id="q10" class="question-input" placeholder="Enter your answer">
+            <input type="text" id="q10" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="11">
             <label class="question-label" for="q11">11. Half-Life Formula</label>
-            <input type="text" id="q11" class="question-input" placeholder="Formula for t_1/2">
+            <input type="text" id="q11" class="question-input" placeholder="Formula for t½" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="12">
             <label class="question-label" for="q12">12. Doubling Time Formula</label>
-            <input type="text" id="q12" class="question-input" placeholder="Formula for t_2">
+            <input type="text" id="q12" class="question-input" placeholder="Formula for t₂" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+                <div class="question-block" data-q="13">
             <label class="question-label" for="q13">13. Convert: 100(1.05)ᵗ to ae^(kt). Find k.</label>
-            <input type="text" id="q13" class="question-input" placeholder="Decimal value">
+            <input type="text" id="q13" class="question-input" placeholder="Decimal value" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="14">
             <label class="question-label" for="q14">14. Annual growth rate of 100(1.08)ᵗ</label>
-            <input type="text" id="q14" class="question-input" placeholder="Percentage">
+            <input type="text" id="q14" class="question-input" placeholder="Percentage" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="15">
             <label class="question-label" for="q15">15. Continuous growth model: A = ?</label>
-            <input type="text" id="q15" class="question-input" placeholder="Formula">
+            <input type="text" id="q15" class="question-input" placeholder="Formula" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
-            <label class="question-label" for="q16">16. pH = −log[H+]. If [H+] = 10⁻⁴, find pH.</label>
-            <input type="text" id="q16" class="question-input" placeholder="Enter your answer">
+        <div class="question-block" data-q="16">
+            <label class="question-label" for="q16">16. pH = −log[H⁺]. If [H⁺] = 10⁻⁴, find pH.</label>
+            <input type="text" id="q16" class="question-input" placeholder="Enter your answer" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="17">
             <label class="question-label" for="q17">17. Can logarithms solve 2ˣ + x = 10? (Yes or No)</label>
-            <input type="text" id="q17" class="question-input" placeholder="Yes or No">
+            <input type="text" id="q17" class="question-input" placeholder="Yes or No" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="18">
             <label class="question-label" for="q18">18. Domain Rule for Logs</label>
-            <input type="text" id="q18" class="question-input" placeholder="Rule">
+            <input type="text" id="q18" class="question-input" placeholder="Rule" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="19">
             <label class="question-label" for="q19">19. Range of Logarithmic Functions</label>
-            <input type="text" id="q19" class="question-input" placeholder="Range">
+            <input type="text" id="q19" class="question-input" placeholder="Range" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <div class="question-block">
+        <div class="question-block" data-q="20">
             <label class="question-label" for="q20">20. Change of Base: log_b(x) = ?</label>
-            <input type="text" id="q20" class="question-input" placeholder="Formula">
+            <input type="text" id="q20" class="question-input" placeholder="Formula" autocomplete="off">
+            <div class="feedback" aria-live="polite"></div>
         </div>
 
-        <button type="button" class="submit-btn" onclick="gradeExam()">Grade Exam</button>
+        <button type="button" class="submit-btn" id="grade-btn">Grade Exam</button>
     </form>
 
     <div id="results-area" role="alert" aria-live="polite"></div>
@@ -515,7 +366,7 @@ footer a:hover{
     // ---------- Copyright Year ----------
     var yearEl = document.getElementById('copyright-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-    
+
     // ---------- Text Size Controls ----------
     var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
     var MIN_INDEX = 0;
@@ -529,9 +380,7 @@ footer a:hover{
     var display     = document.getElementById('font-level-display');
     var root        = document.documentElement;
 
-    function clamp(n, lo, hi) {
-        return Math.min(hi, Math.max(lo, n));
-    }
+    function clamp(n, lo, hi) { return Math.min(hi, Math.max(lo, n)); }
 
     function getStoredIndex() {
         try {
@@ -606,78 +455,319 @@ footer a:hover{
     });
 })();
 
-// ---------- Exam Grading Logic ----------
-function gradeExam() {
-    // Correct answers (normalized for grading)
-    let answers = [
-        "7",                           // 1. log2(128)
-        "5",                           // 2. ln(e^5)
-        "x>4",                         // 3. Domain of log(x-4)
-        "allrealnumbers",              // 4. Range of ln(x)
-        "x=0",                         // 5. Vertical asymptote of log(x)
-        "log(m)+log(n)",               // 6. Product Rule
-        "log(m)-log(n)",               // 7. Quotient Rule
-        "plog(m)",                     // 8. Power Rule
-        "5",                           // 9. log2(32)
-        "5",                           // 10. 2^x=32
-        "ln(2)/|k|",                   // 11. Half-Life
-        "ln(2)/k",                     // 12. Doubling Time
-        "0.04879",                     // 13. k for 1.05
-        "8%",                          // 14. Annual rate of 1.08
-        "ae^(kt)",                     // 15. Continuous growth
-        "4",                           // 16. pH of 10^-4
-        "no",                          // 17. Can logs solve 2^x+x=10?
-        "inside>0",                    // 18. Domain rule
-        "allrealnumbers",              // 19. Range of logs
-        "log(x)/log(b)"                // 20. Change of Base
-    ];
+/* =========================================================
+   EXAM GRADING LOGIC — with step-by-step solutions
+   ========================================================= */
+(function () {
+    'use strict';
 
-    let score = 0;
-    let resultsDiv = document.getElementById("results-area");
-    resultsDiv.style.display = "block";
-    resultsDiv.className = ""; // Reset classes
+    /* Each entry:
+       display  → the answer shown to the student
+       accept   → array of normalized strings that count as correct
+       steps    → ordered explanation lines                     */
+    var QUESTIONS = {
+        1: {
+            display: "7",
+            accept: ["7"],
+            steps: [
+                "Rewrite as an exponent: 2ʸ = 128.",
+                "Express 128 as a power of 2: 128 = 2⁷.",
+                "Match exponents: y = 7."
+            ]
+        },
+        2: {
+            display: "5",
+            accept: ["5"],
+            steps: [
+                "ln and e are inverse functions.",
+                "ln(eˣ) = x always.",
+                "Therefore ln(e⁵) = 5."
+            ]
+        },
+        3: {
+            display: "x > 4",
+            accept: ["x>4", "x>4", "x-4>0", "(4,infinity)", "x>4."],
+            steps: [
+                "The argument of a log must be positive.",
+                "Set inside > 0: x − 4 > 0.",
+                "Solve: x > 4."
+            ]
+        },
+        4: {
+            display: "All real numbers",
+            accept: ["allrealnumbers", "allreals", "(-infinity,infinity)", "allreal", "everyrealnumber", "r"],
+            steps: [
+                "A log grows without bound in both directions.",
+                "As x → ∞, ln(x) → ∞; as x → 0⁺, ln(x) → −∞.",
+                "No output is excluded, so the range is all real numbers."
+            ]
+        },
+        5: {
+            display: "x = 0",
+            accept: ["x=0", "x0", "yaxis", "x=0."],
+            steps: [
+                "The asymptote occurs where the argument equals zero.",
+                "Set x = 0.",
+                "Vertical asymptote: x = 0 (the y-axis)."
+            ]
+        },
+        6: {
+            display: "log(M) + log(N)",
+            accept: ["log(m)+log(n)", "logm+logn", "log(m)+log(n)"],
+            steps: [
+                "Multiplication inside a log becomes addition outside.",
+                "log(MN) = log(M) + log(N).",
+                "Works only when M > 0 and N > 0."
+            ]
+        },
+        7: {
+            display: "log(M) − log(N)",
+            accept: ["log(m)-log(n)", "logm-logn", "log(m)-log(n)"],
+            steps: [
+                "Division inside a log becomes subtraction outside.",
+                "log(M/N) = log(M) − log(N).",
+                "Order matters — numerator first."
+            ]
+        },
+        8: {
+            display: "p·log(M)",
+            accept: ["plog(m)", "plogm", "p*log(m)", "p*logm", "plog(m)"],
+            steps: [
+                "An exponent inside a log can be moved to the front as a multiplier.",
+                "log(Mᵖ) = p · log(M).",
+                "This is the key move for solving exponential equations."
+            ]
+        },
+        9: {
+            display: "5",
+            accept: ["5"],
+            steps: [
+                "Rewrite: 2ʸ = 32.",
+                "Write 32 as a power of 2: 32 = 2⁵.",
+                "So y = 5."
+            ]
+        },
+        10: {
+            display: "x = 5",
+            accept: ["5", "x=5", "x5"],
+            steps: [
+                "Write 32 with base 2: 32 = 2⁵.",
+                "Now 2ˣ = 2⁵.",
+                "Equal bases mean equal exponents: x = 5."
+            ]
+        },
+        11: {
+            display: "t½ = ln(2)/|k|",
+            accept: ["ln(2)/|k|", "ln(2)/k", "ln2/k", "ln(2)/-k", "ln(2)/abs(k)", "t=ln(2)/k"],
+            steps: [
+                "Start with A = A₀eᵏᵗ and set A = A₀/2.",
+                "Divide by A₀: 1/2 = eᵏᵗ.",
+                "Take ln of both sides: ln(1/2) = kt → −ln(2) = kt.",
+                "Solve and take magnitude: t½ = ln(2)/|k|."
+            ]
+        },
+        12: {
+            display: "t₂ = ln(2)/k",
+            accept: ["ln(2)/k", "ln2/k", "ln(2)/|k|", "t=ln(2)/k"],
+            steps: [
+                "Set A = 2A₀ in A = A₀eᵏᵗ.",
+                "Divide by A₀: 2 = eᵏᵗ.",
+                "Take ln: ln(2) = kt.",
+                "Solve: t₂ = ln(2)/k."
+            ]
+        },
+        13: {
+            display: "k ≈ 0.04879",
+            accept: ["0.04879", ".04879", "0.0488", ".0488", "0.049", ".049", "ln(1.05)", "ln1.05"],
+            steps: [
+                "Match 100(1.05)ᵗ to 100eᵏᵗ, so eᵏ = 1.05.",
+                "Take ln of both sides: k = ln(1.05).",
+                "Compute: k ≈ 0.04879."
+            ]
+        },
+        14: {
+            display: "8%",
+            accept: ["8%", "8", "0.08", ".08"],
+            steps: [
+                "In A = A₀(1 + r)ᵗ, the base is 1 + r.",
+                "Here 1 + r = 1.08.",
+                "So r = 0.08, which is an 8% annual growth rate."
+            ]
+        },
+        15: {
+            display: "A = Ae^(kt)",
+            accept: ["ae^(kt)", "ae^kt", "a*e^(kt)", "aert", "ae(rt)", "pe^(rt)"],
+            steps: [
+                "Continuous compounding uses base e rather than (1 + r).",
+                "Model: A = A₀eᵏᵗ.",
+                "A₀ is the initial amount, k the continuous rate, t time."
+            ]
+        },
+        16: {
+            display: "pH = 4",
+            accept: ["4", "ph=4", "ph4"],
+            steps: [
+                "Substitute: pH = −log(10⁻⁴).",
+                "log(10⁻⁴) = −4 because log base 10 undoes 10ˣ.",
+                "pH = −(−4) = 4."
+            ]
+        },
+        17: {
+            display: "No",
+            accept: ["no", "n"],
+            steps: [
+                "Logarithms isolate a variable that appears in exactly one place.",
+                "Here x appears both as an exponent (2ˣ) and linearly (+x).",
+                "You cannot combine them into one log-able expression, so logs alone won't solve it."
+            ]
+        },
+        18: {
+            display: "Argument must be > 0",
+            accept: ["inside>0", "argument>0", "argumentmustbe>0", "insidepositive", "argumentpositive", ">0", "mustbegreaterthan0"],
+            steps: [
+                "A logarithm is undefined at zero and negative inputs.",
+                "Set the expression inside the parentheses greater than zero.",
+                "Solve that inequality — the solution set is the domain."
+            ]
+        },
+        19: {
+            display: "All real numbers",
+            accept: ["allrealnumbers", "allreals", "(-infinity,infinity)", "allreal", "everyrealnumber", "r"],
+            steps: [
+                "The graph of a log continues upward forever.",
+                "It also drops toward −∞ as the input approaches the asymptote.",
+                "Every y-value is hit, so the range is all real numbers."
+            ]
+        },
+               20: {
+            display: "log(x)/log(b)",
+            accept: ["log(x)/log(b)", "logx/logb", "ln(x)/ln(b)", "lnx/lnb", "log(x)/log(b).", "logtofb(x)=log(x)/log(b)"],
+            steps: [
+                "You need a ratio of logs whose bases match your calculator (base 10 or base e).",
+                "log_b(x) = log(x) / log(b), or equivalently ln(x) / ln(b).",
+                "The original base b ends up in the denominator."
+            ]
+        }
+    };
 
-    for(let i = 1; i <= 20; i++){
-        let student = document.getElementById("q"+i).value.toLowerCase().replace(/\s+/g, "");
-        let answer = answers[i-1].toLowerCase().replace(/\s+/g, "");
-        
-        // Special handling for percentage signs
-        if(i === 14 && student === "8") { student = "8%"; }
-        // Special handling for half-life absolute value notation variations
-        if(i === 11 && (student === "ln(2)/k" || student === "ln(2)/-k")) { student = "ln(2)/|k|"; }
+    function normalize(str) {
+        return String(str || '')
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .replace(/[–—]/g, '-')
+            .replace(/½/g, '1/2')
+            .trim();
+    }
 
-        if(student === answer){
-            score++;
+    function isCorrect(n, raw) {
+        var student = normalize(raw);
+        if (!student) return false;
+        var q = QUESTIONS[n];
+        for (var i = 0; i < q.accept.length; i++) {
+            if (student === normalize(q.accept[i])) return true;
+        }
+        // lenient fallback: strip common prefixes like y= t= pH=
+        var stripped = student.replace(/^y=/, '').replace(/^t=/, '').replace(/^ph=/, '');
+        for (var j = 0; j < q.accept.length; j++) {
+            if (stripped === normalize(q.accept[j])) return true;
+        }
+        return false;
+    }
+
+    function buildFeedback(n, correct) {
+        var q = QUESTIONS[n];
+        var head = correct
+            ? '<div class="feedback-head">✓ Correct</div>'
+            : '<div class="feedback-head">✗ Not quite</div>';
+
+        var answerLine = !correct
+            ? '<div class="correct-answer">Answer: <strong>' + q.display + '</strong></div>'
+            : '';
+
+        var steps = '<div class="steps-title">Steps</div><ol class="solution-steps">';
+        for (var i = 0; i < q.steps.length; i++) {
+            steps += '<li>' + q.steps[i] + '</li>';
+        }
+        steps += '</ol>';
+
+        return head + answerLine + steps;
+    }
+
+    function gradeExam() {
+        var score = 0;
+        var unanswered = 0;
+
+        for (var n = 1; n <= 20; n++) {
+            var block   = document.querySelector('.question-block[data-q="' + n + '"]');
+            var input   = document.getElementById('q' + n);
+            var panel   = block.querySelector('.feedback');
+            var raw     = input.value;
+            var correct = isCorrect(n, raw);
+
+            block.classList.remove('is-correct', 'is-wrong');
+            block.classList.add(correct ? 'is-correct' : 'is-wrong');
+            panel.innerHTML = buildFeedback(n, correct);
+
+            if (correct) {
+                score++;
+            } else if (!String(raw).trim()) {
+                unanswered++;
+            }
+        }
+
+        var percent = Math.round((score / 20) * 100);
+        var resultsDiv = document.getElementById('results-area');
+        resultsDiv.style.display = 'block';
+        resultsDiv.className = '';
+
+        var title, message;
+        if (percent >= 85) {
+            title = '🎉 Exam Ready';
+            message = 'Score: ' + score + '/20 (' + percent + '%). You demonstrate strong understanding of Chapter 5 concepts.';
+            resultsDiv.className = 'ready';
+        } else if (percent >= 65) {
+            title = '📈 Almost Ready';
+            message = 'Score: ' + score + '/20 (' + percent + '%). Review the highlighted steps below before the exam.';
+            resultsDiv.className = 'improving';
+        } else {
+            title = '📚 More Review Needed';
+            message = 'Score: ' + score + '/20 (' + percent + '%). Work through each solution below, then revisit Worked Examples and the Cheat Sheet.';
+            resultsDiv.className = 'review';
+        }
+
+        if (unanswered > 0) {
+            message += ' You left ' + unanswered + ' question' + (unanswered === 1 ? '' : 's') + ' blank.';
+        }
+
+        resultsDiv.innerHTML =
+            '<h2>' + title + '</h2>' +
+            '<div class="score-display">' + score + '/20 (' + percent + '%)</div>' +
+            '<p class="result-message">' + message + '</p>' +
+            '<button type="button" class="submit-btn" id="retry-btn" style="max-width:320px;margin:0 auto;">Review &amp; Try Again</button>';
+
+        document.getElementById('retry-btn').addEventListener('click', function () {
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Bring the first missed question into view so studying starts immediately
+        var firstMiss = document.querySelector('.question-block.is-wrong');
+        if (firstMiss) {
+            firstMiss.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
 
-    let percent = Math.round((score / 20) * 100);
-    let message = "";
-    let title = "";
+    document.getElementById('grade-btn').addEventListener('click', gradeExam);
 
-    if(percent >= 85){
-        title = "🎉 Exam Ready";
-        message = "Score: " + score + "/20 (" + percent + "%). You demonstrate strong understanding of Chapter 5 concepts.";
-        resultsDiv.className = "ready";
-    } else if(percent >= 65){
-        title = "📈 Almost Ready";
-        message = "Score: " + score + "/20 (" + percent + "%). Review weaker areas before the exam.";
-        resultsDiv.className = "improving";
-    } else {
-        title = "📚 More Review Needed";
-        message = "Score: " + score + "/20 (" + percent + "%). Return to Worked Examples and the Cheat Sheet.";
-        resultsDiv.className = "review";
-    }
-
-    resultsDiv.innerHTML = `
-        <h2>${title}</h2>
-        <div class="score-display">${score}/20 (${percent}%)</div>
-        <p class="result-message">${message}</p>
-    `;
-
-    // Scroll to results
-    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
+    // Ctrl/Cmd+Enter also grades, matching the keyboard-friendly feel of the rest of the site
+    document.getElementById('exam-form').addEventListener('keydown', function (evt) {
+        if ((evt.ctrlKey || evt.metaKey) && evt.key === 'Enter') {
+            evt.preventDefault();
+            gradeExam();
+        }
+    });
+})();
 </script>
 
 </body>
