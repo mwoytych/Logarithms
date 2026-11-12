@@ -14,4 +14,263 @@
 
 <body>
 
-  <a href="#main-content" class="skip-link">Skip to Main Content
+  <!-- ===== Accessibility Toolbar ===== -->
+  <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+      <span class="a11y-label" id="font-label">Text Size</span>
+
+      <button type="button" class="a11y-btn" id="font-decrease"
+              aria-label="Decrease text size">A−</button>
+
+      <span id="font-level-display" aria-live="polite"
+            aria-describedby="font-label">100%</span>
+
+      <button type="button" class="a11y-btn" id="font-increase"
+              aria-label="Increase text size">A+</button>
+
+      <button type="button" class="a11y-btn" id="font-reset"
+              aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+      <button type="button" class="a11y-btn" id="theme-toggle"
+              aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+  </div>
+
+  <!-- ===== Primary Navigation ===== -->
+  <nav class="site-nav" aria-label="Primary">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+      <li><a href="algebraic-mechanics.html" aria-current="page">Algebraic Mechanics</a></li>
+      <li><a href="worked-examples.html">Worked Examples</a></li>
+      <li><a href="exam-practice.html">Exam Practice</a></li>
+      <li><a href="confidence-check.html">Confidence Check</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="formula-reference.html">Formula Reference</a></li>
+      <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Hero Banner ===== -->
+  <header class="hero">
+    <h1>Algebraic Mechanics</h1>
+    <p>The universal problem-solving framework for logarithms and exponential models.</p>
+  </header>
+
+  <main class="container" id="main-content">
+
+    <!-- Master Framework -->
+    <section class="progress-box" aria-labelledby="framework-heading">
+      <h2 id="framework-heading">The Master Framework</h2>
+
+      <div class="card">
+        <div class="flow">
+          IDENTIFY<br>
+          ↓<br>
+          TRANSFORM<br>
+          ↓<br>
+          ISOLATE<br>
+          ↓<br>
+          SOLVE<br>
+          ↓<br>
+          VERIFY
+        </div>
+      </div>
+
+      <p>
+        Every Chapter 5 problem follows this framework. The mathematics changes,
+        but the process remains the same.
+      </p>
+    </section>
+
+    <!-- Mechanic #1 -->
+    <section>
+      <h2>Mechanic #1: Translate Logarithms</h2>
+
+      <div class="card">
+        <h3>Translation Rule</h3>
+<pre>log_b(x) = y   ⇔   b^y = x</pre>
+        <p>
+          A logarithm answers the question:
+          <strong>"What exponent produces this value?"</strong>
+        </p>
+      </div>
+
+<pre>log₂(32)
+
+Question: 2^? = 32
+Answer:   5</pre>
+    </section>
+
+    <!-- Mechanic #2 -->
+    <section>
+      <h2>Mechanic #2: Expand Logarithms</h2>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Operation</th>
+              <th scope="col">Log Rule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Multiply</td><td>Add</td></tr>
+            <tr><td>Divide</td><td>Subtract</td></tr>
+            <tr><td>Power</td><td>Move Exponent Forward</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre>log((x²y)/z³)
+↓
+log(x²) + log(y) − log(z³)
+↓
+2log(x) + log(y) − 3log(z)</pre>
+    </section>
+
+    <!-- Mechanic #3 -->
+    <section>
+      <h2>Mechanic #3: Condense Logarithms</h2>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Expression</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>+</td><td>Multiply</td></tr>
+            <tr><td>−</td><td>Divide</td></tr>
+            <tr><td>Coefficient</td><td>Exponent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre>2log(x) + log(y) − 3log(z)
+↓
+log(x²) + log(y) − log(z³)
+↓
+log((x²y)/z³)</pre>
+    </section>
+
+    <!-- Mechanic #4 -->
+    <section>
+      <h2>Mechanic #4: Find Domains</h2>
+
+      <div class="card">
+        <h3>Golden Rule</h3>
+<pre>Inside &gt; 0</pre>
+        <p>The argument of a logarithm must always be positive.</p>
+      </div>
+
+<pre>y = log(x − 4)
+
+x − 4 &gt; 0
+x &gt; 4
+
+Domain: (4, ∞)</pre>
+    </section>
+
+    <!-- Mechanic #5 -->
+    <section>
+      <h2>Mechanic #5: Analyze Graphs</h2>
+
+      <div class="card">
+        <h3>Parent Function: y = log_b(x)</h3>
+<pre>Domain:     x &gt; 0
+----------------------
+Range:      All Real Numbers (−∞, ∞)
+----------------------
+Asymptote:  x = 0  (vertical)
+Key Point:  (1, 0)</pre>
+        <p>
+          The graph crosses the x-axis at <code>x = 1</code> and approaches the
+          vertical asymptote without ever touching it.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Transformations</h3>
+<pre>y = a · log_b(k(x − d)) + c
+
+a → vertical stretch / reflection
+k → horizontal stretch / compression
+d → horizontal shift (moves the asymptote too)
+c → vertical shift</pre>
+      </div>
+    </section>
+
+    <!-- Mechanic #6 -->
+    <section>
+      <h2>Mechanic #6: Solve Exponential Equations</h2>
+
+      <div class="card">
+        <h3>Two Paths</h3>
+<pre>Common base possible?  →  Match exponents
+Otherwise             →  Take log of both sides</pre>
+      </div>
+
+<pre>2^(x+1) = 32
+2^(x+1) = 2^5
+x + 1 = 5
+x = 4</pre>
+
+<pre>3^x = 20
+log(3^x) = log(20)
+x · log(3) = log(20)
+x = log(20) / log(3) ≈ 2.727</pre>
+    </section>
+
+    <!-- Mechanic #7 -->
+    <section>
+      <h2>Mechanic #7: Growth &amp; Decay Models</h2>
+
+      <div class="card">
+        <h3>Standard Forms</h3>
+<pre>Growth:      A = P · b^t      (b &gt; 1)
+Decay:       A = P · b^t      (0 &lt; b &lt; 1)
+Continuous:  A = P · e^(rt)</pre>
+        <p>
+          <code>P</code> = initial amount, <code>A</code> = amount at time
+          <code>t</code>, <code>b</code> = growth or decay factor,
+          <code>r</code> = continuous rate.
+        </p>
+      </div>
+
+<pre>Half-life:   A = P · (1/2)^(t/h)
+Doubling:    A = P · 2^(t/d)
+
+h = half-life      d = doubling time</pre>
+    </section>
+
+    <!-- Mechanic #8 -->
+    <section>
+      <h2>Mechanic #8: Verify Your Answer</h2>
+
+      <div class="card">
+        <ul>
+          <li>Substitute back into the original equation.</li>
+          <li>Check that every logarithm argument is still positive.</li>
+          <li>Reject extraneous solutions introduced by exponentiating.</li>
+          <li>Confirm units and reasonableness (time &gt; 0, mass ≥ 0).</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>Chapter 5 Mastery Center</h3>
+    <p>Build confidence one concept at a time.</p>
+  </footer>
+
+</body>
+
+</html>
