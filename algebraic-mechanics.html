@@ -18,80 +18,154 @@ Logarithms & Exponential Models Mastery Center
 <link rel="stylesheet" href="styles.css">
 
 </head>
-
 <body>
 
 <a href="#main-content" class="skip-link">
-Skip to Main Content
+    Skip to Main Content
 </a>
 
-<header>
+<!-- Accessibility Toolbar -->
 
-<h1>Algebraic Mechanics</h1>
+<div class="a11y-bar"
+     role="toolbar"
+     aria-label="Display and accessibility settings">
 
-<p>
-The universal problem-solving framework for logarithms and exponential models.
-</p>
+    <div class="a11y-group"
+         role="group"
+         aria-label="Text size controls">
 
-<nav aria-label="Site Navigation">
+        <span class="a11y-label"
+              id="font-label">
+            Text Size
+        </span>
 
-<ul>
+        <button type="button"
+                class="a11y-btn"
+                id="font-decrease"
+                aria-label="Decrease text size">
+            A−
+        </button>
 
-<a class="btn" href="index.html">
-← Home
-</a>
+        <span id="font-level-display"
+              aria-live="polite"
+              aria-describedby="font-label">
+            100%
+        </span>
 
-<li>
-<a href="what-should-i-know.html">
-What Should I Know?
-</a>
-</li>
+        <button type="button"
+                class="a11y-btn"
+                id="font-increase"
+                aria-label="Increase text size">
+            A+
+        </button>
 
-<li>
-<a href="worked-examples.html">
-Worked Examples
-</a>
-</li>
+        <button type="button"
+                class="a11y-btn"
+                id="font-reset"
+                aria-label="Reset text size">
+            Reset
+        </button>
 
-<li>
-<a href="exam-practice.html">
-Exam Practice
-</a>
-</li>
+    </div>
 
-<li>
-<a href="confidence-check.html">
-Confidence Check
-</a>
-</li>
+    <div class="a11y-group">
 
-<li>
-<a href="calculators.html">
-Calculators
-</a>
-</li>
+        <button type="button"
+                class="a11y-btn"
+                id="theme-toggle"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">
 
-<li>
-<a href="formula-reference.html">
-Formula Reference
-</a>
-</li>
+            🌙 Dark Mode
 
-<li>
-<a href="graph-explorer.html">
-Graph Explorer
-</a>
-</li>
+        </button>
 
-</ul>
+    </div>
+
+</div>
+
+<!-- Navigation -->
+
+<nav class="site-nav"
+     aria-label="Primary Navigation">
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="what-should-i-know.html">
+                What Should I Know?
+            </a>
+        </li>
+
+        <li>
+            <a href="algebraic-mechanics.html"
+               aria-current="page">
+                Algebraic Mechanics
+            </a>
+        </li>
+
+        <li>
+            <a href="worked-examples.html">
+                Worked Examples
+            </a>
+        </li>
+
+        <li>
+            <a href="exam-practice.html">
+                Exam Practice
+            </a>
+        </li>
+
+        <li>
+            <a href="confidence-check.html">
+                Confidence Check
+            </a>
+        </li>
+
+        <li>
+            <a href="calculators.html">
+                Calculators
+            </a>
+        </li>
+
+        <li>
+            <a href="formula-reference.html">
+                Formula Reference
+            </a>
+        </li>
+
+        <li>
+            <a href="graph-explorer.html">
+                Graph Explorer
+            </a>
+        </li>
+
+    </ul>
 
 </nav>
-  
+
+<!-- Hero Banner -->
+
+<header class="hero">
+
+    <h1>
+        Algebraic Mechanics
+    </h1>
+
+    <p>
+        The universal problem-solving framework for logarithms and exponential models.
+    </p>
+
 </header>
 
-<main
-class="container"
-id="main-content">
+<main class="container"
+      id="main-content">
 
 <section>
 
