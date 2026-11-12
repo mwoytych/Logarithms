@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Math Lab Companion | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="Get the most value from tutoring, office hours, and the math lab with checklists, question prompts, and a reflection sheet for Chapter 5.">
 
 <style>
 
 :root{
     --primary:#2563eb;
+    --secondary:#1d4ed8;
     --success:#059669;
     --warning:#d97706;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --warning:#fbbf24;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
 }
 
 *{
@@ -25,345 +50,900 @@ content="width=device-width, initial-scale=1.0">
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
-    line-height:1.6;
-    color:#111827;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
+/* ===== Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
+}
+
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
     text-align:center;
-    padding:50px 20px;
 }
 
+/* ===== Hero ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
 .container{
-    max-width:1000px;
+    max-width:1200px;
     margin:auto;
-    padding:30px;
+    padding:40px 20px;
 }
 
-.card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:20px 0;
-    border-radius:8px;
+.panel{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:30px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
 }
 
-h2{
-    color:#2563eb;
-    border-bottom:2px solid #2563eb;
+.panel h2{
+    margin-top:0;
+    font-size:calc(1.4rem * var(--font-scale));
+    color:var(--primary);
+    border-bottom:2px solid var(--border);
     padding-bottom:10px;
+    margin-bottom:15px;
 }
 
-h3{
-    color:#2563eb;
+.panel h3{
+    font-size:calc(1.15rem * var(--font-scale));
+    color:var(--text-main);
+    margin-top:20px;
+    margin-bottom:8px;
 }
 
-ul{
+.panel p,
+.panel li,
+.panel label{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.panel ul,
+.panel ol{
     padding-left:25px;
 }
 
+.panel li{
+    margin:6px 0;
+}
+
+/* ===== Checklist ===== */
 .checklist{
-    background:white;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(max(260px,26vw),1fr));
+    gap:12px;
+    margin:15px 0;
+}
+
+.check-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    background:var(--bg-body);
     border:1px solid var(--border);
-    border-radius:8px;
-    padding:20px;
+    border-radius:10px;
+    padding:14px 16px;
+    cursor:pointer;
+    transition:border-color .2s, transform .2s;
+}
+
+.check-item:hover{
+    border-color:var(--primary);
+    transform:translateY(-2px);
+}
+
+.check-item input[type="checkbox"]{
+    width:22px;
+    height:22px;
+    min-width:22px;
+    margin:2px 0 0;
+    accent-color:var(--success);
+    cursor:pointer;
+}
+
+.check-item input[type="checkbox"]:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.check-item.checked{
+    border-color:var(--success);
+    background:color-mix(in srgb, var(--success) 8%, var(--bg-card));
+}
+
+/* ===== Question Cards ===== */
+.question-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(max(280px,28vw),1fr));
+    gap:12px;
+    margin:15px 0;
 }
 
 .question{
-    background:white;
+    background:var(--bg-body);
     border:1px solid var(--border);
-    border-radius:8px;
-    padding:15px;
-    margin:10px 0;
+    border-left:4px solid var(--primary);
+    border-radius:10px;
+    padding:14px 16px;
+    font-size:calc(1rem * var(--font-scale));
+    transition:border-color .2s, transform .2s;
 }
 
-.reflection{
-    background:#eff6ff;
-    border-radius:8px;
+.question:hover{
+    border-color:var(--primary);
+    transform:translateY(-2px);
+}
+
+.question strong{
+    display:block;
+    color:var(--primary);
+    font-size:calc(.85rem * var(--font-scale));
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    margin-bottom:4px;
+}
+
+/* ===== Callout Boxes ===== */
+.callout{
+    border-radius:12px;
     padding:20px;
+    margin:20px 0;
+    border-left:5px solid var(--primary);
+    background:color-mix(in srgb, var(--primary) 8%, var(--bg-card));
 }
 
+.callout-warning{
+    border-left-color:var(--warning);
+    background:color-mix(in srgb, var(--warning) 10%, var(--bg-card));
+}
+
+.callout-success{
+    border-left-color:var(--success);
+    background:color-mix(in srgb, var(--success) 10%, var(--bg-card));
+}
+
+.callout h3{
+    margin-top:0;
+    color:var(--text-main);
+}
+
+/* ===== Reflection Sheet ===== */
+.reflection{
+    background:var(--bg-body);
+    border:1px dashed var(--border);
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+}
+
+.reflection-item{
+    margin-bottom:22px;
+}
+
+.reflection-item:last-child{
+    margin-bottom:0;
+}
+
+.reflection-item label{
+    display:block;
+    font-weight:700;
+    margin-bottom:6px;
+    color:var(--text-main);
+}
+
+.reflection-item textarea{
+    width:100%;
+    min-height:60px;
+    padding:10px 12px;
+    border:2px solid var(--border);
+    border-radius:8px;
+    background:var(--bg-card);
+    color:var(--text-main);
+    font-family:inherit;
+    font-size:calc(1rem * var(--font-scale));
+    resize:vertical;
+}
+
+.reflection-item textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+/* ===== Buttons ===== */
 .btn{
     display:inline-block;
     margin-top:20px;
     margin-right:10px;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:10px 16px;
+    padding:12px 18px;
+    border:none;
     border-radius:6px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    font-size:calc(1rem * var(--font-scale));
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover,
+.btn:focus-visible{
+    background:var(--secondary);
+}
+
+.btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+.btn-secondary{
+    background:var(--bg-body);
+    color:var(--primary);
+    border:2px solid var(--border);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible{
+    background:var(--bg-card);
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .check-item:hover,
+    .question:hover{
+        transform:none;
+    }
+}
+
+@media print{
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .panel{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    .reflection-item textarea{ border:1px solid #999; min-height:50px; }
+    .btn{ display:none; }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button" class="a11y-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display" aria-live="polite" aria-describedby="font-label">100%</span>
+
+        <button type="button" class="a11y-btn" id="font-increase" aria-label="Increase text size">A+</button>
+
+        <button type="button" class="a11y-btn" id="font-reset" aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button" class="a11y-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>Math Lab Companion</h1>
 
-<p>
-Get the most value from tutoring, office hours, and the math lab.
-</p>
+<p>Get the most value from tutoring, office hours, and the math lab.</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<h2>Before You Go</h2>
+<!-- ===== Before You Go ===== -->
+<section class="panel" aria-labelledby="before-heading">
 
-<div class="checklist">
+<h2 id="before-heading">Before You Go</h2>
 
 <h3>Bring These 5 Things</h3>
 
+<div class="checklist">
+
+<label class="check-item">
+<input type="checkbox">
+<span>Notes</span>
+</label>
+
+<label class="check-item">
+<input type="checkbox">
+<span>Homework attempts</span>
+</label>
+
+<label class="check-item">
+<input type="checkbox">
+<span>Specific questions</span>
+</label>
+
+<label class="check-item">
+<input type="checkbox">
+<span>Examples you do not understand</span>
+</label>
+
+</div>
+
+</section>
+
+<!-- ===== Most Important Rule ===== -->
+<section class="panel" aria-labelledby="rule-heading">
+
+<h2 id="rule-heading">Most Important Rule</h2>
+
+<div class="callout callout-warning">
+
+<h3>Attempt the problem before asking for help.</h3>
+
+<p>Tutors can help far more effectively when they can see where your understanding stopped.</p>
+
+</div>
+
+</section>
+
+<!-- ===== Good Questions To Ask ===== -->
+<section class="panel" aria-labelledby="questions-heading">
+
+<h2 id="questions-heading">Good Questions To Ask</h2>
+
+<div class="question-list">
+
+<div class="question">
+    <strong>Question #1</strong>
+    "Can you check my setup?"
+</div>
+
+<div class="question">
+    <strong>Question #2</strong>
+    "Why does this logarithm property apply here?"
+</div>
+
+<div class="question">
+    <strong>Question #3</strong>
+    "How do I know when to use logarithms?"
+</div>
+
+<div class="question">
+    <strong>Question #4</strong>
+    "Can you show me another example?"
+</div>
+
+<div class="question">
+    <strong>Question #5</strong>
+    "How would this appear on an exam?"
+</div>
+
+<div class="question">
+    <strong>Question #6</strong>
+    "What mistake am I making repeatedly?"
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== Questions Specific To Chapter 5 ===== -->
+<section class="panel" aria-labelledby="ch5-questions-heading">
+
+<h2 id="ch5-questions-heading">Questions Specific To Chapter 5</h2>
+
 <ul>
-
-<li>✅ Notes</li>
-
-<li>✅ Homework attempts</li>
-
-<li>✅ Calculator</li>
-
-<li>✅ Specific questions</li>
-
-<li>✅ Examples you do not understand</li>
-
+    <li>Why is the domain of a logarithm always restricted?</li>
+    <li>How do I recognize when to use the Product Rule?</li>
+    <li>How do I know whether to expand or condense?</li>
+    <li>When should I use logarithms to solve an equation?</li>
+    <li>Why can't some exponential equations be solved with logs?</li>
+    <li>How do I find half-life and doubling time?</li>
+    <li>How do I convert between ab<sup>t</sup> and ae<sup>kt</sup>?</li>
+    <li>How do I interpret pH and decibel problems?</li>
 </ul>
 
-</div>
+</section>
 
-<div class="card">
+<!-- ===== If You're Completely Stuck ===== -->
+<section class="panel" aria-labelledby="stuck-heading">
 
-<h3>Most Important Rule</h3>
+<h2 id="stuck-heading">If You're Completely Stuck</h2>
 
-<p>
-
-Attempt the problem before asking for help.
-
-</p>
-
-<p>
-
-Tutors can help far more effectively when they can see where your understanding stopped.
-
-</p>
-
-</div>
-
-<h2>Good Questions To Ask</h2>
-
-<div class="question">
-
-<strong>Question #1:</strong>
-
-"Can you check my setup?"
-
-</div>
-
-<div class="question">
-
-<strong>Question #2:</strong>
-
-"Why does this logarithm property apply here?"
-
-</div>
-
-<div class="question">
-
-<strong>Question #3:</strong>
-
-"How do I know when to use logarithms?"
-
-</div>
-
-<div class="question">
-
-<strong>Question #4:</strong>
-
-"Can you show me another example?"
-
-</div>
-
-<div class="question">
-
-<strong>Question #5:</strong>
-
-"How would this appear on an exam?"
-
-</div>
-
-<div class="question">
-
-<strong>Question #6:</strong>
-
-"What mistake am I making repeatedly?"
-
-</div>
-
-<h2>Questions Specific To Chapter 5</h2>
-
-<div class="card">
-
-<ul>
-
-<li>Why is the domain of a logarithm always restricted?</li>
-
-<li>How do I recognize when to use the Product Rule?</li>
-
-<li>How do I know whether to expand or condense?</li>
-
-<li>When should I use logarithms to solve an equation?</li>
-
-<li>Why can't some exponential equations be solved with logs?</li>
-
-<li>How do I find half-life and doubling time?</li>
-
-<li>How do I convert between ab<sup>t</sup> and ae<sup>kt</sup>?</li>
-
-<li>How do I interpret pH and decibel problems?</li>
-
-</ul>
-
-</div>
-
-<h2>If You're Completely Stuck</h2>
-
-<div class="card">
+<div class="callout">
 
 <h3>Tell the Tutor These Three Things</h3>
 
 <ol>
-
-<li>What chapter you're working on.</li>
-
-<li>What you understand so far.</li>
-
-<li>The exact step where you became confused.</li>
-
+    <li>What chapter you're working on.</li>
+    <li>What you understand so far.</li>
+    <li>The exact step where you became confused.</li>
 </ol>
 
 </div>
 
-<h2>After the Session</h2>
+</section>
 
-<div class="card">
+<!-- ===== After the Session ===== -->
+<section class="panel" aria-labelledby="after-heading">
+
+<h2 id="after-heading">After the Session</h2>
+
+<div class="callout callout-success">
 
 <h3>Do Not Leave Yet</h3>
 
-<p>
+<p>Immediately solve one similar problem without looking at notes.</p>
 
-Immediately solve one similar problem without looking at notes.
-
-</p>
-
-<p>
-
-Being able to follow an explanation is not the same thing as being able to solve a problem yourself.
-
-</p>
+<p>Being able to follow an explanation is not the same thing as being able to solve a problem yourself.</p>
 
 </div>
 
-<h2>Chapter 5 Reflection Sheet</h2>
+</section>
+
+<!-- ===== Reflection Sheet ===== -->
+<section class="panel" aria-labelledby="reflection-heading">
+
+<h2 id="reflection-heading">Chapter 5 Reflection Sheet</h2>
 
 <div class="reflection">
 
-<p><strong>What concept feels strongest?</strong></p>
+<div class="reflection-item">
+    <label for="ref1">What concept feels strongest?</label>
+    <textarea id="ref1" placeholder="Type your answer here..."></textarea>
+</div>
 
-<hr>
+<div class="reflection-item">
+    <label for="ref2">What concept still feels confusing?</label>
+    <textarea id="ref2" placeholder="Type your answer here..."></textarea>
+</div>
 
-<p><strong>What concept still feels confusing?</strong></p>
+<div class="reflection-item">
+    <label for="ref3">What question do I still have?</label>
+    <textarea id="ref3" placeholder="Type your answer here..."></textarea>
+</div>
 
-<hr>
-
-<p><strong>What question do I still have?</strong></p>
-
-<hr>
-
-<p><strong>What problem did I solve successfully today?</strong></p>
-
-<hr>
+<div class="reflection-item">
+    <label for="ref4">What problem did I solve successfully today?</label>
+    <textarea id="ref4" placeholder="Type your answer here..."></textarea>
+</div>
 
 </div>
 
-<h2>Confidence Strategy</h2>
+</section>
 
-<div class="card">
+<!-- ===== Confidence Strategy ===== -->
+<section class="panel" aria-labelledby="confidence-heading">
 
-<p>
+<h2 id="confidence-heading">Confidence Strategy</h2>
 
-Most students gain confidence in Chapter 5 through:
-
-</p>
+<p>Most students gain confidence in Chapter 5 through:</p>
 
 <ul>
-
-<li>Repeated practice</li>
-
-<li>Reviewing mistakes</li>
-
-<li>Explaining solutions out loud</li>
-
-<li>Working similar problems</li>
-
-<li>Getting feedback in the Math Lab</li>
-
+    <li>Repeated practice</li>
+    <li>Reviewing mistakes</li>
+    <li>Explaining solutions out loud</li>
+    <li>Working similar problems</li>
+    <li>Getting feedback in the Math Lab</li>
 </ul>
 
-<p>
-
-Confidence comes from solving problems, not from rereading notes.
-
-</p>
-
+<div class="callout">
+    <p><strong>Confidence comes from solving problems, not from rereading notes.</strong></p>
 </div>
 
-<h2>Next Goal</h2>
+</section>
 
-<div class="card">
+<!-- ===== Next Goal ===== -->
+<section class="panel" aria-labelledby="goal-heading">
 
-<p>
+<h2 id="goal-heading">Next Goal</h2>
 
-After visiting the Math Lab, return to:
-
-</p>
+<p>After visiting the Math Lab, return to:</p>
 
 <ul>
-
-<li>Worked Examples</li>
-
-<li>Exam Practice</li>
-
-<li>Confidence Check</li>
-
+    <li><a href="worked-examples.html">Worked Examples</a></li>
+    <li><a href="exam-practice.html">Exam Practice</a></li>
+    <li><a href="confidence-check.html">Confidence Check</a></li>
 </ul>
 
+<p>See if you can solve the problems independently.</p>
+
+</section>
+
+<a class="btn" href="study-resources.html">← Study Resources</a>
+<a class="btn" href="calculators.html">Next: Interactive Calculators →</a>
+
+</main>
+
+<script>
+(function () {
+    'use strict';
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); } catch (err) { stored = null; }
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+    // ---------- Checklist Toggle ----------
+    var checkItems = document.querySelectorAll('.check-item');
+    checkItems.forEach(function (item) {
+        var cb = item.querySelector('input[type="checkbox"]');
+        if (cb) {
+            cb.addEventListener('change', function () {
+                item.classList.toggle('checked', cb.checked);
+            });
+        }
+    });
+
+    // ---------- Reflection Textarea Persistence ----------
+    var reflectionKeys = ['ref1', 'ref2', 'ref3', 'ref4'];
+    reflectionKeys.forEach(function (key) {
+        var ta = document.getElementById(key);
+        if (ta) {
+            // Load saved value
+            try {
+                var saved = window.localStorage.getItem('ch5-reflection-' + key);
+                if (saved) { ta.value = saved; }
+            } catch (e) { /* ignore */ }
+            // Save on input
+            ta.addEventListener('input', function () {
+                try {
+                    window.localStorage.setItem('ch5-reflection-' + key, ta.value);
+                } catch (e) { /* ignore */ }
+            });
+        }
+    });
+
+})();
+</script>
+
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
 <p>
-
-See if you can solve the problems independently.
-
+Build confidence one concept at a time.
 </p>
 
-</div>
+<p>
+Next Milestone: Complete the Confidence Check with at least 80% mastery.
+</p>
 
-<a
-class="btn"
-href="study-resources.html">
-← Study Resources
-</a>
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
 
-<a
-class="btn"
-href="calculators.html">
-Next: Interactive Calculators →
-</a>
-
-</div>
+</footer>
 
 </body>
-
 </html>
