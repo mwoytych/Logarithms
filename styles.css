@@ -553,6 +553,12 @@ footer{
   color:var(--text-muted);
 }
 
+
+.copyright{
+    font-size:.85rem;
+    color:var(--footer-text);
+    margin-top:15px;
+}
 /* ==================================================
    MOBILE
 ================================================== */
