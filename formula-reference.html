@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Formula Reference | Chapter 5 Mastery Center</title>
+
+<style>
+
+:root{
+  --primary:#2563eb;
+  --light:#f8fafc;
+  --border:#d1d5db;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Segoe UI,Arial,sans-serif;
+  line-height:1.5;
+  color:#111827;
+}
+
+header{
+  background:#2563eb;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(320px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--light);
+  border-left:5px solid var(--primary);
+  padding:20px;
+  border-radius:8px;
+}
+
+h2{
+  color:#2563eb;
+}
+
+pre{
+  background:#111827;
+  color:white;
+  padding:15px;
+  border-radius:8px;
+  overflow:auto;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  margin-right:10px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:6px;
+}
+
+@media print{
+
+  .btn{
+    display:none;
+  }
+
+  body{
+    font-size:12px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Chapter 5 Formula Reference</h1>
+
+<p>
+Complete Formula Sheet for Logarithms & Exponential Models
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+
+<h2>Logarithm Definition</h2>
+
+<pre>
+logb(x)=y
+
+⇔
+
+b^y=x
+</pre>
+
+<p>
+A logarithm answers:
+"What exponent?"
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Common & Natural Logs</h2>
+
+<pre>
+Common:
+
+log(x)
+
+= log10(x)
+
+----------------
+
+Natural:
+
+ln(x)
+
+= loge(x)
+
+e ≈ 2.718
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Exact Values</h2>
+
+<pre>
+log(1)=0
+
+log(10)=1
+
+log(100)=2
+
+log(1000)=3
+
+----------------
+
+ln(1)=0
+
+ln(e)=1
+
+ln(e²)=2
+
+ln(e³)=3
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Inverse Relationships</h2>
+
+<pre>
+log(10^x)=x
+
+----------------
+
+10^(log(x))=x
+
+----------------
+
+ln(e^x)=x
+
+----------------
+
+e^(ln(x))=x
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Product Rule</h2>
+
+<pre>
+log(MN)
+
+=
+
+log(M)+log(N)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Quotient Rule</h2>
+
+<pre>
+log(M/N)
+
+=
+
+log(M)-log(N)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Power Rule</h2>
+
+<pre>
+log(M^p)
+
+=
+
+p log(M)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Change of Base</h2>
+
+<pre>
+logb(x)
+
+=
+
+log(x)
+/log(b)
+
+----------------
+
+=
+
+ln(x)
+/ln(b)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Expansion Mechanics</h2>
+
+<pre>
+Multiply → Add
+
+Divide → Subtract
+
+Power → Front
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Condensing Mechanics</h2>
+
+<pre>
+Add → Multiply
+
+Subtract → Divide
+
+Coefficient → Exponent
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Domain of Logs</h2>
+
+<pre>
+Inside > 0
+
+Always.
+</pre>
+
+Example:
+
+<pre>
+log(x−5)
+
+x−5 > 0
+
+x > 5
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Range of Logs</h2>
+
+<pre>
+(-∞,∞)
+
+All Real Numbers
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Asymptotes</h2>
+
+<pre>
+Vertical:
+
+x = a
+
+----------------
+
+Horizontal:
+
+y = b
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Parent Log Graph</h2>
+
+<pre>
+Domain:
+
+(0,∞)
+
+Range:
+
+(-∞,∞)
+
+Vertical Asymptote:
+
+x=0
+
+Key Point:
+
+(1,0)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Concavity</h2>
+
+<pre>
+log(x)
+
+Concave Down
+
+----------------
+
+ln(x)
+
+Concave Down
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Limits</h2>
+
+<pre>
+lim ln(x)
+
+x→0+
+
+=
+
+−∞
+
+----------------
+
+lim ln(x)
+
+x→∞
+
+=
+
+∞
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Growth Model</h2>
+
+<pre>
+P=P₀(1+r)^t
+</pre>
+
+<p>
+
+r > 0
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Decay Model</h2>
+
+<pre>
+P=P₀(1-r)^t
+</pre>
+
+<p>
+
+r > 0
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Continuous Growth/Decay</h2>
+
+<pre>
+A=A₀e^(kt)
+
+k > 0
+
+Growth
+
+----------------
+
+k < 0
+
+Decay
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Convert Forms</h2>
+
+<pre>
+ab^t
+
+↓
+
+ae^(kt)
+
+k=ln(b)
+
+----------------
+
+ae^(kt)
+
+↓
+
+ab^t
+
+b=e^k
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Find Time</h2>
+
+<pre>
+ab^t=c
+
+t=
+
+log(c/a)
+/log(b)
+</pre>
+
+<pre>
+ae^(kt)=c
+
+t=
+
+ln(c/a)
+/k
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Annual Growth Rate</h2>
+
+<pre>
+b=1+r
+
+----------------
+
+r=b−1
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Half-Life</h2>
+
+<pre>
+t=ln(2)/|k|
+</pre>
+
+Meaning:
+
+<p>
+Time required to reach half.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Doubling Time</h2>
+
+<pre>
+t=ln(2)/k
+</pre>
+
+Meaning:
+
+<p>
+Time required to double.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>pH Formula</h2>
+
+<pre>
+pH
+
+=
+
+-log[H+]
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Sound Intensity</h2>
+
+<pre>
+dB
+
+=
+
+10log(I/I₀)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Solving Exponential Equations</h2>
+
+<pre>
+Variable in exponent?
+
+↓
+
+Take logarithms.
+</pre>
+
+Example:
+
+<pre>
+3^x=40
+
+x=
+
+log(40)
+/log(3)
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>When Logs Will NOT Work</h2>
+
+<pre>
+2^x+x=10
+</pre>
+
+Variable appears:
+
+<pre>
+Inside exponent
+
+AND
+
+Outside exponent
+</pre>
+
+Requires:
+
+<pre>
+Graphing
+
+Numerical Methods
+
+Technology
+</pre>
+
+</div>
+
+<div class="card">
+
+<h2>Algebraic Mechanics</h2>
+
+<pre>
+IDENTIFY
+
+↓
+
+TRANSFORM
+
+↓
+
+ISOLATE
+
+↓
+
+SOLVE
+
+↓
+
+VERIFY
+</pre>
+
+</div>
+
+</div>
+
+<a
+class="btn"
+href="graph-explorer.html">
+← Graph Explorer
+</a>
+
+<a
+class="btn"
+href="../index.html">
+Home
+</a>
+
+</div>
+
+</body>
+</html>
