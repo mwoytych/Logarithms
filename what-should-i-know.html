@@ -3,17 +3,43 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>What Should I Know? | Chapter 5 Mastery Center</title>
+
+<meta name="description"
+content="Course objectives for logarithms and exponential models translated into student-friendly exam skills, with a readiness checklist.">
 
 <style>
 
 :root{
     --primary:#2563eb;
+    --secondary:#1d4ed8;
+    --success:#059669;
     --light:#f8fafc;
-    --border:#d1d5db;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
 }
 
 *{
@@ -23,33 +49,239 @@ content="width=device-width, initial-scale=1.0">
 body{
     margin:0;
     font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
     line-height:1.6;
-    color:#111827;
+    transition:background .3s, color .3s;
 }
 
-header{
-    background:#2563eb;
-    color:white;
+/* ===== Accessibility: Skip Link ===== */
+.skip-link{
+    position:absolute;
+    top:-60px;
+    left:0;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 16px;
+    z-index:1000;
+    text-decoration:none;
+    border-radius:0 0 8px 0;
+    transition:top .2s;
+}
+.skip-link:focus{
+    top:0;
+}
+
+/* Screen-reader only utility */
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
     text-align:center;
-    padding:50px 20px;
 }
 
+/* ===== Hero (card-styled to match tiles) ===== */
+.hero{
+    max-width:1200px;
+    margin:24px auto 0;
+    padding:40px 25px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(2.4rem * var(--font-scale));
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:calc(1.1rem * var(--font-scale));
+    color:var(--text-muted);
+    margin-top:15px;
+}
+
+/* ===== Navigation (card-styled to match tiles) ===== */
+.site-nav{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:12px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
 .container{
-    max-width:1000px;
+    max-width:1200px;
     margin:auto;
-    padding:30px;
+    padding:40px 20px;
+}
+
+.progress-box{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:40px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
+}
+
+.progress-box h2{
+    margin-top:0;
+    font-size:calc(1.6rem * var(--font-scale));
+}
+
+.progress-box p,
+.progress-box li{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
-    background:var(--light);
-    border-left:5px solid var(--primary);
-    padding:20px;
-    margin:25px 0;
-    border-radius:8px;
+    background:var(--bg-card);
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--border);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px var(--shadow);
+}
+
+.card h3{
+    color:var(--primary);
+    margin-top:0;
+    font-size:calc(1.3rem * var(--font-scale));
+}
+
+.card p,
+.card li{
+    color:var(--text-muted);
+    font-size:calc(1rem * var(--font-scale));
 }
 
 h2{
     color:var(--primary);
+    font-size:calc(1.6rem * var(--font-scale));
     border-bottom:2px solid var(--primary);
     padding-bottom:10px;
 }
@@ -57,325 +289,505 @@ h2{
 table{
     width:100%;
     border-collapse:collapse;
+    font-size:calc(1rem * var(--font-scale));
 }
 
 th,td{
     border:1px solid var(--border);
     padding:12px;
+    text-align:left;
 }
 
 th{
-    background:#eff6ff;
+    background:var(--light);
+}
+
+/* ===== Page navigation (prev / next) ===== */
+.page-nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:40px;
 }
 
 .back{
     display:inline-block;
-    margin-top:20px;
     padding:10px 16px;
-    background:#2563eb;
-    color:white;
+    background:var(--primary);
+    color:#fff;
     text-decoration:none;
     border-radius:6px;
+    font-weight:600;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.back:hover,
+.back:focus-visible{
+    background:var(--secondary);
+}
+
+.back:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
 }
 
 ul{
     padding-left:20px;
 }
 
-</style>
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .card:hover{
+        transform:none;
+    }
+}
 
+/* Print styles */
+@media print{
+    .a11y-bar, .site-nav, .page-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .card{ box-shadow:none; border:1px solid #ccc; }
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== Accessibility Toolbar ===== -->
+<div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
+
+    <div class="a11y-group" role="group" aria-label="Text size controls">
+        <span class="a11y-label" id="font-label">Text Size</span>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-decrease"
+                aria-label="Decrease text size">A−</button>
+
+        <span id="font-level-display"
+              aria-live="polite"
+              aria-describedby="font-label">100%</span>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-increase"
+                aria-label="Increase text size">A+</button>
+
+        <button type="button"
+                class="a11y-btn"
+                id="font-reset"
+                aria-label="Reset text size to 100 percent">Reset</button>
+    </div>
+
+    <div class="a11y-group">
+        <button type="button"
+                class="a11y-btn"
+                id="theme-toggle"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
+</div>
+
+<!-- ===== Primary Navigation ===== -->
+<nav class="site-nav" aria-label="Primary">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="what-should-i-know.html" aria-current="page">What Should I Know?</a></li>
+        <li><a href="algebraic-mechanics.html">Algebraic Mechanics</a></li>
+        <li><a href="worked-examples.html">Worked Examples</a></li>
+        <li><a href="exam-practice.html">Exam Practice</a></li>
+        <li><a href="confidence-check.html">Confidence Check</a></li>
+        <li><a href="calculators.html">Calculators</a></li>
+        <li><a href="formula-reference.html">Formula Reference</a></li>
+        <li><a href="graph-explorer.html">Graph Explorer</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
 
 <h1>What Should I Know?</h1>
 
-<p>
-Translate course objectives into exam skills.
-</p>
+<p>Translate course objectives into exam skills.</p>
 
 </header>
 
-<div class="container">
+<main class="container" id="main-content">
 
-<h2>Professor Language vs Student Language</h2>
+<section aria-labelledby="language-heading">
+
+<h2 id="language-heading">Professor Language vs Student Language</h2>
 
 <table>
 
+<thead>
 <tr>
-<th>Course Objective</th>
-<th>Student Translation</th>
+<th scope="col">Course Objective</th>
+<th scope="col">Student Translation</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Define common and natural logarithms.</td>
+<td>I can evaluate log and ln expressions.</td>
 </tr>
 
 <tr>
-<td>
-Define common and natural logarithms.
-</td>
-
-<td>
-I can evaluate log and ln expressions.
-</td>
+<td>Interpret a logarithm as an inverse function.</td>
+<td>I can move between logarithmic and exponential form.</td>
 </tr>
 
 <tr>
-<td>
-Interpret a logarithm as an inverse function.
-</td>
-
-<td>
-I can move between logarithmic and exponential form.
-</td>
+<td>Use logarithm properties.</td>
+<td>I can expand and condense logarithms.</td>
 </tr>
 
 <tr>
-<td>
-Use logarithm properties.
-</td>
-
-<td>
-I can expand and condense logarithms.
-</td>
+<td>Identify domain and range.</td>
+<td>I can determine allowed x-values and y-values.</td>
 </tr>
 
 <tr>
-<td>
-Identify domain and range.
-</td>
-
-<td>
-I can determine allowed x-values and y-values.
-</td>
+<td>Sketch logarithmic graphs.</td>
+<td>I can graph logs and identify asymptotes.</td>
 </tr>
 
 <tr>
-<td>
-Sketch logarithmic graphs.
-</td>
-
-<td>
-I can graph logs and identify asymptotes.
-</td>
+<td>Analyze growth and decay.</td>
+<td>I can interpret exponential models.</td>
 </tr>
 
 <tr>
-<td>
-Analyze growth and decay.
-</td>
-
-<td>
-I can interpret exponential models.
-</td>
+<td>Find half-life and doubling time.</td>
+<td>I can calculate and explain them.</td>
 </tr>
 
 <tr>
-<td>
-Find half-life and doubling time.
-</td>
-
-<td>
-I can calculate and explain them.
-</td>
+<td>Use logarithms to solve equations.</td>
+<td>I can solve for unknown exponents.</td>
 </tr>
 
 <tr>
-<td>
-Use logarithms to solve equations.
-</td>
-
-<td>
-I can solve for unknown exponents.
-</td>
+<td>Apply logarithms to pH and sound.</td>
+<td>I can solve real-world application problems.</td>
 </tr>
 
-<tr>
-<td>
-Apply logarithms to pH and sound.
-</td>
-
-<td>
-I can solve real-world application problems.
-</td>
-</tr>
-
+</tbody>
 </table>
 
-<h2>Skills You Must Master</h2>
+</section>
+
+<section aria-labelledby="skills-heading">
+
+<h2 id="skills-heading">Skills You Must Master</h2>
+
+<div class="grid">
 
 <div class="card">
-
 <h3>Logarithm Fundamentals</h3>
-
 <ul>
-
 <li>Common Logarithms</li>
-
 <li>Natural Logarithms</li>
-
 <li>Exact Values</li>
-
 <li>Inverse Functions</li>
-
 <li>Converting Forms</li>
-
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>Properties of Logarithms</h3>
-
 <ul>
-
 <li>Product Rule</li>
-
 <li>Quotient Rule</li>
-
 <li>Power Rule</li>
-
 <li>Change of Base Formula</li>
-
 <li>Expansion and Condensing</li>
-
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>Graphing Logarithmic Functions</h3>
-
 <ul>
-
 <li>Domain</li>
-
 <li>Range</li>
-
 <li>Vertical Asymptotes</li>
-
 <li>Concavity</li>
-
 <li>End Behavior</li>
-
 <li>Limits</li>
-
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>Exponential Models</h3>
-
 <ul>
-
 <li>Growth</li>
-
 <li>Decay</li>
-
 <li>Continuous Growth</li>
-
 <li>Annual Growth</li>
-
 <li>Converting Forms</li>
-
 </ul>
-
 </div>
 
 <div class="card">
-
-<h3>Half-Life & Doubling Time</h3>
-
+<h3>Half-Life &amp; Doubling Time</h3>
 <ul>
-
 <li>Interpret Meaning</li>
-
 <li>Compute Half-Life</li>
-
 <li>Compute Doubling Time</li>
-
 <li>Analyze Real-World Scenarios</li>
-
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>Applications</h3>
-
 <ul>
-
 <li>pH Scale</li>
-
 <li>Sound Intensity (Decibels)</li>
-
 <li>Population Growth</li>
-
 <li>Radioactive Decay</li>
-
 <li>Compound Interest</li>
-
 </ul>
+</div>
 
 </div>
 
-<h2>Exam Readiness Checklist</h2>
+</section>
 
-<div class="card">
+<section class="progress-box" aria-labelledby="checklist-heading">
+
+<h2 id="checklist-heading">Exam Readiness Checklist</h2>
 
 <p>
 If you can confidently answer "yes" to all of the following, you're likely ready for the Chapter 5 exam:
 </p>
 
 <ul>
-
 <li>□ I can evaluate logarithms.</li>
-
 <li>□ I can convert between log and exponential form.</li>
-
 <li>□ I can expand logarithms.</li>
-
 <li>□ I can condense logarithms.</li>
-
 <li>□ I can find domains.</li>
-
 <li>□ I can identify ranges.</li>
-
 <li>□ I can sketch log graphs.</li>
-
 <li>□ I can interpret asymptotes.</li>
-
 <li>□ I can solve exponential equations.</li>
-
 <li>□ I can find half-life.</li>
-
 <li>□ I can find doubling time.</li>
-
-<li>□ I can convert between \(ab^t\) and \(ae^{kt}\).</li>
-
+<li>□ I can convert between abᵗ and aeᵏᵗ.</li>
 <li>□ I can solve pH and decibel problems.</li>
-
 </ul>
 
-</div>
+</section>
 
-<a
-class="back"
-href="../index.html">
-← Return to Home
-</a>
+<!-- ===== Prev / Next Navigation ===== -->
+<nav class="page-nav" aria-label="Page navigation">
+    <a class="back" href="index.html">← Return to Home</a>
+    <a class="back" href="algebraic-mechanics.html">Next: Algebraic Mechanics →</a>
+</nav>
 
-<a
-class="back"
-href="algebraic-mechanics.html">
-Next: Algebraic Mechanics →
-</a>
+</main>
 
-</div>
+<footer>
+
+<h3>Chapter 5 Mastery Center</h3>
+
+<p>
+Build confidence one concept at a time.
+</p>
+
+<p class="copyright">
+&copy; <span id="copyright-year">2026</span> Chapter 5 Mastery Center. All rights reserved.
+</p>
+
+</footer>
+
+<script>
+(function () {
+    'use strict';
+
+    // ---------- Copyright Year ----------
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];   // matches site-wide scale
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 2;                       // 100%
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+
+        // CSS custom property drives all calc()-based font sizes
+        root.style.setProperty('--font-scale', String(scale));
+        // Also set body font-size so unstyled text scales too
+        document.body.style.fontSize = (scale * 100) + '%';
+
+        display.textContent = Math.round(scale * 100) + '%';
+
+        // Disable buttons at the ends so users get feedback
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable — degrade silently */ }
+
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+
+        // Fall back to OS preference
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    // Follow OS changes only when the user hasn't chosen manually
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
+            catch (err) { stored = null; }
+
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);   // older Safari
+        }
+    }
+
+})();
+</script>
 
 </body>
 </html>
