@@ -621,3 +621,12 @@ ul {
   line-height: 1.1;
   white-space: nowrap;
 }
+
+/* Remove double-spacing under the ribbon */
+.site-nav {
+  margin-bottom: 0;
+}
+
+main.container {
+  padding-top: 24px;   /* was probably 40px */
+}
