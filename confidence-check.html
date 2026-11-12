@@ -256,31 +256,18 @@ ul{
 }
 
 /* ===== Skills Checklist ===== */
+/* ===== Skills Checklist ===== */
 .skill-list{
-    display:grid;
-    /* auto-fill (not auto-fit) + vw floor = columns never collapse */
-    grid-template-columns:repeat(auto-fill,minmax(max(280px,26vw),1fr));
+    display:flex;
+    flex-wrap:wrap;
     gap:14px;
     margin:0 0 24px;
 }
 
-.skill-group{
-    grid-column:1 / -1;              /* heading spans full width */
-    font-size:calc(.95rem * var(--font-scale));
-    font-weight:700;
-    color:var(--text-muted);
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    border-bottom:1px solid var(--border);
-    padding-bottom:6px;
-    margin:18px 0 0;
-}
-
-.skill-group:first-child{
-    margin-top:0;
-}
-
 .skill{
+    flex:1 1 calc(33.333% - 10px);    /* 3 per row on wide screens */
+    min-width:260px;                    /* never get narrower than this */
+    max-width:100%;
     display:flex;
     align-items:flex-start;
     gap:12px;
@@ -291,17 +278,11 @@ ul{
     box-shadow:0 2px 8px var(--shadow);
     cursor:pointer;
     transition:border-color .2s, transform .2s;
-    min-width:0;                     /* lets long words wrap, not overflow */
 }
 
 .skill:hover{
     border-color:var(--primary);
     transform:translateY(-2px);
-}
-
-.skill > span{
-    min-width:0;                     /* allows text to wrap inside flex item */
-    overflow-wrap:anywhere;
 }
 
 .skill input[type="checkbox"]{
@@ -323,9 +304,16 @@ ul{
     background:color-mix(in srgb, var(--success) 8%, var(--bg-card));
 }
 
-@media (max-width:640px){
-    .skill-list{
-        grid-template-columns:1fr;   /* one column on phones */
+/* Responsive: 2 per row on tablets, 1 on phones */
+@media (max-width:900px){
+    .skill{
+        flex:1 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width:600px){
+    .skill{
+        flex:1 1 100%;
     }
 }
 
