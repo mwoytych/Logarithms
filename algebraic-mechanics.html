@@ -9,7 +9,327 @@
 
   <title>Algebraic Mechanics | Logarithms &amp; Exponential Models Mastery Center</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <style>
+
+:root{
+    --primary:#2563eb;
+    --secondary:#1d4ed8;
+    --success:#059669;
+    --light:#f8fafc;
+    --border:#e5e7eb;
+    --bg-body:#f9fafb;
+    --bg-card:#ffffff;
+    --text-main:#111827;
+    --text-muted:#4b5563;
+    --footer-text:#6b7280;
+    --shadow:rgba(0,0,0,.08);
+    --font-scale:1;
+}
+
+/* Dark Mode */
+[data-theme="dark"]{
+    --primary:#58a6ff;
+    --secondary:#79b8ff;
+    --success:#3fb950;
+    --light:#161b22;
+    --border:#30363d;
+    --bg-body:#0d1117;
+    --bg-card:#161b22;
+    --text-main:#f0f6fc;
+    --text-muted:#8b949e;
+    --footer-text:#8b949e;
+    --shadow:rgba(0,0,0,.4);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg-body);
+    color:var(--text-main);
+    transition:background .3s, color .3s;
+}
+
+/* Screen-reader only utility */
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
+/* ===== Accessibility Toolbar (single row) ===== */
+.a11y-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.a11y-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.a11y-label{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--text-muted);
+    margin-right:4px;
+}
+
+.a11y-btn{
+    min-width:40px;
+    min-height:40px;
+    padding:8px 12px;
+    font-size:1rem;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:6px;
+    background:var(--bg-body);
+    color:var(--text-main);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+}
+
+.a11y-btn:hover{
+    border-color:var(--primary);
+}
+
+.a11y-btn:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:2px;
+}
+
+.a11y-btn[aria-pressed="true"]{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.a11y-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+#font-level-display{
+    font-size:.85rem;
+    color:var(--text-muted);
+    min-width:44px;
+    text-align:center;
+}
+
+/* ===== Hero ===== */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    margin:0;
+    font-size:calc(3rem * var(--font-scale));
+}
+
+.hero p{
+    font-size:calc(1.2rem * var(--font-scale));
+    margin-top:15px;
+}
+
+/* ===== Navigation ===== */
+.site-nav{
+    background:var(--bg-card);
+    border-bottom:1px solid var(--border);
+    padding:12px 20px;
+}
+
+.site-nav ul{
+    list-style:none;
+    margin:0 auto;
+    padding:0;
+    max-width:1200px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.site-nav a{
+    display:inline-block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible{
+    background:var(--primary);
+    color:#fff;
+    outline:none;
+}
+
+.site-nav a[aria-current="page"]{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.progress-box{
+    background:var(--bg-card);
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:40px;
+    box-shadow:0 2px 8px var(--shadow);
+}
+
+.progress-box h2{
+    margin-top:0;
+    font-size:calc(1.6rem * var(--font-scale));
+}
+
+.progress-box p,
+.progress-box li{
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--bg-card);
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--border);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 16px var(--shadow);
+}
+
+.card h3{
+    color:var(--primary);
+    margin-top:0;
+    font-size:calc(1.3rem * var(--font-scale));
+}
+
+.card p{
+    color:var(--text-muted);
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.card a{
+    display:inline-block;
+    margin-top:10px;
+    text-decoration:none;
+    color:white;
+    background:var(--primary);
+    padding:10px 16px;
+    border-radius:6px;
+    font-size:calc(1rem * var(--font-scale));
+}
+
+.card a:hover,
+.card a:focus-visible{
+    background:var(--secondary);
+}
+
+.card a:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
+.flow{
+    text-align:center;
+    font-weight:700;
+    line-height:2;
+    color:var(--primary);
+}
+
+pre{
+    background:var(--light);
+    border:1px solid var(--border);
+    border-left:4px solid var(--primary);
+    border-radius:8px;
+    padding:16px 20px;
+    overflow-x:auto;
+    font-family:Consolas, Monaco, monospace;
+    font-size:calc(.95rem * var(--font-scale));
+    white-space:pre-wrap;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--border);
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--footer-text);
+    border-top:1px solid var(--border);
+}
+
+ul{
+    padding-left:20px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition:none !important;
+        animation:none !important;
+    }
+    .card:hover{
+        transform:none;
+    }
+}
+
+/* Print styles */
+@media print{
+    .a11y-bar, .site-nav{ display:none; }
+    body{ background:#fff; color:#000; }
+    .card{ box-shadow:none; border:1px solid #ccc; }
+}
+
+  </style>
 </head>
 
 <body>
@@ -270,6 +590,167 @@ h = half-life      d = doubling time</pre>
     <h3>Chapter 5 Mastery Center</h3>
     <p>Build confidence one concept at a time.</p>
   </footer>
+
+  <script>
+(function () {
+    'use strict';
+
+    // ---------- Text Size Controls ----------
+    var LEVELS = [0.85, 1, 1.15, 1.3, 1.45];
+    var MIN_INDEX = 0;
+    var MAX_INDEX = LEVELS.length - 1;
+    var DEFAULT_INDEX = 1;
+
+    var STORE_KEY_SIZE  = 'ch5-font-scale-index';
+    var STORE_KEY_THEME = 'ch5-theme';
+
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset    = document.getElementById('font-reset');
+    var display     = document.getElementById('font-level-display');
+    var root        = document.documentElement;
+
+    function clamp(n, lo, hi) {
+        return Math.min(hi, Math.max(lo, n));
+    }
+
+    function getStoredIndex() {
+        try {
+            var raw = window.localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) { return DEFAULT_INDEX; }
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) {
+            return DEFAULT_INDEX;
+        }
+    }
+
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+
+        root.style.setProperty('--font-scale', String(scale));
+        document.body.style.fontSize = (scale * 100) + '%';
+
+        display.textContent = Math.round(scale * 100) + '%';
+
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        btnDecrease.setAttribute('aria-disabled', String(index === MIN_INDEX));
+        btnIncrease.setAttribute('aria-disabled', String(index === MAX_INDEX));
+
+        try {
+            window.localStorage.setItem(STORE_KEY_SIZE, String(index));
+        } catch (e) { /* storage unavailable */ }
+
+        if (announce) {
+            display.textContent = Math.round(scale * 100) + '% text size';
+        }
+    }
+
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    // Keyboard shortcuts: Ctrl/Cmd + "+" / "-" / "0"
+    document.addEventListener('keydown', function (evt) {
+        if (!(evt.ctrlKey || evt.metaKey)) { return; }
+
+        if (evt.key === '+' || evt.key === '=') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '-' || evt.key === '_') {
+            evt.preventDefault();
+            currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+            applyScale(currentIndex, true);
+        } else if (evt.key === '0') {
+            evt.preventDefault();
+            currentIndex = DEFAULT_INDEX;
+            applyScale(currentIndex, true);
+        }
+    });
+
+    // ---------- Dark Mode Toggle ----------
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function getPreferredTheme() {
+        try {
+            var stored = window.localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') { return stored; }
+        } catch (e) { /* ignore */ }
+
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        if (persist) {
+            try {
+                window.localStorage.setItem(STORE_KEY_THEME, theme);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    // Follow OS changes only when the user hasn't chosen manually
+    if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var stored = null;
+            try { stored = window.localStorage.getItem(STORE_KEY_THEME); }
+            catch (err) { stored = null; }
+
+            if (stored !== 'dark' && stored !== 'light') {
+                currentTheme = e.matches ? 'dark' : 'light';
+                applyTheme(currentTheme, false);
+            }
+        };
+        if (mq.addEventListener) {
+            mq.addEventListener('change', onChange);
+        } else if (mq.addListener) {
+            mq.addListener(onChange);
+        }
+    }
+
+})();
+  </script>
 
 </body>
 
